@@ -9,40 +9,40 @@ locale: 'en'
 
 collections:
 
-  # ── 사이트 전역 설정 ──
+  # ── 사이트 전역 설정 / Site Settings ──
   - name: "settings"
-    label: "⚙️ 사이트 설정"
+    label: "⚙️ 사이트 설정 / Site Settings"
     files:
       - name: "general"
-        label: "전역 설정 (URL / 연락처 / SNS)"
+        label: "전역 설정 / General Settings (URL / 연락처 Contact / SNS)"
         file: "_data/settings.yml"
         fields:
-          - { label: "로그인 URL", name: "url_login", widget: "string", hint: "GymMaster 로그인 페이지 URL" }
-          - { label: "멤버십 가입 URL", name: "url_join", widget: "string", hint: "GymMaster 가입 페이지 URL" }
-          - { label: "예약 URL", name: "url_booking", widget: "string", hint: "GymMaster 예약 페이지 URL" }
-          - label: "멤버십별 URL"
+          - { label: "로그인 URL / Login URL", name: "url_login", widget: "string", hint: "GymMaster 로그인 페이지 URL / GymMaster member login page URL" }
+          - { label: "멤버십 가입 URL / Sign Up URL", name: "url_join", widget: "string", hint: "GymMaster 가입 페이지 URL / GymMaster signup page URL" }
+          - { label: "예약 URL / Booking URL", name: "url_booking", widget: "string", hint: "GymMaster 예약 페이지 URL / GymMaster booking page URL" }
+          - label: "멤버십별 URL / Membership URLs"
             name: "membership_urls"
             widget: "object"
             fields:
-              - { label: "Standard 가입 URL", name: "standard", widget: "string" }
-              - { label: "Student 가입 URL", name: "student", widget: "string" }
-              - { label: "Senior 가입 URL", name: "senior", widget: "string" }
-          - label: "연락처"
+              - { label: "Standard 가입 URL / Standard Join URL", name: "standard", widget: "string" }
+              - { label: "Student 가입 URL / Student Join URL", name: "student", widget: "string" }
+              - { label: "Senior 가입 URL / Senior Join URL", name: "senior", widget: "string" }
+          - label: "연락처 / Contact Information"
             name: "contact"
             widget: "object"
             fields:
-              - { label: "주소", name: "address", widget: "string" }
-              - { label: "이메일", name: "email", widget: "string" }
-              - { label: "전화번호", name: "phone", widget: "string", required: false }
-          - label: "운영시간"
+              - { label: "주소 / Address", name: "address", widget: "string" }
+              - { label: "이메일 / Email", name: "email", widget: "string" }
+              - { label: "전화번호 / Phone", name: "phone", widget: "string", required: false }
+          - label: "운영시간 / Staffed Hours"
             name: "hours"
             widget: "object"
             fields:
-              - { label: "월~목", name: "mon_thu", widget: "string" }
-              - { label: "금요일", name: "friday", widget: "string" }
-              - { label: "토요일", name: "saturday", widget: "string" }
-              - { label: "일요일", name: "sunday", widget: "string" }
-          - label: "SNS 링크"
+              - { label: "월~목 / Mon–Thu", name: "mon_thu", widget: "string", hint: "예 e.g. 7:00am – 7:30pm" }
+              - { label: "금요일 / Friday", name: "friday", widget: "string", hint: "예 e.g. 8:00am – 3:30pm" }
+              - { label: "토요일 / Saturday", name: "saturday", widget: "string", hint: "예 e.g. 8:00am – 11:00am" }
+              - { label: "일요일 / Sunday", name: "sunday", widget: "string", hint: "예 e.g. 8:00am – 11:00am" }
+          - label: "SNS 링크 / SNS Links"
             name: "sns"
             widget: "object"
             fields:
@@ -51,137 +51,149 @@ collections:
               - { label: "TikTok URL", name: "tiktok", widget: "string", required: false }
               - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
 
-  # ── 메인 롤링 배너 ──
+  # ── 메인 롤링 배너 / Hero Banner Slides ──
   - name: "hero_slides"
-    label: "🖼️ 메인 롤링 배너"
+    label: "🖼️ 메인 롤링 배너 / Hero Banner Slides"
     folder: "_data/slides"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "순서", name: "order", widget: "number" }
-      - { label: "배너 이미지", name: "image", widget: "image" }
-      - { label: "클릭 시 이동 URL", name: "url", widget: "string", hint: "배너 클릭 시 이동할 페이지" }
-      - { label: "새 탭에서 열기", name: "new_tab", widget: "boolean", default: false }
-      - { label: "활성화", name: "active", widget: "boolean", default: true }
+      - { label: "순서 / Order", name: "order", widget: "number", hint: "1부터 시작 / Start from 1" }
+      - label: "배너 이미지 / Banner Image"
+        name: "image"
+        widget: "image"
+        hint: "✅ 권장 사이즈 Recommended size — 1920 x 1080px (16:9 가로형 Landscape) | 최소 Min — 1280 x 720px | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max file size — 3MB | ⚠️ 3MB 초과 시 로딩이 느려집니다 Files over 3MB will slow down the page"
+      - { label: "클릭 시 이동 URL / Click URL", name: "url", widget: "string", hint: "배너 클릭 시 이동할 주소 / URL to open when banner is clicked. 없으면 # 입력 / Enter # if not needed", default: "#" }
+      - { label: "새 탭에서 열기 / Open in new tab", name: "new_tab", widget: "boolean", default: false }
+      - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true, hint: "OFF 하면 이 배너는 표시되지 않습니다 / Turn OFF to hide this slide" }
 
-  # ── 시설 목록 ──
+  # ── 시설 목록 / Facilities ──
   - name: "facilities"
-    label: "🏋️ 시설 관리"
+    label: "🏋️ 시설 관리 / Facilities"
     folder: "_data/facilities"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "시설명 (영문)", name: "name", widget: "string" }
-      - { label: "순서", name: "order", widget: "number" }
-      - { label: "아이콘 (이모지)", name: "icon", widget: "string", hint: "예: 🥊" }
-      - { label: "시설 사진", name: "image", widget: "image", required: false }
-      - { label: "간단 설명", name: "description", widget: "text" }
-      - { label: "상세 설명", name: "detail", widget: "text", required: false }
-      - { label: "활성화", name: "active", widget: "boolean", default: true }
+      - { label: "시설명 / Facility Name (English)", name: "name", widget: "string" }
+      - { label: "순서 / Display Order", name: "order", widget: "number" }
+      - { label: "아이콘 이모지 / Icon Emoji", name: "icon", widget: "string", hint: "이모지 입력 / Enter an emoji  예 e.g. 🥊 🏋️ 🧘" }
+      - label: "시설 사진 / Facility Photo"
+        name: "image"
+        widget: "image"
+        required: false
+        hint: "✅ 권장 사이즈 Recommended — 800 x 600px | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB"
+      - { label: "간단 설명 / Short Description (English)", name: "description", widget: "text", hint: "2~3줄 영문 / 2–3 lines in English" }
+      - { label: "상세 설명 / Detail (English)", name: "detail", widget: "text", required: false }
+      - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true }
 
-  # ── 트레이너 ──
+  # ── 트레이너 / Trainers ──
   - name: "trainers"
-    label: "👤 트레이너 관리"
+    label: "👤 트레이너 관리 / Trainers"
     folder: "_data/trainers"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "이름", name: "name", widget: "string" }
-      - { label: "전문 분야 (역할)", name: "role", widget: "string", hint: "예: Strength & Conditioning" }
-      - { label: "프로필 사진", name: "image", widget: "image" }
-      - { label: "소개 문구", name: "bio", widget: "text" }
-      - label: "전문 분야 태그"
+      - { label: "이름 / Full Name", name: "name", widget: "string" }
+      - { label: "전문 분야 / Role & Specialty", name: "role", widget: "string", hint: "예 e.g. Strength & Conditioning" }
+      - label: "프로필 사진 / Profile Photo"
+        name: "image"
+        widget: "image"
+        hint: "✅ 권장 사이즈 Recommended — 500 x 600px (세로형 Portrait) | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB | 정면 얼굴 사진 권장 Front-facing photo recommended"
+      - { label: "소개 문구 / Bio (English)", name: "bio", widget: "text", hint: "3~5줄 영문 / 3–5 lines in English" }
+      - label: "전문 분야 태그 / Specialty Tags"
         name: "specialties"
         widget: "list"
-        field: { label: "태그", name: "tag", widget: "string" }
-      - { label: "자격증", name: "certifications", widget: "string", required: false }
-      - { label: "순서", name: "order", widget: "number" }
-      - { label: "활성화", name: "active", widget: "boolean", default: true }
+        hint: "태그 추가 / Add tags  예 e.g. Olympic Lifting / HIIT / Yoga"
+        field: { label: "태그 / Tag", name: "tag", widget: "string" }
+      - { label: "자격증 / Certifications", name: "certifications", widget: "string", required: false, hint: "예 e.g. NZQA Level 4 Personal Training" }
+      - { label: "순서 / Display Order", name: "order", widget: "number" }
+      - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true, hint: "OFF 하면 트레이너 페이지에서 숨겨집니다 / Turn OFF to hide from Trainers page" }
 
-  # ── 멤버십 ──
+  # ── 멤버십 / Memberships ──
   - name: "memberships"
-    label: "💳 멤버십 관리"
+    label: "💳 멤버십 관리 / Memberships"
     files:
       - name: "plans"
-        label: "멤버십 플랜 & 가격"
+        label: "멤버십 플랜 & 가격 / Membership Plans & Pricing"
         file: "_data/memberships.yml"
         fields:
-          - label: "Standard 멤버십"
+          - label: "Standard 멤버십 / Standard Membership"
             name: "standard"
             widget: "object"
             fields:
-              - { label: "18개월 가격 (주간)", name: "price_18m", widget: "string", hint: "예: $18.90" }
-              - { label: "12개월 가격 (주간)", name: "price_12m", widget: "string" }
-              - { label: "6개월 가격 (주간)", name: "price_6m", widget: "string" }
-              - { label: "오픈 가격 (주간)", name: "price_open", widget: "string" }
-              - { label: "설명", name: "description", widget: "text" }
-          - label: "Student 멤버십"
+              - { label: "18개월 주간 가격 / 18-Month Weekly Price", name: "price_18m", widget: "string", hint: "예 e.g. $18.90" }
+              - { label: "12개월 주간 가격 / 12-Month Weekly Price", name: "price_12m", widget: "string" }
+              - { label: "6개월 주간 가격 / 6-Month Weekly Price", name: "price_6m", widget: "string" }
+              - { label: "오픈 주간 가격 / Open Weekly Price", name: "price_open", widget: "string" }
+              - { label: "설명 / Description (English)", name: "description", widget: "text" }
+          - label: "Student 멤버십 U20 / Student Membership U20"
             name: "student"
             widget: "object"
             fields:
-              - { label: "18개월 가격 (주간)", name: "price_18m", widget: "string" }
-              - { label: "12개월 가격 (주간)", name: "price_12m", widget: "string" }
-              - { label: "6개월 가격 (주간)", name: "price_6m", widget: "string" }
-              - { label: "오픈 가격 (주간)", name: "price_open", widget: "string" }
-              - { label: "설명", name: "description", widget: "text" }
-          - label: "Senior 멤버십"
+              - { label: "18개월 주간 가격 / 18-Month Weekly Price", name: "price_18m", widget: "string" }
+              - { label: "12개월 주간 가격 / 12-Month Weekly Price", name: "price_12m", widget: "string" }
+              - { label: "6개월 주간 가격 / 6-Month Weekly Price", name: "price_6m", widget: "string" }
+              - { label: "오픈 주간 가격 / Open Weekly Price", name: "price_open", widget: "string" }
+              - { label: "설명 / Description (English)", name: "description", widget: "text" }
+          - label: "Senior 멤버십 65+ / Senior Membership 65+"
             name: "senior"
             widget: "object"
             fields:
-              - { label: "가격 (주간)", name: "price_open", widget: "string" }
-              - { label: "설명", name: "description", widget: "text" }
-          - label: "Corporate 멤버십"
+              - { label: "주간 가격 / Weekly Price", name: "price_open", widget: "string" }
+              - { label: "설명 / Description (English)", name: "description", widget: "text" }
+          - label: "Corporate 멤버십 / Corporate Membership"
             name: "corporate"
             widget: "object"
             fields:
-              - { label: "설명", name: "description", widget: "text" }
+              - { label: "설명 / Description (English)", name: "description", widget: "text" }
 
-  # ── 회원 후기 ──
+  # ── 회원 후기 / Member Reviews ──
   - name: "reviews"
-    label: "⭐ 회원 후기"
+    label: "⭐ 회원 후기 / Member Reviews"
     folder: "_data/reviews"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "후기 내용", name: "text", widget: "text" }
-      - { label: "작성자 이름", name: "author", widget: "string" }
-      - { label: "순서", name: "order", widget: "number" }
-      - { label: "활성화", name: "active", widget: "boolean", default: true }
+      - { label: "후기 내용 / Review Text (English)", name: "text", widget: "text" }
+      - { label: "작성자 이름 / Member Name", name: "author", widget: "string", hint: "예 e.g. Sarah M." }
+      - { label: "순서 / Display Order", name: "order", widget: "number" }
+      - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true }
 
-  # ── GymMaster 시간표 Embed ──
+  # ── GymMaster 시간표 / Class Timetable ──
   - name: "classes_embed"
-    label: "📅 클래스 시간표 Embed"
+    label: "📅 클래스 시간표 / Class Timetable Embed"
     files:
       - name: "timetable"
-        label: "GymMaster 시간표 HTML 태그"
+        label: "GymMaster 시간표 HTML 코드 / Timetable Embed Code"
         file: "_data/classes.yml"
         fields:
-          - { label: "Embed HTML 코드", name: "embed_code", widget: "text", hint: "GymMaster에서 제공하는 시간표 iframe HTML 태그를 여기에 붙여넣으세요" }
+          - { label: "Embed HTML 코드 / Embed HTML Code", name: "embed_code", widget: "text", hint: "GymMaster 관리자 페이지에서 제공하는 시간표 iframe 코드를 붙여넣으세요 / Paste the iframe embed code from your GymMaster admin panel here" }
 
   # ── FAQ ──
   - name: "faq"
-    label: "❓ FAQ 관리"
+    label: "❓ FAQ 관리 / FAQ"
     folder: "_data/faq"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "질문", name: "question", widget: "string" }
-      - { label: "답변", name: "answer", widget: "text" }
-      - { label: "순서", name: "order", widget: "number" }
-      - { label: "활성화", name: "active", widget: "boolean", default: true }
+      - { label: "질문 / Question (English)", name: "question", widget: "string" }
+      - { label: "답변 / Answer (English)", name: "answer", widget: "text" }
+      - { label: "순서 / Display Order", name: "order", widget: "number" }
+      - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true }
 
-  # ── About 페이지 ──
+  # ── 페이지 텍스트 / Page Text ──
   - name: "pages"
-    label: "📄 페이지 텍스트"
+    label: "📄 페이지 텍스트 / Page Text"
     files:
       - name: "about"
-        label: "About 페이지"
+        label: "About 페이지 / About Page"
         file: "_data/about.yml"
         fields:
-          - { label: "소개 문구 1단락", name: "paragraph1", widget: "text" }
-          - { label: "소개 문구 2단락", name: "paragraph2", widget: "text" }
-          - { label: "소개 문구 3단락", name: "paragraph3", widget: "text" }
-          - label: "갤러리 사진"
+          - { label: "소개 문구 1단락 / Intro Paragraph 1 (English)", name: "paragraph1", widget: "text" }
+          - { label: "소개 문구 2단락 / Intro Paragraph 2 (English)", name: "paragraph2", widget: "text" }
+          - { label: "소개 문구 3단락 / Intro Paragraph 3 (English)", name: "paragraph3", widget: "text" }
+          - label: "갤러리 사진 / Gallery Photos"
             name: "gallery"
             widget: "list"
-            field: { label: "사진", name: "image", widget: "image" }
+            hint: "✅ 권장 사이즈 Recommended — 800 x 600px | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB each"
+            field: { label: "사진 / Photo", name: "image", widget: "image" }
