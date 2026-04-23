@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Facilities — Urban Fitness Tauranga</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --c-black:#080808;--c-blue:#1E3A5F;--c-blue-mid:#264878;--c-blue-dark:#152C48;
+      --c-logo-blue:#2547A0;--c-lime:#C8F000;--c-lime-dim:rgba(200,240,0,0.08);
+      --c-white:#F4F1EB;--c-gray-1:#111116;--c-gray-2:#1C1C2A;--c-gray-4:#8888AA;
+      --f-display:'Barlow Condensed',sans-serif;--f-body:'Barlow',sans-serif;
+      --max-w:1280px;--nav-h:72px;
+      --t-fast:0.15s ease;--t-base:0.25s ease;--t-slow:0.45s ease;
+      --shadow-lime:0 0 28px rgba(200,240,0,0.22);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--c-black);color:var(--c-white);font-family:var(--f-body);font-weight:300;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none;cursor:none}
+    button{cursor:none}
+    .container{max-width:var(--max-w);margin:0 auto;padding:0 40px}
+    .section{padding:112px 0}
+    .section-blue{background:var(--c-blue-dark)}
+    .section-dark{background:var(--c-gray-1)}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--c-gray-4);margin-bottom:14px}
+    .eyebrow::before{content:'';width:28px;height:1px;background:var(--c-lime)}
+    .sec-title{font-family:var(--f-display);font-size:clamp(44px,5.5vw,76px);font-weight:800;line-height:.92;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
+    .sec-title em{color:var(--c-lime);font-style:normal}
+    .sec-title .bl{color:var(--c-logo-blue);font-style:normal}
+    .sec-body{font-size:16px;line-height:1.8;color:rgba(244,241,235,0.65);max-width:560px}
+    .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-display);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;border:none;transition:var(--t-base);white-space:nowrap;cursor:none}
+    .btn-lime{background:var(--c-lime);color:var(--c-black)}
+    .btn-lime:hover{background:#D8FF22;transform:translateY(-2px);box-shadow:var(--shadow-lime)}
+    .btn-outline{background:transparent;color:var(--c-white);border:1px solid rgba(244,241,235,.2)}
+    .btn-outline:hover{border-color:var(--c-lime);color:var(--c-lime)}
+    .btn-blue{background:var(--c-logo-blue);color:var(--c-white)}
+    .btn-blue:hover{background:var(--c-blue-mid);transform:translateY(-2px)}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+    /* Custom cursor */
+    .cursor-dot{position:fixed;width:8px;height:8px;background:var(--c-lime);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);mix-blend-mode:difference}
+    .cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(200,240,0,.5);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .35s cubic-bezier(.25,.46,.45,.94),height .35s,border-color .25s}
+    body.cur-hov .cursor-dot{width:5px;height:5px;opacity:.6}
+    body.cur-hov .cursor-ring{width:48px;height:48px;border-color:var(--c-lime);background:var(--c-lime-dim)}
+    /* GNB */
+    #gnb{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;padding:0 40px;transition:background var(--t-slow),box-shadow var(--t-slow)}
+    #gnb::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--c-lime);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
+    #gnb.scrolled{background:rgba(30,58,95,.97);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(200,240,0,.2),0 4px 20px rgba(0,0,0,.4)}
+    #gnb.scrolled::after{transform:scaleX(1)}
+    .gnb-inner{width:100%;max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px}
+    .gnb-logo{font-family:var(--f-display);font-size:23px;font-weight:900;letter-spacing:3px;text-transform:uppercase;flex-shrink:0}
+    .gnb-logo .u{color:var(--c-white)}
+    .gnb-logo .f{color:var(--c-logo-blue)}
+    #gnb.scrolled .gnb-logo .f{color:#6B9FE8}
+    .gnb-links{display:flex;align-items:center;gap:2px;list-style:none}
+    .gnb-links a{display:block;padding:8px 11px;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(244,241,235,.6);transition:color var(--t-fast);position:relative}
+    .gnb-links a::after{content:'';position:absolute;bottom:2px;left:11px;right:11px;height:1px;background:var(--c-lime);transform:scaleX(0);transform-origin:left;transition:transform var(--t-base)}
+    .gnb-links a:hover{color:var(--c-white)}
+    .gnb-links a:hover::after,.gnb-links a.active::after{transform:scaleX(1)}
+    .gnb-links a.active{color:var(--c-lime)}
+    .gnb-cta{display:flex;align-items:center;gap:14px;flex-shrink:0}
+    .gnb-login{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(244,241,235,.5);padding:7px 13px;border:1px solid rgba(244,241,235,.12);transition:var(--t-base)}
+    .gnb-login:hover{color:var(--c-white);border-color:rgba(244,241,235,.35)}
+    .gnb-join{font-family:var(--f-display);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--c-black);background:var(--c-lime);padding:9px 20px;transition:var(--t-base)}
+    .gnb-join:hover{background:#D8FF22;transform:translateY(-1px);box-shadow:var(--shadow-lime)}
+    .hbg{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;padding:4px;flex-shrink:0}
+    .hbg span{display:block;width:100%;height:1.5px;background:var(--c-white);transition:var(--t-base);transform-origin:center}
+    .hbg.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    .hbg.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .hbg.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+    .mob-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(8,8,8,.98);backdrop-filter:blur(16px);border-top:2px solid var(--c-lime);z-index:999;transform:translateY(-12px);opacity:0;pointer-events:none;transition:transform var(--t-slow),opacity var(--t-slow)}
+    .mob-menu.open{transform:translateY(0);opacity:1;pointer-events:all}
+    .mob-inner{padding:20px 24px 28px;display:flex;flex-direction:column;gap:2px}
+    .mob-inner a{display:block;padding:13px 0;font-family:var(--f-display);font-size:28px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(244,241,235,.65);border-bottom:1px solid rgba(255,255,255,.04);transition:color var(--t-fast),padding-left var(--t-fast)}
+    .mob-inner a:hover{color:var(--c-lime);padding-left:8px}
+    .mob-cta{display:flex;gap:12px;margin-top:20px}
+    .mob-cta a{flex:1;text-align:center;padding:13px}
+    /* PAGE HERO */
+    .page-hero{position:relative;height:52vh;min-height:360px;display:flex;align-items:flex-end;overflow:hidden;padding-top:var(--nav-h)}
+    .page-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.4)}
+    .page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.9) 0%,rgba(30,58,95,.4) 60%,transparent 100%)}
+    .page-hero-content{position:relative;z-index:2;padding:0 40px 60px}
+    .page-hero-content .container{padding:0}
+    .ph-eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(244,241,235,.5);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+    .ph-eyebrow::before{content:'';width:6px;height:6px;background:var(--c-lime);border-radius:50%}
+    .ph-title{font-family:var(--f-display);font-size:clamp(56px,8vw,100px);font-weight:900;line-height:.88;letter-spacing:2px;text-transform:uppercase}
+    .ph-title em{color:var(--c-logo-blue);font-style:normal}
+    /* FOOTER */
+    #ft{background:#0F2260;border-top:2px solid var(--c-lime);position:relative}
+    #ft::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(to bottom,var(--c-lime),transparent 60%)}
+    .ft-main{padding:80px 0 60px}
+    .ft-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1.2fr;gap:60px}
+    .ft-logo{font-family:var(--f-display);font-size:24px;font-weight:900;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:16px}
+    .ft-logo .u{color:var(--c-white)}
+    .ft-logo .f{color:var(--c-logo-blue)}
+    .ft-tag{font-size:13px;line-height:1.7;color:var(--c-gray-4);max-width:260px;margin-bottom:28px}
+    .ft-sns{display:flex;gap:10px}
+    .sns{width:36px;height:36px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:var(--c-gray-4);transition:var(--t-base)}
+    .sns:hover{border-color:var(--c-lime);color:var(--c-lime);background:var(--c-lime-dim)}
+    .sns svg{width:15px;height:15px;fill:currentColor}
+    .ft-ttl{font-family:var(--f-display);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--c-white);margin-bottom:20px}
+    .ft-ttl::after{content:'';display:block;width:20px;height:1px;background:var(--c-lime);margin-top:8px}
+    .ft-nav{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .ft-nav a{font-size:13px;color:var(--c-gray-4);transition:color var(--t-fast),padding-left var(--t-fast);display:flex;align-items:center;gap:8px}
+    .ft-nav a::before{content:'';width:0;height:1px;background:var(--c-lime);transition:width var(--t-base)}
+    .ft-nav a:hover{color:var(--c-white);padding-left:4px}
+    .ft-nav a:hover::before{width:10px}
+    .ft-hrs{display:flex;flex-direction:column;gap:6px}
+    .ft-note{font-size:10px;color:var(--c-lime);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+    .ft-hr{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:12px}
+    .ft-hr .day{color:var(--c-gray-4)}
+    .ft-con{display:flex;flex-direction:column;gap:16px}
+    .ft-ci{display:flex;gap:12px}
+    .ft-ico{width:32px;height:32px;border:1px solid rgba(200,240,0,.15);display:flex;align-items:center;justify-content:center;color:var(--c-lime);flex-shrink:0;font-size:13px}
+    .ft-cl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--c-gray-4);margin-bottom:2px}
+    .ft-cv{font-size:13px;line-height:1.5}
+    .ft-bot{border-top:1px solid rgba(255,255,255,.06);padding:24px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+    .ft-copy{font-size:12px;color:var(--c-gray-4)}
+    .ft-leg{display:flex;gap:20px}
+    .ft-leg a{font-size:12px;color:var(--c-gray-4);transition:color var(--t-fast)}
+    .ft-leg a:hover{color:var(--c-lime)}
+    /* CTA BANNER */
+    .cta-banner{background:var(--c-blue);padding:64px 0;position:relative;overflow:hidden}
+    .cta-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--c-lime),transparent)}
+    .cta-inner{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+    .cta-heading{font-family:var(--f-display);font-size:clamp(28px,3.5vw,48px);font-weight:800;line-height:.95;text-transform:uppercase}
+    .cta-heading em{color:var(--c-lime);font-style:normal}
+    .cta-sub{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(244,241,235,.45);margin-top:8px}
+    /* RESPONSIVE */
+    @media(max-width:1024px){.ft-grid{grid-template-columns:1fr 1fr;gap:40px}}
+    @media(max-width:768px){
+      :root{--nav-h:60px}
+      .container{padding:0 20px}
+      .section{padding:72px 0}
+      .gnb-links,.gnb-cta{display:none}
+      .hbg{display:flex}
+      .mob-menu{display:block}
+      .page-hero{height:44vh}
+      .page-hero-content{padding:0 20px 48px}
+      .ph-title{font-size:clamp(44px,10vw,72px)}
+      .ft-grid{grid-template-columns:1fr;gap:32px}
+      .cta-inner{flex-direction:column;align-items:flex-start}
+      .cursor-dot,.cursor-ring{display:none}
+      body,a,button{cursor:auto}
+    }
+    @media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+  </style>
+
+  <style>
+    .fac-hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(200,240,0,.1);border:1px solid rgba(200,240,0,.1);margin-top:40px}
+    .fac-stat{padding:28px 24px;text-align:center;background:var(--c-black)}
+    .fac-stat-num{font-family:var(--f-display);font-size:48px;font-weight:900;color:var(--c-lime);line-height:1;margin-bottom:6px}
+    .fac-stat-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--c-gray-4)}
+    .fac-main-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+    .fac-big{position:relative;height:520px;overflow:hidden;cursor:pointer}
+    .fac-big img{width:100%;height:100%;object-fit:cover;filter:brightness(.5);transition:transform .7s ease,filter .5s}
+    .fac-big:hover img{transform:scale(1.05);filter:brightness(.65)}
+    .fac-big-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.95) 0%,rgba(8,8,8,.3) 60%,transparent 100%)}
+    .fac-big-bar{position:absolute;top:0;left:0;right:0;height:3px;background:var(--c-lime);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+    .fac-big:hover .fac-big-bar{transform:scaleX(1)}
+    .fac-big-content{position:absolute;bottom:0;left:0;right:0;padding:40px}
+    .fac-big-num{font-family:var(--f-display);font-size:13px;font-weight:700;letter-spacing:3px;color:var(--c-lime);margin-bottom:10px}
+    .fac-big-title{font-family:var(--f-display);font-size:clamp(32px,4vw,52px);font-weight:900;line-height:.9;text-transform:uppercase;margin-bottom:12px}
+    .fac-big-desc{font-size:14px;line-height:1.7;color:rgba(244,241,235,.7);max-width:480px;margin-bottom:20px}
+    .fac-badge{display:inline-block;background:rgba(200,240,0,.12);border:1px solid rgba(200,240,0,.3);color:var(--c-lime);font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;margin-right:8px;margin-bottom:6px}
+    .fac-small-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:2px}
+    .fac-sm{background:var(--c-gray-1);padding:36px 28px;border-bottom:2px solid transparent;transition:border-color var(--t-base),background var(--t-base);cursor:pointer;position:relative;overflow:hidden}
+    .fac-sm:hover{border-color:var(--c-lime);background:#16161E}
+    .fac-sm::before{content:'';position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 20px 20px 0;border-color:transparent rgba(200,240,0,.15) transparent transparent;transition:border-width .3s}
+    .fac-sm:hover::before{border-width:0 28px 28px 0;border-color:transparent var(--c-lime) transparent transparent}
+    .fac-sm-num{font-family:var(--f-display);font-size:36px;font-weight:900;color:rgba(200,240,0,.08);line-height:1;margin-bottom:12px}
+    .fac-sm-ico{font-size:24px;margin-bottom:10px}
+    .fac-sm-name{font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;color:var(--c-white)}
+    .fac-sm-desc{font-size:12px;color:var(--c-gray-4);line-height:1.6}
+    .evolt-section{background:var(--c-blue-dark);padding:80px 0}
+    .evolt-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .evolt-img{position:relative;height:400px;overflow:hidden}
+    .evolt-img img{width:100%;height:100%;object-fit:cover}
+    .evolt-img::after{content:'EVOLT 360';position:absolute;bottom:20px;right:20px;font-family:var(--f-display);font-size:11px;font-weight:700;letter-spacing:3px;color:var(--c-lime);background:rgba(8,8,8,.8);padding:6px 14px}
+    .evolt-features{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+    .evolt-feat{display:flex;gap:14px;align-items:flex-start;padding:16px;border-left:2px solid rgba(200,240,0,.2);transition:border-color var(--t-base),background var(--t-base)}
+    .evolt-feat:hover{border-color:var(--c-lime);background:rgba(200,240,0,.04)}
+    .evolt-feat-ico{color:var(--c-lime);font-size:20px;flex-shrink:0;margin-top:2px}
+    .evolt-feat-title{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+    .evolt-feat-desc{font-size:13px;color:var(--c-gray-4);line-height:1.5}
+    @media(max-width:1024px){.fac-small-grid{grid-template-columns:repeat(2,1fr)}.evolt-inner{grid-template-columns:1fr;gap:40px}}
+    @media(max-width:768px){.fac-hero-stats{grid-template-columns:repeat(2,1fr)}.fac-main-grid{grid-template-columns:1fr}.fac-big{height:380px}.fac-small-grid{grid-template-columns:repeat(2,1fr)}.evolt-img{height:280px}}
+  </style>
+</head>
+<body>
+<div class="cursor-dot" id="cDot"></div>
+<div class="cursor-ring" id="cRing"></div>
+<nav id="gnb">
+  <div class="gnb-inner">
+    <a href="index.html" class="gnb-logo"><span class="u">URBAN&nbsp;</span><span class="f">FITNESS</span></a>
+    <ul class="gnb-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="facilities.html" class="active">Facilities</a></li>
+      <li><a href="classes.html">Classes</a></li>
+      <li><a href="trainers.html">Trainers</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="location.html">Location</a></li>
+    </ul>
+    <div class="gnb-cta">
+      <a href="#" class="gnb-login" id="btn-login">Login</a>
+      <a href="#" class="gnb-join" id="btn-join">Join Now →</a>
+    </div>
+    <button class="hbg" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-menu" id="mob">
+  <div class="mob-inner">
+    <a href="about.html">About</a><a href="facilities.html">Facilities</a>
+    <a href="classes.html">Classes</a><a href="trainers.html">Trainers</a>
+    <a href="membership.html">Membership</a><a href="location.html">Location</a>
+    <div class="mob-cta">
+      <a href="#" class="gnb-login" id="mob-login">Login</a>
+      <a href="#" class="gnb-join" id="mob-join">Join Now →</a>
+    </div>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1600&q=80')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content"><div class="container">
+    <div class="ph-eyebrow">World-Class Equipment</div>
+    <h1 class="ph-title">OUR<br/><em>FACILITIES</em></h1>
+  </div></div>
+</div>
+
+<section class="section" style="padding-bottom:0">
+  <div class="container">
+    <div class="eyebrow reveal">What We Offer</div>
+    <h2 class="sec-title reveal d1">EVERYTHING YOU NEED<br/>TO <em>TRAIN HARD.</em></h2>
+    <p class="sec-body reveal d2">Our 5,000+ sqft facility is purpose-built for serious training. Every zone is designed to maximise your performance — from first-timers to elite athletes.</p>
+    <div class="fac-hero-stats reveal d3">
+      <div class="fac-stat"><div class="fac-stat-num">5K+</div><div class="fac-stat-label">Square Feet</div></div>
+      <div class="fac-stat"><div class="fac-stat-num">8</div><div class="fac-stat-label">Dedicated Zones</div></div>
+      <div class="fac-stat"><div class="fac-stat-num">24/7</div><div class="fac-stat-label">Access</div></div>
+      <div class="fac-stat"><div class="fac-stat-num">60+</div><div class="fac-stat-label">Weekly Classes</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark" style="padding-top:2px">
+  <div class="fac-main-grid">
+    <div class="fac-big reveal">
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&q=80" alt="Gym Floor"/>
+      <div class="fac-big-bar"></div>
+      <div class="fac-big-overlay"></div>
+      <div class="fac-big-content">
+        <div class="fac-big-num">ZONE 01</div>
+        <div class="fac-big-title">STRENGTH<br/>ZONE</div>
+        <div class="fac-big-desc">A comprehensive free weights area with dumbbells up to 50kg, barbells, squat racks, and a full range of resistance machines. Built for those who take their training seriously.</div>
+        <div><span class="fac-badge">Free Weights</span><span class="fac-badge">Power Racks</span><span class="fac-badge">Cable Machines</span></div>
+      </div>
+    </div>
+    <div class="fac-big reveal d1">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80" alt="Cardio Zone"/>
+      <div class="fac-big-bar"></div>
+      <div class="fac-big-overlay"></div>
+      <div class="fac-big-content">
+        <div class="fac-big-num">ZONE 02</div>
+        <div class="fac-big-title">CARDIO<br/>ZONE</div>
+        <div class="fac-big-desc">State-of-the-art cardio machines including treadmills, rowing machines, assault bikes, stair climbers, and ellipticals. Built to push your endurance to the next level.</div>
+        <div><span class="fac-badge">Treadmills</span><span class="fac-badge">Rowers</span><span class="fac-badge">Assault Bikes</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="fac-small-grid">
+    <div class="fac-sm reveal">
+      <div class="fac-sm-ico">🥊</div>
+      <div class="fac-sm-num">03</div>
+      <div class="fac-sm-name">Boxing Zone</div>
+      <div class="fac-sm-desc">Heavy bags, speed bags, and open floor space for boxing and kickboxing. High-energy training that builds power, agility, and mental toughness.</div>
+    </div>
+    <div class="fac-sm reveal d1">
+      <div class="fac-sm-ico">🧘</div>
+      <div class="fac-sm-num">04</div>
+      <div class="fac-sm-name">Group Class Studio</div>
+      <div class="fac-sm-desc">A dedicated, sprung-floor studio with premium sound system hosting 60+ weekly classes — HIIT, yoga, spin, pilates, dance, and more.</div>
+    </div>
+    <div class="fac-sm reveal d2">
+      <div class="fac-sm-ico">🏋️</div>
+      <div class="fac-sm-num">05</div>
+      <div class="fac-sm-name">Personal Training</div>
+      <div class="fac-sm-desc">Private training bays and open floor space for 1-on-1 sessions with our expert freelance trainers. Goal-specific, fully tailored programming.</div>
+    </div>
+    <div class="fac-sm reveal d3">
+      <div class="fac-sm-ico">👶</div>
+      <div class="fac-sm-num">06</div>
+      <div class="fac-sm-name">Kids Zone</div>
+      <div class="fac-sm-desc">A safe, supervised play area so you can train without distraction. Age-appropriate activities keep the kids happy while you focus on your workout.</div>
+    </div>
+  </div>
+</section>
+
+<section class="evolt-section">
+  <div class="container">
+    <div class="evolt-inner">
+      <div class="evolt-img reveal">
+        <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=700&q=80" alt="Evolt 360"/>
+      </div>
+      <div class="reveal d1">
+        <div class="eyebrow">Advanced Technology</div>
+        <h2 class="sec-title" style="font-size:clamp(36px,4vw,56px)">EVOLT <em>360</em><br/>BODY SCANNER</div>
+        <p style="font-size:15px;line-height:1.8;color:rgba(244,241,235,.65);margin-bottom:28px">Track your real progress with the Evolt 360 — the world's most advanced body composition scanner. In just 60 seconds, get a complete picture of your fitness journey.</p>
+        <div class="evolt-features">
+          <div class="evolt-feat"><div class="evolt-feat-ico">📊</div><div><div class="evolt-feat-title">Full Body Composition</div><div class="evolt-feat-desc">Muscle mass, body fat %, visceral fat, hydration levels and 40+ metrics in 60 seconds.</div></div></div>
+          <div class="evolt-feat"><div class="evolt-feat-ico">📈</div><div><div class="evolt-feat-title">Progress Tracking</div><div class="evolt-feat-desc">See exactly how your body is changing over time. Data-driven training that delivers results.</div></div></div>
+          <div class="evolt-feat"><div class="evolt-feat-ico">📱</div><div><div class="evolt-feat-title">Mobile App Report</div><div class="evolt-feat-desc">Receive a detailed report directly to your phone with personalised recommendations.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner section-sm">
+  <div class="container"><div class="cta-inner">
+    <div class="reveal"><div class="cta-heading">EXPERIENCE THESE<br/><em>FACILITIES TODAY.</em></div><div class="cta-sub">No sign-up fee · Full access · 24/7</div></div>
+    <a href="#" class="btn btn-lime reveal d1" id="fac-join">Join Now →</a>
+  </div></div>
+</section>
+<footer id="ft">
+  <div class="ft-main"><div class="container"><div class="ft-grid">
+    <div>
+      <a href="index.html" class="ft-logo"><span class="u">URBAN&nbsp;</span><span class="f">FITNESS</span></a>
+      <p class="ft-tag">More than just a gym — a space built to help you move better, get stronger, and achieve real results.</p>
+      <div class="ft-sns">
+        <a href="#" class="sns" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="#" class="sns" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="#" class="sns" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+      </div>
+    </div>
+    <div><div class="ft-ttl">Explore</div><ul class="ft-nav"><li><a href="about.html">About Us</a></li><li><a href="facilities.html">Facilities</a></li><li><a href="classes.html">Classes</a></li><li><a href="trainers.html">Trainers</a></li><li><a href="membership.html">Membership</a></li><li><a href="location.html">Location</a></li></ul></div>
+    <div><div class="ft-ttl">Staffed Hours</div><div class="ft-hrs"><div class="ft-note">★ 24/7 Access Available</div><div class="ft-hr"><span class="day">Mon – Thu</span><span>7:00am – 7:30pm</span></div><div class="ft-hr"><span class="day">Friday</span><span>8:00am – 3:30pm</span></div><div class="ft-hr"><span class="day">Saturday</span><span>8:00am – 11:00am</span></div><div class="ft-hr"><span class="day">Sunday</span><span>8:00am – 11:00am</span></div></div></div>
+    <div><div class="ft-ttl">Get In Touch</div><div class="ft-con"><div class="ft-ci"><div class="ft-ico">📍</div><div><div class="ft-cl">Address</div><div class="ft-cv">156 Chadwick Road, Greerton<br/>Tauranga, NZ 3112</div></div></div><div class="ft-ci"><div class="ft-ico">✉️</div><div><div class="ft-cl">Email</div><div class="ft-cv">support@urbanfitnessnz.com</div></div></div><div class="ft-ci"><div class="ft-ico">🔑</div><div><div class="ft-cl">Member Login</div><div class="ft-cv"><a href="#" id="ft-login" style="color:var(--c-lime);font-size:13px">Login →</a></div></div></div></div></div>
+  </div></div></div>
+  <div class="container"><div class="ft-bot"><div class="ft-copy">© <span id="yr"></span> Urban Fitness Tauranga. All rights reserved.</div><div class="ft-leg"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div></div></div>
+</footer>
+<script>
+const CMS={join:'https://urbanfitnessnz.gymmasteronline.com/portal/signup',login:'https://urbanfitnessnz.gymmasteronline.com/portal/login'};
+const sl=(id,url)=>{const e=document.getElementById(id);if(e){e.href=url;e.target='_blank';e.rel='noopener';}};
+['btn-join','mob-join'].forEach(id=>sl(id,CMS.join));
+['btn-login','mob-login','ft-login'].forEach(id=>sl(id,CMS.login));
+const gnb=document.getElementById('gnb');
+window.addEventListener('scroll',()=>gnb.classList.toggle('scrolled',scrollY>60),{passive:true});
+const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');
+let open=false;
+hbg.addEventListener('click',()=>{open=!open;hbg.classList.toggle('open',open);mob.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';});
+mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{open=false;hbg.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';}));
+document.addEventListener('click',e=>{if(open&&!mob.contains(e.target)&&!hbg.contains(e.target)){open=false;hbg.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';}});
+const io=new IntersectionObserver(entries=>entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*70);io.unobserve(e.target);}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.getElementById('yr').textContent=new Date().getFullYear();
+const cDot=document.getElementById('cDot'),cRing=document.getElementById('cRing');
+let mx=0,my=0,rx=0,ry=0;
+if(cDot){document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cDot.style.left=mx+'px';cDot.style.top=my+'px';},{passive:true});(function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cRing.style.left=rx+'px';cRing.style.top=ry+'px';requestAnimationFrame(a);})();document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cur-hov'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cur-hov'));});}
+
+document.getElementById('fac-join').href=CMS.join;document.getElementById('fac-join').target='_blank';
+</script>
+</body>
+</html>
