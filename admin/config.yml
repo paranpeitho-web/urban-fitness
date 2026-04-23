@@ -1,0 +1,187 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+locale: 'en'
+
+collections:
+
+  # ── 사이트 전역 설정 ──
+  - name: "settings"
+    label: "⚙️ 사이트 설정"
+    files:
+      - name: "general"
+        label: "전역 설정 (URL / 연락처 / SNS)"
+        file: "_data/settings.yml"
+        fields:
+          - { label: "로그인 URL", name: "url_login", widget: "string", hint: "GymMaster 로그인 페이지 URL" }
+          - { label: "멤버십 가입 URL", name: "url_join", widget: "string", hint: "GymMaster 가입 페이지 URL" }
+          - { label: "예약 URL", name: "url_booking", widget: "string", hint: "GymMaster 예약 페이지 URL" }
+          - label: "멤버십별 URL"
+            name: "membership_urls"
+            widget: "object"
+            fields:
+              - { label: "Standard 가입 URL", name: "standard", widget: "string" }
+              - { label: "Student 가입 URL", name: "student", widget: "string" }
+              - { label: "Senior 가입 URL", name: "senior", widget: "string" }
+          - label: "연락처"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "주소", name: "address", widget: "string" }
+              - { label: "이메일", name: "email", widget: "string" }
+              - { label: "전화번호", name: "phone", widget: "string", required: false }
+          - label: "운영시간"
+            name: "hours"
+            widget: "object"
+            fields:
+              - { label: "월~목", name: "mon_thu", widget: "string" }
+              - { label: "금요일", name: "friday", widget: "string" }
+              - { label: "토요일", name: "saturday", widget: "string" }
+              - { label: "일요일", name: "sunday", widget: "string" }
+          - label: "SNS 링크"
+            name: "sns"
+            widget: "object"
+            fields:
+              - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+              - { label: "Facebook URL", name: "facebook", widget: "string", required: false }
+              - { label: "TikTok URL", name: "tiktok", widget: "string", required: false }
+              - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
+
+  # ── 메인 롤링 배너 ──
+  - name: "hero_slides"
+    label: "🖼️ 메인 롤링 배너"
+    folder: "_data/slides"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "순서", name: "order", widget: "number" }
+      - { label: "배너 이미지", name: "image", widget: "image" }
+      - { label: "클릭 시 이동 URL", name: "url", widget: "string", hint: "배너 클릭 시 이동할 페이지" }
+      - { label: "새 탭에서 열기", name: "new_tab", widget: "boolean", default: false }
+      - { label: "활성화", name: "active", widget: "boolean", default: true }
+
+  # ── 시설 목록 ──
+  - name: "facilities"
+    label: "🏋️ 시설 관리"
+    folder: "_data/facilities"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "시설명 (영문)", name: "name", widget: "string" }
+      - { label: "순서", name: "order", widget: "number" }
+      - { label: "아이콘 (이모지)", name: "icon", widget: "string", hint: "예: 🥊" }
+      - { label: "시설 사진", name: "image", widget: "image", required: false }
+      - { label: "간단 설명", name: "description", widget: "text" }
+      - { label: "상세 설명", name: "detail", widget: "text", required: false }
+      - { label: "활성화", name: "active", widget: "boolean", default: true }
+
+  # ── 트레이너 ──
+  - name: "trainers"
+    label: "👤 트레이너 관리"
+    folder: "_data/trainers"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "이름", name: "name", widget: "string" }
+      - { label: "전문 분야 (역할)", name: "role", widget: "string", hint: "예: Strength & Conditioning" }
+      - { label: "프로필 사진", name: "image", widget: "image" }
+      - { label: "소개 문구", name: "bio", widget: "text" }
+      - label: "전문 분야 태그"
+        name: "specialties"
+        widget: "list"
+        field: { label: "태그", name: "tag", widget: "string" }
+      - { label: "자격증", name: "certifications", widget: "string", required: false }
+      - { label: "순서", name: "order", widget: "number" }
+      - { label: "활성화", name: "active", widget: "boolean", default: true }
+
+  # ── 멤버십 ──
+  - name: "memberships"
+    label: "💳 멤버십 관리"
+    files:
+      - name: "plans"
+        label: "멤버십 플랜 & 가격"
+        file: "_data/memberships.yml"
+        fields:
+          - label: "Standard 멤버십"
+            name: "standard"
+            widget: "object"
+            fields:
+              - { label: "18개월 가격 (주간)", name: "price_18m", widget: "string", hint: "예: $18.90" }
+              - { label: "12개월 가격 (주간)", name: "price_12m", widget: "string" }
+              - { label: "6개월 가격 (주간)", name: "price_6m", widget: "string" }
+              - { label: "오픈 가격 (주간)", name: "price_open", widget: "string" }
+              - { label: "설명", name: "description", widget: "text" }
+          - label: "Student 멤버십"
+            name: "student"
+            widget: "object"
+            fields:
+              - { label: "18개월 가격 (주간)", name: "price_18m", widget: "string" }
+              - { label: "12개월 가격 (주간)", name: "price_12m", widget: "string" }
+              - { label: "6개월 가격 (주간)", name: "price_6m", widget: "string" }
+              - { label: "오픈 가격 (주간)", name: "price_open", widget: "string" }
+              - { label: "설명", name: "description", widget: "text" }
+          - label: "Senior 멤버십"
+            name: "senior"
+            widget: "object"
+            fields:
+              - { label: "가격 (주간)", name: "price_open", widget: "string" }
+              - { label: "설명", name: "description", widget: "text" }
+          - label: "Corporate 멤버십"
+            name: "corporate"
+            widget: "object"
+            fields:
+              - { label: "설명", name: "description", widget: "text" }
+
+  # ── 회원 후기 ──
+  - name: "reviews"
+    label: "⭐ 회원 후기"
+    folder: "_data/reviews"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "후기 내용", name: "text", widget: "text" }
+      - { label: "작성자 이름", name: "author", widget: "string" }
+      - { label: "순서", name: "order", widget: "number" }
+      - { label: "활성화", name: "active", widget: "boolean", default: true }
+
+  # ── GymMaster 시간표 Embed ──
+  - name: "classes_embed"
+    label: "📅 클래스 시간표 Embed"
+    files:
+      - name: "timetable"
+        label: "GymMaster 시간표 HTML 태그"
+        file: "_data/classes.yml"
+        fields:
+          - { label: "Embed HTML 코드", name: "embed_code", widget: "text", hint: "GymMaster에서 제공하는 시간표 iframe HTML 태그를 여기에 붙여넣으세요" }
+
+  # ── FAQ ──
+  - name: "faq"
+    label: "❓ FAQ 관리"
+    folder: "_data/faq"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "질문", name: "question", widget: "string" }
+      - { label: "답변", name: "answer", widget: "text" }
+      - { label: "순서", name: "order", widget: "number" }
+      - { label: "활성화", name: "active", widget: "boolean", default: true }
+
+  # ── About 페이지 ──
+  - name: "pages"
+    label: "📄 페이지 텍스트"
+    files:
+      - name: "about"
+        label: "About 페이지"
+        file: "_data/about.yml"
+        fields:
+          - { label: "소개 문구 1단락", name: "paragraph1", widget: "text" }
+          - { label: "소개 문구 2단락", name: "paragraph2", widget: "text" }
+          - { label: "소개 문구 3단락", name: "paragraph3", widget: "text" }
+          - label: "갤러리 사진"
+            name: "gallery"
+            widget: "list"
+            field: { label: "사진", name: "image", widget: "image" }
