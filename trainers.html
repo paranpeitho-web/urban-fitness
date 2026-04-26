@@ -175,7 +175,7 @@
     @media(max-width:480px){.tr-grid{grid-template-columns:1fr}}
   </style>
 </head>
-<body>
+<body data-page="trainers">
 <div class="cursor-dot" id="cDot"></div>
 <div class="cursor-ring" id="cRing"></div>
 <nav id="gnb">
@@ -279,8 +279,8 @@
       </div>
     </div>
     <div><div class="ft-ttl">Explore</div><ul class="ft-nav"><li><a href="about.html">About Us</a></li><li><a href="facilities.html">Facilities</a></li><li><a href="classes.html">Classes</a></li><li><a href="trainers.html">Crew</a></li><li><a href="membership.html">Membership</a></li><li><a href="location.html">Location</a></li></ul></div>
-    <div><div class="ft-ttl">Staffed Hours</div><div class="ft-hrs"><div class="ft-note">★ 24/7 Access Available</div><div class="ft-hr"><span class="day">Mon – Thu</span><span>7:00am – 7:30pm</span></div><div class="ft-hr"><span class="day">Friday</span><span>8:00am – 3:30pm</span></div><div class="ft-hr"><span class="day">Saturday</span><span>8:00am – 11:00am</span></div><div class="ft-hr"><span class="day">Sunday</span><span>8:00am – 11:00am</span></div></div></div>
-    <div><div class="ft-ttl">Get In Touch</div><div class="ft-con"><div class="ft-ci"><div class="ft-ico">📍</div><div><div class="ft-cl">Address</div><div class="ft-cv">156 Chadwick Road, Greerton<br/>Tauranga, NZ 3112</div></div></div><div class="ft-ci"><div class="ft-ico">✉️</div><div><div class="ft-cl">Email</div><div class="ft-cv">support@urbanfitnessnz.com</div></div></div><div class="ft-ci"><div class="ft-ico">🔑</div><div><div class="ft-cl">Member Login</div><div class="ft-cv"><a href="#" id="ft-login" style="color:#6B9FE8;font-size:13px">Login →</a></div></div></div></div></div>
+    <div><div class="ft-ttl">Staffed Hours</div><div class="ft-hrs"><div class="ft-note">★ 24/7 Access Available</div><div class="ft-hr"><span class="day">Mon – Thu</span><span data-cms="hours-mon-thu">7:00am – 7:30pm</span></div><div class="ft-hr"><span class="day">Friday</span><span data-cms="hours-fri">8:00am – 3:30pm</span></div><div class="ft-hr"><span class="day">Saturday</span><span data-cms="hours-sat" data-cms="hours-sun">8:00am – 11:00am</span></div><div class="ft-hr"><span class="day">Sunday</span><span>8:00am – 11:00am</span></div></div></div>
+    <div><div class="ft-ttl">Get In Touch</div><div class="ft-con"><div class="ft-ci"><div class="ft-ico">📍</div><div><div class="ft-cl">Address</div><div class="ft-cv">156 Chadwick Road, Greerton<br/>Tauranga, NZ 3112</div></div></div><div class="ft-ci"><div class="ft-ico">✉️</div><div><div class="ft-cl">Email</div><div class="ft-cv" data-cms="email">support@urbanfitnessnz.com</div></div></div><div class="ft-ci"><div class="ft-ico">🔑</div><div><div class="ft-cl">Member Login</div><div class="ft-cv"><a href="#" id="ft-login" style="color:#6B9FE8;font-size:13px">Login →</a></div></div></div></div></div>
   </div></div></div>
   <div class="container"><div class="ft-bot"><div class="ft-copy">© <span id="yr"></span> Urban Fitness Tauranga. All rights reserved.</div><div class="ft-leg"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div></div></div>
 </footer>
@@ -303,6 +303,249 @@ const cDot=document.getElementById('cDot'),cRing=document.getElementById('cRing'
 let mx=0,my=0,rx=0,ry=0;
 if(cDot){document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cDot.style.left=mx+'px';cDot.style.top=my+'px';},{passive:true});(function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cRing.style.left=rx+'px';cRing.style.top=ry+'px';requestAnimationFrame(a);})();document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cur-hov'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cur-hov'));});}
 
+
+</script>
+<script>
+/**
+ * Urban Fitness — CMS Data Loader
+ * GitHub raw 파일에서 YML 데이터를 읽어와서 페이지에 반영
+ */
+
+const GITHUB_RAW = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data';
+
+// YML 파싱 (간단한 flat/list 구조)
+function parseYML(text) {
+  const result = {};
+  const lines = text.split('\n');
+  let currentKey = null;
+  let currentList = null;
+  let currentObj = null;
+  let inList = false;
+
+  for (let line of lines) {
+    if (!line.trim() || line.trim().startsWith('#')) continue;
+
+    // 리스트 아이템 시작
+    if (line.match(/^- /)) {
+      if (!currentList) currentList = [];
+      currentObj = {};
+      currentList.push(currentObj);
+      const val = line.replace(/^- /, '').trim();
+      if (val.includes(':')) {
+        const [k, ...v] = val.split(':');
+        if (currentObj) currentObj[k.trim()] = v.join(':').trim().replace(/^"|"$/g, '');
+      }
+      inList = true;
+      continue;
+    }
+
+    // 리스트 아이템 속성
+    if (inList && line.match(/^  [a-z]/)) {
+      const [k, ...v] = line.trim().split(':');
+      const val = v.join(':').trim().replace(/^"|"$/g, '');
+      if (currentObj) currentObj[k.trim()] = val === 'true' ? true : val === 'false' ? false : val;
+      continue;
+    }
+
+    // 일반 키-값
+    if (line.match(/^[a-z_]/)) {
+      inList = false;
+      currentObj = null;
+      if (currentList && currentKey) {
+        result[currentKey] = currentList;
+        currentList = null;
+      }
+      const colonIdx = line.indexOf(':');
+      if (colonIdx === -1) continue;
+      const k = line.substring(0, colonIdx).trim();
+      const v = line.substring(colonIdx + 1).trim().replace(/^"|"$/g, '');
+      if (v) {
+        result[k] = v;
+      } else {
+        currentKey = k;
+        result[k] = {};
+      }
+      continue;
+    }
+
+    // 중첩 키-값
+    if (line.match(/^  [a-z]/)) {
+      const [k, ...v] = line.trim().split(':');
+      const val = v.join(':').trim().replace(/^"|"$/g, '');
+      if (currentKey && typeof result[currentKey] === 'object' && !Array.isArray(result[currentKey])) {
+        result[currentKey][k.trim()] = val;
+      }
+    }
+  }
+
+  if (currentList && currentKey) result[currentKey] = currentList;
+  return result;
+}
+
+async function fetchYML(filename) {
+  try {
+    const res = await fetch(`${GITHUB_RAW}/${filename}?t=${Date.now()}`);
+    if (!res.ok) return null;
+    const text = await res.text();
+    return parseYML(text);
+  } catch (e) {
+    console.warn(`CMS: ${filename} 로드 실패`, e);
+    return null;
+  }
+}
+
+// ── Settings 적용 (URL, 연락처, 운영시간, SNS) ──
+async function applySettings() {
+  const data = await fetchYML('settings.yml');
+  if (!data) return;
+
+  const urls = data.membership_urls || {};
+  const contact = data.contact || {};
+  const hours = data.hours || {};
+  const sns = data.sns || {};
+
+  // JOIN / LOGIN URL
+  const joinUrl = data.url_join || '#';
+  const loginUrl = data.url_login || '#';
+
+  document.querySelectorAll('[data-cms="join"], .gnb-join, #btn-join, #mob-join, #hero-join, #banner-join, #b247-join, #about-join, #about-join2, #fac-join, #cls-join, #cls-join2, #mem-cta, #loc-join, #loc-cta').forEach(el => {
+    if (el) { el.href = joinUrl; el.target = '_blank'; el.rel = 'noopener'; }
+  });
+  document.querySelectorAll('[data-cms="login"], .gnb-login, #btn-login, #mob-login, #ft-login, #loc-login').forEach(el => {
+    if (el) { el.href = loginUrl; el.target = '_blank'; el.rel = 'noopener'; }
+  });
+
+  // 멤버십별 URL
+  if (urls.standard) {
+    document.querySelectorAll('#mem-std, [data-cms="mem-std"]').forEach(el => {
+      if (el) { el.href = urls.standard; el.target = '_blank'; el.rel = 'noopener'; }
+    });
+  }
+  if (urls.student) {
+    document.querySelectorAll('#mem-stu, [data-cms="mem-stu"]').forEach(el => {
+      if (el) { el.href = urls.student; el.target = '_blank'; el.rel = 'noopener'; }
+    });
+  }
+  if (urls.senior) {
+    document.querySelectorAll('#mem-sen, [data-cms="mem-sen"]').forEach(el => {
+      if (el) { el.href = urls.senior; el.target = '_blank'; el.rel = 'noopener'; }
+    });
+  }
+
+  // 연락처
+  if (contact.email) {
+    document.querySelectorAll('[data-cms="email"]').forEach(el => { el.textContent = contact.email; });
+  }
+  if (contact.address) {
+    document.querySelectorAll('[data-cms="address"]').forEach(el => { el.innerHTML = contact.address.replace(', ', ',<br/>'); });
+  }
+  if (contact.phone) {
+    document.querySelectorAll('[data-cms="phone"]').forEach(el => { el.textContent = contact.phone; });
+  }
+
+  // 운영시간
+  if (hours.mon_thu) document.querySelectorAll('[data-cms="hours-mon-thu"]').forEach(el => { el.textContent = hours.mon_thu; });
+  if (hours.friday) document.querySelectorAll('[data-cms="hours-fri"]').forEach(el => { el.textContent = hours.friday; });
+  if (hours.saturday) document.querySelectorAll('[data-cms="hours-sat"]').forEach(el => { el.textContent = hours.saturday; });
+  if (hours.sunday) document.querySelectorAll('[data-cms="hours-sun"]').forEach(el => { el.textContent = hours.sunday; });
+
+  // SNS
+  const snsMap = { instagram: '[data-cms="sns-instagram"]', facebook: '[data-cms="sns-facebook"]', tiktok: '[data-cms="sns-tiktok"]', youtube: '[data-cms="sns-youtube"]' };
+  Object.entries(snsMap).forEach(([key, sel]) => {
+    const url = sns[key];
+    document.querySelectorAll(sel).forEach(el => {
+      if (url) { el.href = url; el.style.display = ''; }
+      else { el.style.display = 'none'; }
+    });
+  });
+}
+
+// ── 멤버십 가격 적용 ──
+async function applyMemberships() {
+  const data = await fetchYML('memberships.yml');
+  if (!data) return;
+
+  const plans = ['standard', 'student', 'senior', 'corporate'];
+  plans.forEach(plan => {
+    if (!data[plan]) return;
+    const d = data[plan];
+    ['18m', '12m', '6m', 'open'].forEach(period => {
+      const key = `price_${period}`;
+      if (d[key]) {
+        document.querySelectorAll(`[data-cms="mem-${plan}-${period}"]`).forEach(el => { el.textContent = d[key]; });
+      }
+    });
+    if (d.description) {
+      document.querySelectorAll(`[data-cms="mem-${plan}-desc"]`).forEach(el => { el.textContent = d.description; });
+    }
+  });
+}
+
+// ── 회원 후기 적용 ──
+async function applyReviews() {
+  const data = await fetchYML('reviews.yml');
+  if (!data || !Array.isArray(data)) return;
+
+  const active = data.filter(r => r.active !== false).sort((a, b) => (a.order || 0) - (b.order || 0));
+  if (!active.length) return;
+
+  // 전역 reviews 배열 교체
+  if (window._reviewData !== undefined) {
+    window._reviewData = active;
+  }
+
+  // 직접 DOM 업데이트 (메인 페이지)
+  const rT = document.getElementById('rT');
+  const rA = document.getElementById('rA');
+  if (rT && active[0]) {
+    rT.textContent = active[0].text;
+    if (rA) rA.textContent = `— ${active[0].author}`;
+  }
+
+  // review dots 개수 맞추기
+  const dotsContainer = document.querySelector('.rev-dots');
+  if (dotsContainer && active.length > 1) {
+    dotsContainer.innerHTML = active.map((_, i) =>
+      `<button class="rev-dot${i === 0 ? ' active' : ''}" data-r="${i}"></button>`
+    ).join('');
+  }
+}
+
+// ── About 텍스트 적용 ──
+async function applyAbout() {
+  const data = await fetchYML('about.yml');
+  if (!data) return;
+
+  if (data.paragraph1) document.querySelectorAll('[data-cms="about-p1"]').forEach(el => { el.textContent = data.paragraph1; });
+  if (data.paragraph2) document.querySelectorAll('[data-cms="about-p2"]').forEach(el => { el.textContent = data.paragraph2; });
+  if (data.paragraph3) document.querySelectorAll('[data-cms="about-p3"]').forEach(el => { el.textContent = data.paragraph3; });
+}
+
+// ── 초기화 ──
+async function initCMS() {
+  const page = document.body.dataset.page || '';
+
+  // 모든 페이지 공통
+  await applySettings();
+
+  // 페이지별 선택 적용
+  if (page === 'index' || page === '') {
+    await Promise.all([applyReviews()]);
+  }
+  if (page === 'membership') {
+    await applyMemberships();
+  }
+  if (page === 'about') {
+    await applyAbout();
+  }
+}
+
+// DOM 준비 후 실행
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCMS);
+} else {
+  initCMS();
+}
 
 </script>
 </body>
