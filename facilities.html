@@ -168,7 +168,7 @@
     .fac-big-title{font-family:var(--f-display);font-size:clamp(32px,4vw,52px);font-weight:900;line-height:.9;text-transform:uppercase;margin-bottom:12px}
     .fac-big-desc{font-size:14px;line-height:1.7;color:rgba(244,241,235,.7);max-width:480px;margin-bottom:20px}
     .fac-badge{display:inline-block;background:rgba(37,71,160,.15);border:1px solid rgba(37,71,160,.4);color:#6B9FE8;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;margin-right:8px;margin-bottom:6px}
-    .fac-small-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:2px}
+    /* fac-small-grid removed - now using fac-main-grid for all zones */
     .fac-sm{background:var(--c-gray-1);padding:36px 28px;border-bottom:2px solid transparent;transition:border-color var(--t-base),background var(--t-base);cursor:pointer;position:relative;overflow:hidden}
     .fac-sm:hover{border-color:var(--c-lime);background:#16161E}
     .fac-sm::before{content:'';position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 20px 20px 0;border-color:transparent rgba(200,240,0,.15) transparent transparent;transition:border-width .3s}
@@ -188,8 +188,8 @@
     .evolt-feat-ico{color:#6B9FE8;font-size:20px;flex-shrink:0;margin-top:2px}
     .evolt-feat-title{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
     .evolt-feat-desc{font-size:13px;color:var(--c-gray-4);line-height:1.5}
-    @media(max-width:1024px){.fac-small-grid{grid-template-columns:repeat(2,1fr)}.evolt-inner{grid-template-columns:1fr;gap:40px}}
-    @media(max-width:768px){.fac-hero-stats{grid-template-columns:repeat(2,1fr)}.fac-main-grid{grid-template-columns:1fr}.fac-big{height:380px}.fac-small-grid{grid-template-columns:repeat(2,1fr)}.evolt-img{height:280px}}
+    @media(max-width:1024px){.evolt-inner{grid-template-columns:1fr;gap:40px}}
+    @media(max-width:768px){.fac-hero-stats{grid-template-columns:repeat(2,1fr)}.fac-main-grid{grid-template-columns:1fr}.fac-big{height:380px}.evolt-img{height:280px}}
   </style>
 </head>
 <body>
@@ -273,30 +273,50 @@
       </div>
     </div>
   </div>
-  <div class="fac-small-grid">
-    <div class="fac-sm reveal">
-      <div class="fac-sm-ico">🥊</div>
-      <div class="fac-sm-num">03</div>
-      <div class="fac-sm-name">Boxing Zone</div>
-      <div class="fac-sm-desc">Heavy bags, speed bags, and open floor space for boxing and kickboxing. High-energy training that builds power, agility, and mental toughness.</div>
+  <div class="fac-main-grid" style="margin-top:2px">
+    <div class="fac-big reveal">
+      <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=900&q=80" alt="Boxing Zone"/>
+      <div class="fac-big-bar"></div>
+      <div class="fac-big-overlay"></div>
+      <div class="fac-big-content">
+        <div class="fac-big-num">ZONE 03</div>
+        <div class="fac-big-title">BOXING<br/>ZONE</div>
+        <div class="fac-big-desc">Heavy bags, speed bags, and open floor space for boxing and kickboxing. High-energy training that builds power, agility, and mental toughness.</div>
+        <div><span class="fac-badge">Heavy Bags</span><span class="fac-badge">Speed Bags</span><span class="fac-badge">Open Floor</span></div>
+      </div>
     </div>
-    <div class="fac-sm reveal d1">
-      <div class="fac-sm-ico">🧘</div>
-      <div class="fac-sm-num">04</div>
-      <div class="fac-sm-name">Group Class Studio</div>
-      <div class="fac-sm-desc">A dedicated, sprung-floor studio with premium sound system hosting 60+ weekly classes — HIIT, yoga, spin, pilates, dance, and more.</div>
+    <div class="fac-big reveal d1">
+      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&q=80" alt="Group Class Studio"/>
+      <div class="fac-big-bar"></div>
+      <div class="fac-big-overlay"></div>
+      <div class="fac-big-content">
+        <div class="fac-big-num">ZONE 04</div>
+        <div class="fac-big-title">GROUP CLASS<br/>STUDIO</div>
+        <div class="fac-big-desc">A dedicated, sprung-floor studio with premium sound system hosting 60+ weekly classes — HIIT, yoga, spin, pilates, dance, and more.</div>
+        <div><span class="fac-badge">60+ Classes</span><span class="fac-badge">Sprung Floor</span><span class="fac-badge">Sound System</span></div>
+      </div>
     </div>
-    <div class="fac-sm reveal d2">
-      <div class="fac-sm-ico">🏋️</div>
-      <div class="fac-sm-num">05</div>
-      <div class="fac-sm-name">Personal Training</div>
-      <div class="fac-sm-desc">Private training bays and open floor space for 1-on-1 sessions with our expert freelance trainers. Goal-specific, fully tailored programming.</div>
+    <div class="fac-big reveal">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80" alt="Personal Training"/>
+      <div class="fac-big-bar"></div>
+      <div class="fac-big-overlay"></div>
+      <div class="fac-big-content">
+        <div class="fac-big-num">ZONE 05</div>
+        <div class="fac-big-title">PERSONAL<br/>TRAINING</div>
+        <div class="fac-big-desc">Private training bays and open floor space for 1-on-1 sessions with our expert crew. Goal-specific, fully tailored programming.</div>
+        <div><span class="fac-badge">Private Bays</span><span class="fac-badge">1-on-1 Training</span><span class="fac-badge">Custom Programs</span></div>
+      </div>
     </div>
-    <div class="fac-sm reveal d3">
-      <div class="fac-sm-ico">👶</div>
-      <div class="fac-sm-num">06</div>
-      <div class="fac-sm-name">Kids Zone</div>
-      <div class="fac-sm-desc">A safe, supervised play area so you can train without distraction. Age-appropriate activities keep the kids happy while you focus on your workout.</div>
+    <div class="fac-big reveal d1">
+      <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=900&q=80" alt="Kids Zone"/>
+      <div class="fac-big-bar"></div>
+      <div class="fac-big-overlay"></div>
+      <div class="fac-big-content">
+        <div class="fac-big-num">ZONE 06</div>
+        <div class="fac-big-title">KIDS<br/>ZONE</div>
+        <div class="fac-big-desc">A safe, supervised play area so you can train without distraction. Age-appropriate activities keep the kids happy while you focus on your workout.</div>
+        <div><span class="fac-badge">Safe & Supervised</span><span class="fac-badge">Age-Appropriate</span></div>
+      </div>
     </div>
   </div>
 </section>
