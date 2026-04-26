@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Urban Fitness Tauranga — More Than Just a Gym</title>
-  <!-- Design System v3: Black + Logo Blue + Lime Accent Only -->
+  <!-- Design System v4: Black + Logo Blue dominant + Lime CTA only -->
   <meta name="description" content="Urban Fitness Tauranga — 24/7 access, 60+ weekly classes, personal training, and world-class facilities in Greerton, Tauranga NZ."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
     :root {
       --c-black:#080808;--c-blue:#1E3A5F;--c-blue-mid:#264878;--c-blue-dark:#152C48;
       --c-logo-blue:#2547A0;--c-lime:#C8F000;--c-lime-dim:rgba(200,240,0,0.08);
-      --c-white:#F4F1EB;--c-gray-1:#111116;--c-gray-2:#1C1C2A;--c-gray-4:#8888AA;
+      --c-white:#F4F1EB;--c-gray-1:#0E1520;--c-gray-2:#162030;--c-gray-4:#8899BB;
       --f-display:'Barlow Condensed',sans-serif;--f-body:'Barlow',sans-serif;
       --max-w:1280px;--nav-h:72px;
       --t-fast:0.15s ease;--t-base:0.25s ease;--t-slow:0.45s ease;
@@ -26,22 +26,22 @@
     .container{max-width:var(--max-w);margin:0 auto;padding:0 40px}
     .section{padding:112px 0}
     .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--c-gray-4);margin-bottom:14px}
-    .eyebrow::before{content:'';width:28px;height:1px;background:var(--c-lime)}
+    .eyebrow::before{content:'';width:28px;height:1px;background:var(--c-logo-blue)}
     .sec-title{font-family:var(--f-display);font-size:clamp(44px,5.5vw,76px);font-weight:800;line-height:.92;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
-    .sec-title em{color:var(--c-lime);font-style:normal}
+    .sec-title em{color:var(--c-logo-blue);font-style:normal}
     .sec-body{font-size:16px;line-height:1.8;color:rgba(244,241,235,0.65);max-width:560px}
     .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-display);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;border:none;transition:var(--t-base);white-space:nowrap;cursor:pointer}
     .btn-lime{background:var(--c-lime);color:var(--c-black)}
     .btn-lime:hover{background:#D8FF22;transform:translateY(-2px);box-shadow:var(--shadow-lime)}
     .btn-outline{background:transparent;color:var(--c-white);border:1px solid rgba(244,241,235,.2)}
-    .btn-outline:hover{border-color:var(--c-lime);color:var(--c-lime)}
+    .btn-outline:hover{border-color:#6B9FE8;color:#6B9FE8}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
     .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
     /* GNB */
     #gnb{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;padding:0 40px;transition:background var(--t-slow),box-shadow var(--t-slow)}
-    #gnb::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--c-lime);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
+    #gnb::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:rgba(107,159,232,0.5);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
     #gnb.scrolled::after{transform:scaleX(1)}
     #gnb.scrolled{background:rgba(30,58,95,0.97);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(200,240,0,0.2),0 4px 20px rgba(0,0,0,0.4)}
     .gnb-inner{width:100%;max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px}
@@ -50,7 +50,7 @@
     .gnb-logo .f{color:var(--c-logo-blue)}
     .gnb-links{display:flex;align-items:center;gap:2px;list-style:none}
     .gnb-links a{display:block;padding:8px 11px;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(244,241,235,.6);transition:color var(--t-fast);position:relative}
-    .gnb-links a::after{content:'';position:absolute;bottom:2px;left:11px;right:11px;height:1px;background:var(--c-lime);transform:scaleX(0);transform-origin:left;transition:transform var(--t-base)}
+    .gnb-links a::after{content:'';position:absolute;bottom:2px;left:11px;right:11px;height:1px;background:#6B9FE8;transform:scaleX(0);transform-origin:left;transition:transform var(--t-base)}
     .gnb-links a:hover{color:var(--c-white)}
     .gnb-links a:hover::after{transform:scaleX(1)}
     .gnb-cta{display:flex;align-items:center;gap:14px;flex-shrink:0}
@@ -63,11 +63,11 @@
     .hbg.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
     .hbg.open span:nth-child(2){opacity:0;transform:scaleX(0)}
     .hbg.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-    .mob-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(8,8,8,.98);backdrop-filter:blur(16px);border-top:2px solid var(--c-lime);z-index:999;transform:translateY(-12px);opacity:0;pointer-events:none;transition:transform var(--t-slow),opacity var(--t-slow)}
+    .mob-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(8,8,8,.98);backdrop-filter:blur(16px);border-top:2px solid var(--c-logo-blue);z-index:999;transform:translateY(-12px);opacity:0;pointer-events:none;transition:transform var(--t-slow),opacity var(--t-slow)}
     .mob-menu.open{transform:translateY(0);opacity:1;pointer-events:all}
     .mob-inner{padding:20px 24px 28px;display:flex;flex-direction:column;gap:2px}
     .mob-inner a{display:block;padding:13px 0;font-family:var(--f-display);font-size:28px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(244,241,235,.65);border-bottom:1px solid rgba(255,255,255,.04);transition:color var(--t-fast),padding-left var(--t-fast)}
-    .mob-inner a:hover{color:var(--c-lime);padding-left:8px}
+    .mob-inner a:hover{color:#6B9FE8;padding-left:8px}
     .mob-cta{display:flex;gap:12px;margin-top:20px}
     .mob-cta a{flex:1;text-align:center;padding:13px}
 
@@ -78,29 +78,29 @@
     .h-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,8,8,.82) 0%,rgba(8,8,8,.45) 55%,rgba(8,8,8,.15) 100%)}
     .h-content{position:absolute;bottom:100px;left:0;right:0;z-index:2}
     .h-ey{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(244,241,235,.5);margin-bottom:20px}
-    .h-ey::before{content:'';width:6px;height:6px;background:var(--c-lime);border-radius:50%}
+    .h-ey::before{content:'';width:6px;height:6px;background:#6B9FE8;border-radius:50%}
     .h-title{font-family:var(--f-display);font-size:clamp(72px,12vw,148px);font-weight:900;line-height:.86;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px}
     .h-title em{color:var(--c-logo-blue);font-style:normal;display:block}
     .h-sub{font-size:16px;line-height:1.7;color:rgba(244,241,235,.65);max-width:480px;margin-bottom:36px}
     .h-btns{display:flex;gap:14px;flex-wrap:wrap}
     .h-dots{position:absolute;bottom:40px;left:0;right:0;z-index:2;display:flex;justify-content:center;gap:10px}
     .h-dot{width:28px;height:2px;background:rgba(244,241,235,.25);border:none;cursor:pointer;transition:background var(--t-base),width var(--t-base)}
-    .h-dot.active{background:var(--c-lime);width:44px}
+    .h-dot.active{background:var(--c-logo-blue);width:44px}
     .h-addr{position:absolute;bottom:100px;right:80px;z-index:2;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(244,241,235,.3);writing-mode:vertical-rl}
 
     .h-scroll{position:absolute;bottom:32px;right:44px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(244,241,235,.3)}
-    .h-scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--c-lime),transparent);animation:scrollAnim 1.8s ease infinite}
+    .h-scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,#6B9FE8,transparent);animation:scrollAnim 1.8s ease infinite}
     @keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top;opacity:1}50%{transform:scaleY(1);transform-origin:top;opacity:1}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom;opacity:0}}
 
     /* TICKER */
-    .ticker{background:var(--c-lime);overflow:hidden;white-space:nowrap;padding:13px 0}
-    .ticker-t{display:inline-block;animation:tick 30s linear infinite;font-family:var(--f-display);font-size:13px;font-weight:700;letter-spacing:3px;color:var(--c-black)}
+    .ticker{background:var(--c-logo-blue);overflow:hidden;white-space:nowrap;padding:13px 0}
+    .ticker-t{display:inline-block;animation:tick 30s linear infinite;font-family:var(--f-display);font-size:13px;font-weight:700;letter-spacing:3px;color:var(--c-white)}
     @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
     /* INTRO */
     #intro{padding:100px 0;text-align:center}
     .i-head{font-family:var(--f-display);font-size:clamp(36px,5vw,62px);font-weight:800;line-height:.95;letter-spacing:1px;text-transform:uppercase;max-width:780px;margin:0 auto 24px}
-    .i-head em{color:var(--c-lime);font-style:normal}
+    .i-head em{color:var(--c-logo-blue);font-style:normal}
     .i-body{font-size:16px;line-height:1.85;color:rgba(244,241,235,.6);max-width:620px;margin:0 auto 40px}
 
     /* FEATURES */
@@ -109,19 +109,19 @@
     .feat img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) grayscale(20%);transition:transform .7s ease,filter .5s}
     .feat:hover img{transform:scale(1.06);filter:brightness(.72) grayscale(0%)}
     .feat-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.9) 30%,transparent 80%)}
-    .feat-bar{position:absolute;top:0;left:0;right:0;height:3px;background:var(--c-lime);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
+    .feat-bar{position:absolute;top:0;left:0;right:0;height:3px;background:var(--c-logo-blue);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
     .feat:hover .feat-bar{transform:scaleX(1)}
     .feat-c{position:absolute;bottom:0;left:0;right:0;padding:36px 32px}
-    .feat-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--c-lime);margin-bottom:10px}
+    .feat-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#6B9FE8;margin-bottom:10px}
     .feat-ttl{font-family:var(--f-display);font-size:36px;font-weight:800;line-height:1;text-transform:uppercase;margin-bottom:10px}
     .feat-desc{font-size:13px;line-height:1.6;color:rgba(244,241,235,.6);max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s;opacity:0}
     .feat:hover .feat-desc{max-height:80px;opacity:1}
-    .feat-lnk{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--c-lime);margin-top:14px;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s ease,opacity .3s .1s}
+    .feat-lnk{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6B9FE8;margin-top:14px;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s ease,opacity .3s .1s}
     .feat:hover .feat-lnk{max-height:40px;opacity:1}
 
     /* BANNER 247 */
-    #b247{background:var(--c-blue);padding:60px 0;position:relative;overflow:hidden}
-    #b247::before{content:'24/7';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:var(--f-display);font-size:220px;font-weight:900;color:rgba(255,255,255,.04);line-height:1;pointer-events:none}
+    #b247{background:var(--c-logo-blue);padding:60px 0;position:relative;overflow:hidden}
+    #b247::before{content:'24/7';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:var(--f-display);font-size:220px;font-weight:900;color:rgba(255,255,255,.06);line-height:1;pointer-events:none}
     .b247i{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
     .b247h{font-family:var(--f-display);font-size:clamp(32px,4vw,54px);font-weight:800;line-height:.95;text-transform:uppercase}
     .b247h em{color:var(--c-lime);font-style:normal;display:block}
@@ -131,32 +131,32 @@
     #fac{background:var(--c-gray-1)}
     .fac-grid{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
     .fac-card{background:var(--c-black);padding:32px 24px;border-bottom:2px solid transparent;transition:border-color var(--t-base),background var(--t-base)}
-    .fac-card:hover{border-color:var(--c-lime);background:#0f0f0f}
-    .fac-n{font-family:var(--f-display);font-size:42px;font-weight:900;color:rgba(200,240,0,.08);line-height:1;margin-bottom:12px}
+    .fac-card:hover{border-color:var(--c-logo-blue);background:#0D1822}
+    .fac-n{font-family:var(--f-display);font-size:42px;font-weight:900;color:rgba(37,71,160,.55);line-height:1;margin-bottom:12px}
     .fac-nm{font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
     .fac-d{font-size:12px;color:var(--c-gray-4);line-height:1.6}
 
     /* REVIEWS */
     #rev{background:var(--c-blue-dark);padding:88px 0;text-align:center;position:relative;overflow:hidden}
-    #rev::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--c-lime),transparent)}
-    #rev::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--c-lime),transparent)}
+    #rev::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--c-logo-blue),transparent)}
+    #rev::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--c-logo-blue),transparent)}
     .stars{color:var(--c-lime);font-size:20px;letter-spacing:4px;margin-bottom:28px}
     .rev-q{font-family:var(--f-display);font-size:clamp(22px,3vw,36px);font-weight:700;line-height:1.2;max-width:760px;margin:0 auto 20px;min-height:90px;transition:opacity .35s ease}
-    .rev-q::before{content:'\201C';color:var(--c-lime)}
-    .rev-q::after{content:'\201D';color:var(--c-lime)}
+    .rev-q::before{content:'\201C';color:var(--c-logo-blue)}
+    .rev-q::after{content:'\201D';color:var(--c-logo-blue)}
     .rev-a{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(244,241,235,.4);margin-bottom:28px}
     .rev-dots{display:flex;gap:8px;justify-content:center}
     .rev-dot{width:8px;height:8px;border-radius:50%;background:rgba(244,241,235,.2);border:none;cursor:pointer;transition:background var(--t-base),transform var(--t-base)}
-    .rev-dot.active{background:var(--c-lime);transform:scale(1.3)}
+    .rev-dot.active{background:var(--c-logo-blue);transform:scale(1.3)}
 
     /* MEMBERSHIP */
     .mem-grid{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
     .mem{background:var(--c-gray-1);padding:40px 28px;position:relative;overflow:hidden;transition:background var(--t-base),transform var(--t-base)}
     .mem:hover{background:var(--c-gray-2);transform:translateY(-4px)}
-    .mem.feat2{background:var(--c-lime);color:var(--c-black)}
-    .mem.feat2:hover{background:#D8FF22}
-    .mem::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--c-lime);transform:scaleX(0);transform-origin:left;transition:transform var(--t-slow)}
-    .mem.feat2::before{background:var(--c-black);transform:scaleX(1)}
+    .mem.feat2{background:var(--c-logo-blue);color:var(--c-white)}
+    .mem.feat2:hover{background:#3059C4}
+    .mem::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--c-logo-blue);transform:scaleX(0);transform-origin:left;transition:transform var(--t-slow)}
+    .mem.feat2::before{background:var(--c-lime);transform:scaleX(1)}
     .mem:hover::before{transform:scaleX(1)}
     .mem-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;opacity:.5;margin-bottom:10px}
     .mem-nm{font-family:var(--f-display);font-size:32px;font-weight:800;text-transform:uppercase;margin-bottom:8px}
@@ -173,11 +173,11 @@
     .tr-img{position:relative;height:380px;overflow:hidden}
     .tr-img img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(25%);transition:transform .6s ease,filter .4s}
     .tr-card:hover .tr-img img{transform:scale(1.05);filter:grayscale(0%)}
-    .tr-bar{position:absolute;top:0;left:0;width:3px;height:0;background:var(--c-lime);transition:height .5s ease}
+    .tr-bar{position:absolute;top:0;left:0;width:3px;height:0;background:var(--c-logo-blue);transition:height .5s ease}
     .tr-card:hover .tr-bar{height:100%}
     .tr-info{padding:20px 24px;background:var(--c-black)}
     .tr-nm{font-family:var(--f-display);font-size:26px;font-weight:700;text-transform:uppercase;margin-bottom:4px}
-    .tr-role{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--c-lime)}
+    .tr-role{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#6B9FE8}
 
     /* LOCATION */
     #loc{display:grid;grid-template-columns:1fr 1fr}
@@ -194,7 +194,7 @@
     .loc-map svg{width:32px;height:32px;stroke:currentColor;fill:none;stroke-width:1.5}
 
     /* FOOTER */
-    #ft{background:#0F2260;border-top:2px solid var(--c-lime);position:relative}
+    #ft{background:#0A1628;border-top:2px solid var(--c-logo-blue);position:relative}
     #ft::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(to bottom,var(--c-lime),transparent 60%)}
     .ft-main{padding:80px 0 60px}
     .ft-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1.2fr;gap:60px}
@@ -204,13 +204,13 @@
     .ft-tag{font-size:13px;line-height:1.7;color:var(--c-gray-4);max-width:260px;margin-bottom:28px}
     .ft-sns{display:flex;gap:10px}
     .sns{width:36px;height:36px;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:var(--c-gray-4);transition:var(--t-base)}
-    .sns:hover{border-color:var(--c-lime);color:var(--c-lime);background:var(--c-lime-dim)}
+    .sns:hover{border-color:var(--c-logo-blue);color:#6B9FE8;background:rgba(37,71,160,0.1)}
     .sns svg{width:15px;height:15px;fill:currentColor}
     .ft-ttl{font-family:var(--f-display);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--c-white);margin-bottom:20px}
-    .ft-ttl::after{content:'';display:block;width:20px;height:1px;background:var(--c-lime);margin-top:8px}
+    .ft-ttl::after{content:'';display:block;width:20px;height:1px;background:var(--c-logo-blue);margin-top:8px}
     .ft-nav{list-style:none;display:flex;flex-direction:column;gap:10px}
     .ft-nav a{font-size:13px;color:var(--c-gray-4);transition:color var(--t-fast),padding-left var(--t-fast);display:flex;align-items:center;gap:8px}
-    .ft-nav a::before{content:'';width:0;height:1px;background:var(--c-lime);transition:width var(--t-base)}
+    .ft-nav a::before{content:'';width:0;height:1px;background:var(--c-logo-blue);transition:width var(--t-base)}
     .ft-nav a:hover{color:var(--c-white);padding-left:4px}
     .ft-nav a:hover::before{width:10px}
     .ft-hrs{display:flex;flex-direction:column;gap:6px}
@@ -219,14 +219,14 @@
     .ft-hr .day{color:var(--c-gray-4)}
     .ft-con{display:flex;flex-direction:column;gap:16px}
     .ft-ci{display:flex;gap:12px}
-    .ft-ico{width:32px;height:32px;border:1px solid rgba(200,240,0,.15);display:flex;align-items:center;justify-content:center;color:var(--c-lime);flex-shrink:0;font-size:13px}
+    .ft-ico{width:32px;height:32px;border:1px solid rgba(37,71,160,.35);display:flex;align-items:center;justify-content:center;color:#6B9FE8;flex-shrink:0;font-size:13px}
     .ft-cl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--c-gray-4);margin-bottom:2px}
     .ft-cv{font-size:13px;line-height:1.5}
     .ft-bot{border-top:1px solid rgba(255,255,255,.04);padding:24px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
     .ft-copy{font-size:12px;color:var(--c-gray-4)}
     .ft-leg{display:flex;gap:20px}
     .ft-leg a{font-size:12px;color:var(--c-gray-4);transition:color var(--t-fast)}
-    .ft-leg a:hover{color:var(--c-lime)}
+    .ft-leg a:hover{color:#6B9FE8}
 
     /* RESPONSIVE */
 
@@ -236,7 +236,7 @@
     .cursor-dot{position:fixed;width:8px;height:8px;background:var(--c-lime);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .2s,height .2s}
     .cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(200,240,0,0.5);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .35s cubic-bezier(.25,.46,.45,.94),height .35s cubic-bezier(.25,.46,.45,.94),border-color .25s}
     body.cur-hov .cursor-dot{width:5px;height:5px;opacity:.6}
-    body.cur-hov .cursor-ring{width:48px;height:48px;border-color:var(--c-lime);background:var(--c-lime-dim)}
+    body.cur-hov .cursor-ring{width:48px;height:48px;border-color:var(--c-logo-blue);background:rgba(37,71,160,0.08)}
     @media(max-width:768px){.cursor-dot,.cursor-ring{display:none}body,a,button{cursor:auto}}
     @media(max-width:1024px){
       .fac-grid{grid-template-columns:repeat(2,1fr)}
@@ -268,7 +268,6 @@
       .h-btns{flex-direction:column;align-items:flex-start}
     }
   </style>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 <!-- GNB -->
@@ -281,7 +280,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="facilities.html">Facilities</a></li>
       <li><a href="classes.html">Classes</a></li>
-      <li><a href="trainers.html">Trainers</a></li>
+      <li><a href="trainers.html">Crew</a></li>
       <li><a href="membership.html">Membership</a></li>
       <li><a href="location.html">Location</a></li>
     </ul>
@@ -297,7 +296,7 @@
     <a href="about.html">About</a>
     <a href="facilities.html">Facilities</a>
     <a href="classes.html">Classes</a>
-    <a href="trainers.html">Trainers</a>
+    <a href="trainers.html">Crew</a>
     <a href="membership.html">Membership</a>
     <a href="location.html">Location</a>
     <div class="mob-cta">
@@ -341,7 +340,7 @@
 <!-- INTRO -->
 <section id="intro"><div class="container">
   <div class="i-head reveal">WE HELP YOU GET <em>RESULTS.</em></div>
-  <p class="i-body reveal d1">We are more than just a gym — a space built to help you move better, get stronger, and achieve real, lasting results. Through a supportive community and purposeful training, we help you stay consistent and become your best.</p>
+  <p class="i-body reveal d1">Urban Fitness is more than a gym — it's a community. With a strong family vibe, a spacious facility, premium equipment, and a wide range of classes, we create a space where everyone feels supported and motivated. We're here to support our community — helping people grow stronger, together.</p>
   <a href="about.html" class="btn btn-outline reveal d2">Our Story →</a>
 </div></section>
 
@@ -408,8 +407,8 @@
 <!-- REVIEWS -->
 <section id="rev"><div class="container">
   <div class="stars">★★★★★</div>
-  <div class="rev-q" id="rT">Urban Fitness puts in the effort to provide an experience that pushes you but is also super enjoyable.</div>
-  <div class="rev-a" id="rA">— Sarah, Member</div>
+  <div class="rev-q" id="rT">Urban Fitness is the best gym I have ever been a member of. The atmosphere, the equipment, the classes and the staff are all top notch.</div>
+  <div class="rev-a" id="rA">— Google Review</div>
   <div class="rev-dots">
     <button class="rev-dot active" data-r="0"></button>
     <button class="rev-dot" data-r="1"></button>
@@ -424,10 +423,10 @@
   <h2 class="sec-title reveal d1">MEMBERSHIPS <em>FOR EVERYONE.</em></h2>
   <p class="sec-body reveal d2">Flexible options designed around your goals, lifestyle, and schedule. No sign-up fee.</p>
   <div class="mem-grid">
-    <div class="mem feat2 reveal"><div class="mem-tag">Most Popular</div><div class="mem-nm">STANDARD</div><div class="mem-pr">From $18.90<span>/wk</span></div><div class="mem-d">Full gym access and all facilities to train on your schedule, anytime.</div><a href="#" class="mem-lnk" id="mem-std">Join Now →</a></div>
+    <div class="mem feat2 reveal"><div class="mem-tag">Most Popular</div><div class="mem-nm">STANDARD</div><div class="mem-pr">From $18.90<span>/wk</span></div><div class="mem-d">Full gym access and all facilities to train on your schedule, anytime.</div><a href="https://urbanfitnessnz.gymmasteronline.com/portal/signup/9" class="mem-lnk" target="_blank" rel="noopener">Join Now →</a></div>
     <div class="mem reveal d1"><div class="mem-tag">Under 20</div><div class="mem-nm">STUDENT</div><div class="mem-pr">From $15.90<span>/wk</span></div><div class="mem-d">Affordable access for students to build healthy habits early.</div><a href="#" class="mem-lnk" id="mem-stu">Join Now →</a></div>
     <div class="mem reveal d2"><div class="mem-tag">65+</div><div class="mem-nm">SENIOR</div><div class="mem-pr">$16.90<span>/wk</span></div><div class="mem-d">Special rates for seniors to stay active, strong, and healthy.</div><a href="#" class="mem-lnk" id="mem-sen">Join Now →</a></div>
-    <div class="mem reveal d3"><div class="mem-tag">Companies</div><div class="mem-nm">CORPORATE</div><div class="mem-pr">Enquire</div><div class="mem-d">Tailored solutions to support employee health and well-being.</div><a href="location.html" class="mem-lnk">Enquire →</a></div>
+    <div class="mem reveal d3"><div class="mem-tag">Companies</div><div class="mem-nm">CORPORATE</div><div class="mem-pr">Enquire</div><div class="mem-d">Tailored solutions to support employee health and well-being.</div><a href="mailto:support@urbanfitnessnz.com" class="mem-lnk">Email Us →</a></div>
   </div>
   <div style="text-align:center;margin-top:48px"><a href="membership.html" class="btn btn-outline reveal">See All Plans →</a></div>
 </div></section>
@@ -435,13 +434,13 @@
 <!-- TRAINERS -->
 <section id="tr" class="section"><div class="container">
   <div class="eyebrow reveal">The Team</div>
-  <h2 class="sec-title reveal d1">MEET YOUR <em>COACHES.</em></h2>
+  <h2 class="sec-title reveal d1">MEET THE <em>CREW.</em></h2>
   <div class="tr-grid">
     <div class="tr-card reveal"><div class="tr-img"><div class="tr-bar"></div><img src="https://images.unsplash.com/photo-1567013127542-490d757e6349?w=600&q=80" alt="Trainer"/></div><div class="tr-info"><div class="tr-nm">James Holden</div><div class="tr-role">Strength &amp; Conditioning</div></div></div>
     <div class="tr-card reveal d1"><div class="tr-img"><div class="tr-bar"></div><img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&q=80" alt="Trainer"/></div><div class="tr-info"><div class="tr-nm">Aroha Tane</div><div class="tr-role">Yoga &amp; Mobility</div></div></div>
     <div class="tr-card reveal d2"><div class="tr-img"><div class="tr-bar"></div><img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80" alt="Trainer"/></div><div class="tr-info"><div class="tr-nm">Marcus Reid</div><div class="tr-role">HIIT &amp; Performance</div></div></div>
   </div>
-  <div style="text-align:center;margin-top:48px"><a href="trainers.html" class="btn btn-outline reveal">Meet All Trainers →</a></div>
+  <div style="text-align:center;margin-top:48px"><a href="trainers.html" class="btn btn-outline reveal">Meet The Crew →</a></div>
 </div></section>
 
 <!-- LOCATION -->
@@ -480,7 +479,7 @@
         <li><a href="about.html">About Us</a></li>
         <li><a href="facilities.html">Facilities</a></li>
         <li><a href="classes.html">Classes</a></li>
-        <li><a href="trainers.html">Trainers</a></li>
+        <li><a href="trainers.html">Crew</a></li>
         <li><a href="membership.html">Membership</a></li>
         <li><a href="location.html">Location</a></li>
       </ul>
@@ -500,7 +499,7 @@
       <div class="ft-con">
         <div class="ft-ci"><div class="ft-ico">📍</div><div><div class="ft-cl">Address</div><div class="ft-cv">156 Chadwick Road, Greerton<br/>Tauranga, NZ 3112</div></div></div>
         <div class="ft-ci"><div class="ft-ico">✉️</div><div><div class="ft-cl">Email</div><div class="ft-cv">support@urbanfitnessnz.com</div></div></div>
-        <div class="ft-ci"><div class="ft-ico">🔑</div><div><div class="ft-cl">Member Login</div><div class="ft-cv"><a href="#" id="ft-login" style="color:var(--c-lime);font-size:13px">Login to your account →</a></div></div></div>
+        <div class="ft-ci"><div class="ft-ico">🔑</div><div><div class="ft-cl">Member Login</div><div class="ft-cv"><a href="#" id="ft-login" style="color:#6B9FE8;font-size:13px">Login to your account →</a></div></div></div>
       </div>
     </div>
   </div></div></div>
@@ -514,9 +513,9 @@
 const CMS={
   join:'https://urbanfitnessnz.gymmasteronline.com/portal/signup',
   login:'https://urbanfitnessnz.gymmasteronline.com/portal/login',
-  std:'https://urbanfitnessnz.gymmasteronline.com/portal/membership/65a31485e48e8303b781bff9d9e09cd2',
-  stu:'https://urbanfitnessnz.gymmasteronline.com/portal/membership/d338c7070e8330a81230ae9a02e5f5f7',
-  sen:'https://urbanfitnessnz.gymmasteronline.com/portal/membership/02f2faa68c7f8fd717e3cb379912021c',
+  std:'https://urbanfitnessnz.gymmasteronline.com/portal/signup/9',
+  stu:'https://urbanfitnessnz.gymmasteronline.com/portal/signup/10',
+  sen:'https://urbanfitnessnz.gymmasteronline.com/portal/signup/11',
 };
 const setLink=(id,url)=>{const e=document.getElementById(id);if(e){e.href=url;e.target='_blank';e.rel='noopener';}};
 setLink('btn-join',CMS.join);setLink('btn-login',CMS.login);
@@ -536,10 +535,10 @@ ht=setInterval(()=>goS(cur+1),5000);
 
 // Reviews
 const reviews=[
-  {t:'Urban Fitness puts in the effort to provide an experience that pushes you but is also super enjoyable.',a:'— Sarah, Member'},
-  {t:"Best gym I've ever been to! The equipment is amazing and I love the energy of the place.",a:'— Mike, Member'},
-  {t:'Awesome staff, makes a newbie feel comfortable and welcome from day one.',a:'— Joel, Member'},
-  {t:'The instructors are awesome, the classes are fun. I look forward to going each time.',a:'— Peter, Member'},
+  {t:'Urban Fitness is the best gym I have ever been a member of. The atmosphere, the equipment, the classes and the staff are all top notch.',a:'— Google Review'},
+  {t:'Amazing gym! Great range of equipment and classes. The staff are super friendly and welcoming. Highly recommend to anyone looking for a gym in Tauranga.',a:'— Google Review'},
+  {t:'Love this gym! Great facilities, awesome instructors and a really supportive community. I look forward to every session.',a:'— Google Review'},
+  {t:'Best gym in Tauranga! The facilities are fantastic and the classes are so much fun. The team really make you feel welcome from day one.',a:'— Google Review'},
 ];
 const rT=document.getElementById('rT'),rA=document.getElementById('rA'),rdots=document.querySelectorAll('.rev-dot');
 let ri=0,rt;
