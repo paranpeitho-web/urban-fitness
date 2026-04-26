@@ -1,0 +1,20 @@
+standard:
+  price_18m: "$18.90"
+  price_12m: "$19.90"
+  price_6m: "$21.90"
+  price_open: "$23.90"
+  description: "Full gym access and all facilities to train on your schedule, anytime."
+
+student:
+  price_18m: "$15.90"
+  price_12m: "$16.90"
+  price_6m: "$18.90"
+  price_open: "$20.90"
+  description: "Affordable access for students to build healthy habits early."
+
+senior:
+  price_open: "$16.90"
+  description: "Special rates for seniors to stay active, strong, and healthy."
+
+corporate:
+  description: "Tailored solutions to support employee health and well-being."
