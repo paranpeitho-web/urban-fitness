@@ -1,0 +1,19 @@
+- text: "Urban Fitness is the best gym I have ever been a member of. The atmosphere, the equipment, the classes and the staff are all top notch."
+  author: "Google Review"
+  order: 1
+  active: true
+
+- text: "Amazing gym! Great range of equipment and classes. The staff are super friendly and welcoming. Highly recommend to anyone looking for a gym in Tauranga."
+  author: "Google Review"
+  order: 2
+  active: true
+
+- text: "Love this gym! Great facilities, awesome instructors and a really supportive community. I look forward to every session."
+  author: "Google Review"
+  order: 3
+  active: true
+
+- text: "Best gym in Tauranga! The facilities are fantastic and the classes are so much fun. The team really make you feel welcome from day one."
+  author: "Google Review"
+  order: 4
+  active: true
