@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "images"
+public_folder: "/images"
 
 locale: 'en'
 
@@ -62,7 +62,7 @@ collections:
       - label: "배너 이미지 / Banner Image"
         name: "image"
         widget: "image"
-        hint: "✅ 권장 사이즈 Recommended size — 1920 x 1080px (16:9 가로형 Landscape) | 최소 Min — 1280 x 720px | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max file size — 3MB | ⚠️ 3MB 초과 시 로딩이 느려집니다 Files over 3MB will slow down the page"
+        hint: "✅ 권장 사이즈 Recommended — 1920 x 1080px (16:9 가로형 Landscape) | 최소 Min — 1280 x 720px | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 3MB | ⚠️ 3MB 초과 시 로딩이 느려집니다 Files over 3MB will slow down the page | 이미지 압축 권장 Compress images at tinypng.com or squoosh.app"
       - { label: "클릭 시 이동 URL / Click URL", name: "url", widget: "string", hint: "배너 클릭 시 이동할 주소 / URL to open when banner is clicked. 없으면 # 입력 / Enter # if not needed", default: "#" }
       - { label: "새 탭에서 열기 / Open in new tab", name: "new_tab", widget: "boolean", default: false }
       - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true, hint: "OFF 하면 이 배너는 표시되지 않습니다 / Turn OFF to hide this slide" }
@@ -81,33 +81,49 @@ collections:
         name: "image"
         widget: "image"
         required: false
-        hint: "✅ 권장 사이즈 Recommended — 800 x 600px | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB"
+        hint: "✅ 권장 사이즈 Recommended — 1920 x 1080px | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB | 압축 권장 Compress at tinypng.com"
       - { label: "간단 설명 / Short Description (English)", name: "description", widget: "text", hint: "2~3줄 영문 / 2–3 lines in English" }
       - { label: "상세 설명 / Detail (English)", name: "detail", widget: "text", required: false }
-      - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true }
+      - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true, hint: "OFF 하면 시설 페이지에서 숨겨집니다 / Turn OFF to hide from Facilities page" }
 
-  # ── 트레이너 / Trainers ──
+  # ── 크루 관리 / Crew ──
+  - name: "crew"
+    label: "👥 크루 관리 / Crew"
+    folder: "_data/crew"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "이름 / Full Name", name: "name", widget: "string" }
+      - { label: "직책 / Role", name: "role", widget: "string", hint: "예 e.g. Manager / Instructor / Customer Service" }
+      - label: "프로필 사진 / Profile Photo"
+        name: "image"
+        widget: "image"
+        hint: "✅ 권장 사이즈 Recommended — 500 x 600px (세로형 Portrait) | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB | 정면 얼굴 사진 권장 Front-facing photo recommended | 압축 권장 Compress at tinypng.com"
+      - { label: "순서 / Display Order", name: "order", widget: "number", hint: "숫자가 낮을수록 먼저 표시됩니다 / Lower number = displayed first" }
+      - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true, hint: "OFF 하면 크루 페이지에서 숨겨집니다 / Turn OFF to hide from Crew page" }
+
+  # ── 퍼스널 트레이너 / Personal Trainers ──
   - name: "trainers"
-    label: "👤 트레이너 관리 / Trainers"
+    label: "👤 퍼스널 트레이너 / Personal Trainers"
     folder: "_data/trainers"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "이름 / Full Name", name: "name", widget: "string" }
-      - { label: "전문 분야 / Role & Specialty", name: "role", widget: "string", hint: "예 e.g. Strength & Conditioning" }
+      - { label: "직책 / Role", name: "role", widget: "string", default: "Personal Trainer", hint: "예 e.g. Personal Trainer" }
       - label: "프로필 사진 / Profile Photo"
         name: "image"
         widget: "image"
-        hint: "✅ 권장 사이즈 Recommended — 500 x 600px (세로형 Portrait) | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB | 정면 얼굴 사진 권장 Front-facing photo recommended"
-      - { label: "소개 문구 / Bio (English)", name: "bio", widget: "text", hint: "3~5줄 영문 / 3–5 lines in English" }
-      - label: "전문 분야 태그 / Specialty Tags"
+        hint: "✅ 권장 사이즈 Recommended — 500 x 600px (세로형 Portrait) | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB | 정면 얼굴 사진 권장 Front-facing photo recommended | 압축 권장 Compress at tinypng.com"
+      - { label: "소개 문구 / Bio (English)", name: "bio", widget: "text", required: false, hint: "3~5줄 영문 / 3–5 lines in English" }
+      - label: "전문 분야 / Specialties"
         name: "specialties"
         widget: "list"
-        hint: "태그 추가 / Add tags  예 e.g. Olympic Lifting / HIIT / Yoga"
-        field: { label: "태그 / Tag", name: "tag", widget: "string" }
+        hint: "전문 분야를 하나씩 추가하세요 / Add each specialty one by one  예 e.g. Strength Training / Weight Loss / Boxing"
+        field: { label: "전문 분야 / Specialty", name: "item", widget: "string" }
       - { label: "자격증 / Certifications", name: "certifications", widget: "string", required: false, hint: "예 e.g. NZQA Level 4 Personal Training" }
-      - { label: "순서 / Display Order", name: "order", widget: "number" }
-      - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true, hint: "OFF 하면 트레이너 페이지에서 숨겨집니다 / Turn OFF to hide from Trainers page" }
+      - { label: "순서 / Display Order", name: "order", widget: "number", hint: "숫자가 낮을수록 먼저 표시됩니다 / Lower number = displayed first" }
+      - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true, hint: "OFF 하면 트레이너 페이지에서 숨겨집니다 / Turn OFF to hide from Trainer page" }
 
   # ── 멤버십 / Memberships ──
   - name: "memberships"
@@ -195,5 +211,5 @@ collections:
           - label: "갤러리 사진 / Gallery Photos"
             name: "gallery"
             widget: "list"
-            hint: "✅ 권장 사이즈 Recommended — 800 x 600px | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB each"
+            hint: "✅ 권장 사이즈 Recommended — 800 x 600px | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB each | 압축 권장 Compress at tinypng.com"
             field: { label: "사진 / Photo", name: "image", widget: "image" }
