@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Facilities — Urban Fitness Tauranga</title>
+  <title>Facilities — Urban Fit Tauranga</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -202,7 +202,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="facilities.html" class="active">Facilities</a></li>
       <li><a href="classes.html">Classes</a></li>
-      <li><a href="trainers.html">Crew</a></li>
+      <li><a href="crew.html">Crew</a></li><li><a href="trainer.html">Trainer</a></li>
       <li><a href="membership.html">Membership</a></li>
       <li><a href="location.html">Location</a></li>
     </ul>
@@ -216,7 +216,8 @@
 <div class="mob-menu" id="mob">
   <div class="mob-inner">
     <a href="about.html">About</a><a href="facilities.html">Facilities</a>
-    <a href="classes.html">Classes</a><a href="trainers.html">Crew</a>
+    <a href="classes.html">Classes</a><a href="crew.html">Crew</a>
+    <a href="trainer.html">Trainer</a>
     <a href="membership.html">Membership</a><a href="location.html">Location</a>
     <div class="mob-cta">
       <a href="#" class="gnb-login" id="mob-login">Login</a>
@@ -240,7 +241,7 @@
     <h2 class="sec-title reveal d1">EVERYTHING YOU NEED<br/>TO <em>TRAIN HARD.</em></h2>
     <p class="sec-body reveal d2">Our 5,000+ sqft facility is purpose-built for serious training. Every zone is designed to maximise your performance — from first-timers to elite athletes.</p>
     <div class="fac-hero-stats reveal d3">
-      <div class="fac-stat"><div class="fac-stat-num">5K+</div><div class="fac-stat-label">Square Feet</div></div>
+      <div class="fac-stat"><div class="fac-stat-num">5,000+</div><div class="fac-stat-label">Square Feet</div></div>
       <div class="fac-stat"><div class="fac-stat-num">8</div><div class="fac-stat-label">Dedicated Zones</div></div>
       <div class="fac-stat"><div class="fac-stat-num">24/7</div><div class="fac-stat-label">Access</div></div>
       <div class="fac-stat"><div class="fac-stat-num">60+</div><div class="fac-stat-label">Weekly Classes</div></div>
@@ -249,16 +250,33 @@
 </section>
 
 <section class="section section-dark" style="padding-top:2px">
-  <div class="fac-main-grid">
-    <div class="fac-big reveal">
-      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&q=80" alt="Gym Floor"/>
+
+  <!-- 상단 풀와이드 — Group Classes -->
+  <div class="fac-main-grid" style="grid-template-columns:1fr;margin-bottom:2px">
+    <div class="fac-big fac-big-tall reveal">
+      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1600&q=80" alt="Group Classes"/>
       <div class="fac-big-bar"></div>
       <div class="fac-big-overlay"></div>
       <div class="fac-big-content">
         <div class="fac-big-num">ZONE 01</div>
-        <div class="fac-big-title">STRENGTH<br/>ZONE</div>
-        <div class="fac-big-desc">A comprehensive free weights area with dumbbells up to 50kg, barbells, squat racks, and a full range of resistance machines. Built for those who take their training seriously.</div>
-        <div><span class="fac-badge">Free Weights</span><span class="fac-badge">Power Racks</span><span class="fac-badge">Cable Machines</span></div>
+        <div class="fac-big-title">GROUP<br/>CLASSES</div>
+        <div class="fac-big-desc">Energetic, community-focused group fitness classes for all levels. Our timetable includes globally recognised Les Mills programs and much more.</div>
+        <div><span class="fac-badge">Les Mills</span><span class="fac-badge">All Levels</span><span class="fac-badge">60+ Weekly</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 중단 1열 — 24/7 Access / Cardio Zone -->
+  <div class="fac-main-grid" style="margin-bottom:2px">
+    <div class="fac-big reveal">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80" alt="24/7 Access"/>
+      <div class="fac-big-bar"></div>
+      <div class="fac-big-overlay"></div>
+      <div class="fac-big-content">
+        <div class="fac-big-num">ZONE 02</div>
+        <div class="fac-big-title">24/7<br/>ACCESS</div>
+        <div class="fac-big-desc">Members can train anytime with secure 24/7 gym access. Whether you prefer early morning sessions, late-night workouts, or training around a busy schedule — our facility is available whenever it suits you.</div>
+        <div><span class="fac-badge">24/7 Entry</span><span class="fac-badge">Secure Access</span><span class="fac-badge">365 Days</span></div>
       </div>
     </div>
     <div class="fac-big reveal d1">
@@ -266,80 +284,84 @@
       <div class="fac-big-bar"></div>
       <div class="fac-big-overlay"></div>
       <div class="fac-big-content">
-        <div class="fac-big-num">ZONE 02</div>
+        <div class="fac-big-num">ZONE 03</div>
         <div class="fac-big-title">CARDIO<br/>ZONE</div>
-        <div class="fac-big-desc">State-of-the-art cardio machines including treadmills, rowing machines, assault bikes, stair climbers, and ellipticals. Built to push your endurance to the next level.</div>
-        <div><span class="fac-badge">Treadmills</span><span class="fac-badge">Rowers</span><span class="fac-badge">Assault Bikes</span></div>
+        <div class="fac-big-desc">Treadmills, bikes, rowers, stair climbers, cross trainers — plus functional cardio including SkiErgs and Assault Bikes for conditioning and athletic training.</div>
+        <div><span class="fac-badge">Treadmills</span><span class="fac-badge">SkiErgs</span><span class="fac-badge">Assault Bikes</span></div>
       </div>
     </div>
   </div>
-  <div class="fac-main-grid" style="margin-top:2px">
+
+  <!-- 중단 2열 — Boxing & Functional / Personal Training -->
+  <div class="fac-main-grid" style="margin-bottom:2px">
     <div class="fac-big reveal">
       <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=900&q=80" alt="Boxing Zone"/>
       <div class="fac-big-bar"></div>
       <div class="fac-big-overlay"></div>
       <div class="fac-big-content">
-        <div class="fac-big-num">ZONE 03</div>
-        <div class="fac-big-title">BOXING<br/>ZONE</div>
-        <div class="fac-big-desc">Heavy bags, speed bags, and open floor space for boxing and kickboxing. High-energy training that builds power, agility, and mental toughness.</div>
-        <div><span class="fac-badge">Heavy Bags</span><span class="fac-badge">Speed Bags</span><span class="fac-badge">Open Floor</span></div>
+        <div class="fac-big-num">ZONE 04</div>
+        <div class="fac-big-title">BOXING &amp;<br/>FUNCTIONAL</div>
+        <div class="fac-big-desc">Located upstairs, our boxing and functional zone is ideal for HIIT, circuits, boxing drills, and athletic training. We also offer dedicated boxing classes for all experience levels.</div>
+        <div><span class="fac-badge">Boxing</span><span class="fac-badge">HIIT &amp; Circuits</span><span class="fac-badge">Upstairs Zone</span></div>
       </div>
     </div>
     <div class="fac-big reveal d1">
-      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&q=80" alt="Group Class Studio"/>
-      <div class="fac-big-bar"></div>
-      <div class="fac-big-overlay"></div>
-      <div class="fac-big-content">
-        <div class="fac-big-num">ZONE 04</div>
-        <div class="fac-big-title">GROUP CLASS<br/>STUDIO</div>
-        <div class="fac-big-desc">A dedicated, sprung-floor studio with premium sound system hosting 60+ weekly classes — HIIT, yoga, spin, pilates, dance, and more.</div>
-        <div><span class="fac-badge">60+ Classes</span><span class="fac-badge">Sprung Floor</span><span class="fac-badge">Sound System</span></div>
-      </div>
-    </div>
-    <div class="fac-big reveal">
-      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80" alt="Personal Training"/>
+      <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=900&q=80" alt="Personal Training"/>
       <div class="fac-big-bar"></div>
       <div class="fac-big-overlay"></div>
       <div class="fac-big-content">
         <div class="fac-big-num">ZONE 05</div>
         <div class="fac-big-title">PERSONAL<br/>TRAINING</div>
-        <div class="fac-big-desc">Private training bays and open floor space for 1-on-1 sessions with our expert crew. Goal-specific, fully tailored programming.</div>
-        <div><span class="fac-badge">Private Bays</span><span class="fac-badge">1-on-1 Training</span><span class="fac-badge">Custom Programs</span></div>
+        <div class="fac-big-desc">Our experienced personal trainers provide tailored programs, accountability, and professional guidance — for weight loss, strength, performance, or confidence building.</div>
+        <div><span class="fac-badge">Tailored Programs</span><span class="fac-badge">Expert Trainers</span><span class="fac-badge">All Goals</span></div>
       </div>
     </div>
-    <div class="fac-big reveal d1">
+  </div>
+
+  <!-- 중단 3열 — Kids Zone / Evolt 360 -->
+  <div class="fac-main-grid" style="margin-bottom:2px">
+    <div class="fac-big reveal">
       <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=900&q=80" alt="Kids Zone"/>
       <div class="fac-big-bar"></div>
       <div class="fac-big-overlay"></div>
       <div class="fac-big-content">
         <div class="fac-big-num">ZONE 06</div>
         <div class="fac-big-title">KIDS<br/>ZONE</div>
-        <div class="fac-big-desc">A safe, supervised play area so you can train without distraction. Age-appropriate activities keep the kids happy while you focus on your workout.</div>
-        <div><span class="fac-badge">Safe & Supervised</span><span class="fac-badge">Age-Appropriate</span></div>
+        <div class="fac-big-desc">A family-friendly environment where parents can focus on their workouts while children enjoy a safe and welcoming space nearby.</div>
+        <div><span class="fac-badge">Safe &amp; Supervised</span><span class="fac-badge">Family Friendly</span></div>
+      </div>
+    </div>
+    <div class="fac-big reveal d1">
+      <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=900&q=80" alt="Evolt 360"/>
+      <div class="fac-big-bar"></div>
+      <div class="fac-big-overlay"></div>
+      <div class="fac-big-content">
+        <div class="fac-big-num" style="color:var(--c-lime)">EVOLT 360</div>
+        <div class="fac-big-title">BODY<br/>SCANNER</div>
+        <div class="fac-big-desc">Track your progress with the Evolt 360. Get detailed insights into body composition — muscle mass, body fat %, metabolic data, and 40+ health metrics in just 60 seconds.</div>
+        <div><span class="fac-badge">Body Composition</span><span class="fac-badge">40+ Metrics</span><span class="fac-badge">60 Seconds</span></div>
       </div>
     </div>
   </div>
-</section>
 
-<section class="evolt-section">
-  <div class="container">
-    <div class="evolt-inner">
-      <div class="evolt-img reveal">
-        <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=700&q=80" alt="Evolt 360"/>
-      </div>
-      <div class="reveal d1">
-        <div class="eyebrow">Advanced Technology</div>
-        <h2 class="sec-title" style="font-size:clamp(36px,4vw,56px)">EVOLT <em>360</em><br/>BODY SCANNER</div>
-        <p style="font-size:15px;line-height:1.8;color:rgba(244,241,235,.65);margin-bottom:28px">Track your real progress with the Evolt 360 — the world's most advanced body composition scanner. In just 60 seconds, get a complete picture of your fitness journey.</p>
-        <div class="evolt-features">
-          <div class="evolt-feat"><div class="evolt-feat-ico">📊</div><div><div class="evolt-feat-title">Full Body Composition</div><div class="evolt-feat-desc">Muscle mass, body fat %, visceral fat, hydration levels and 40+ metrics in 60 seconds.</div></div></div>
-          <div class="evolt-feat"><div class="evolt-feat-ico">📈</div><div><div class="evolt-feat-title">Progress Tracking</div><div class="evolt-feat-desc">See exactly how your body is changing over time. Data-driven training that delivers results.</div></div></div>
-          <div class="evolt-feat"><div class="evolt-feat-ico">📱</div><div><div class="evolt-feat-title">Mobile App Report</div><div class="evolt-feat-desc">Receive a detailed report directly to your phone with personalised recommendations.</div></div></div>
-        </div>
+
+
+
+
+  <!-- 하단 풀와이드 — Strength Zone -->
+  <div class="fac-main-grid" style="grid-template-columns:1fr;margin-top:2px">
+    <div class="fac-big fac-big-tall reveal">
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80" alt="Strength Zone"/>
+      <div class="fac-big-bar"></div>
+      <div class="fac-big-overlay"></div>
+      <div class="fac-big-content">
+        <div class="fac-big-num">ZONE 07</div>
+        <div class="fac-big-title">STRENGTH<br/>ZONE</div>
+        <div class="fac-big-desc">Free weights, squat racks, plate-loaded machines, cable stations, and premium Swedish-made Gymleco equipment — built for both beginners and experienced lifters.</div>
+        <div><span class="fac-badge">Free Weights</span><span class="fac-badge">Gymleco Equipment</span><span class="fac-badge">Cable Stations</span><span class="fac-badge">Squat Racks</span></div>
       </div>
     </div>
   </div>
-</section>
 
 <section class="cta-banner section-sm">
   <div class="container"><div class="cta-inner">
@@ -358,11 +380,11 @@
         <a href="#" class="sns" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
       </div>
     </div>
-    <div><div class="ft-ttl">Explore</div><ul class="ft-nav"><li><a href="about.html">About Us</a></li><li><a href="facilities.html">Facilities</a></li><li><a href="classes.html">Classes</a></li><li><a href="trainers.html">Crew</a></li><li><a href="membership.html">Membership</a></li><li><a href="location.html">Location</a></li></ul></div>
+    <div><div class="ft-ttl">Explore</div><ul class="ft-nav"><li><a href="about.html">About Us</a></li><li><a href="facilities.html">Facilities</a></li><li><a href="classes.html">Classes</a></li><li><a href="crew.html">Crew</a></li><li><a href="trainer.html">Trainer</a></li><li><a href="membership.html">Membership</a></li><li><a href="location.html">Location</a></li></ul></div>
     <div><div class="ft-ttl">Staffed Hours</div><div class="ft-hrs"><div class="ft-note">★ 24/7 Access Available</div><div class="ft-hr"><span class="day">Mon – Thu</span><span data-cms="hours-mon-thu">7:00am – 7:30pm</span></div><div class="ft-hr"><span class="day">Friday</span><span data-cms="hours-fri">8:00am – 3:30pm</span></div><div class="ft-hr"><span class="day">Saturday</span><span data-cms="hours-sat" data-cms="hours-sun">8:00am – 11:00am</span></div><div class="ft-hr"><span class="day">Sunday</span><span>8:00am – 11:00am</span></div></div></div>
     <div><div class="ft-ttl">Get In Touch</div><div class="ft-con"><div class="ft-ci"><div class="ft-ico">📍</div><div><div class="ft-cl">Address</div><div class="ft-cv">156 Chadwick Road, Greerton<br/>Tauranga, NZ 3112</div></div></div><div class="ft-ci"><div class="ft-ico">✉️</div><div><div class="ft-cl">Email</div><div class="ft-cv" data-cms="email">support@urbanfitnessnz.com</div></div></div><div class="ft-ci"><div class="ft-ico">🔑</div><div><div class="ft-cl">Member Login</div><div class="ft-cv"><a href="#" id="ft-login" style="color:#6B9FE8;font-size:13px">Login →</a></div></div></div></div></div>
   </div></div></div>
-  <div class="container"><div class="ft-bot"><div class="ft-copy">© <span id="yr"></span> Urban Fitness Tauranga. All rights reserved.</div><div class="ft-leg"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div></div></div>
+  <div class="container"><div class="ft-bot"><div class="ft-copy">© <span id="yr"></span> Urban Fit Tauranga. All rights reserved.</div><div class="ft-leg"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div></div></div>
 </footer>
 <script>
 const CMS={join:'https://urbanfitnessnz.gymmasteronline.com/portal/signup',login:'https://urbanfitnessnz.gymmasteronline.com/portal/login'};
@@ -387,7 +409,7 @@ document.getElementById('fac-join').href=CMS.join;document.getElementById('fac-j
 </script>
 <script>
 /**
- * Urban Fitness — CMS Data Loader
+ * Urban Fit — CMS Data Loader
  * GitHub raw 파일에서 YML 데이터를 읽어와서 페이지에 반영
  */
 
