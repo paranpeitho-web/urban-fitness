@@ -53,7 +53,7 @@
     #gnb.scrolled{background:rgba(30,58,95,.97);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(200,240,0,.2),0 4px 20px rgba(0,0,0,.4)}
     #gnb.scrolled::after{transform:scaleX(1)}
     .gnb-inner{width:100%;max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px}
-    .gnb-logo{display:flex;align-items:center;flex-shrink:0}.gnb-logo img{height:44px;width:auto;display:block}
+    .gnb-logo{display:flex;align-items:center;gap:0;flex-shrink:0;text-decoration:none}.gnb-logo .gl-urban{font-family:var(--f-display);font-size:22px;font-weight:900;font-style:normal;letter-spacing:1px;text-transform:uppercase;color:var(--c-white);line-height:1}.gnb-logo .gl-fit{font-family:var(--f-display);font-size:22px;font-weight:900;font-style:italic;letter-spacing:1px;text-transform:uppercase;color:var(--c-lime);line-height:1;margin:0 6px}.gnb-logo .gl-taur{font-family:var(--f-display);font-size:22px;font-weight:900;font-style:normal;letter-spacing:1px;text-transform:uppercase;color:var(--c-gray-4);line-height:1}
     .gnb-logo .u{color:var(--c-white)}
     .gnb-logo .f{color:var(--c-logo-blue)}
     #gnb.scrolled .gnb-logo .f{color:#6B9FE8}
@@ -183,7 +183,7 @@
 <div class="cursor-ring" id="cRing"></div>
 <nav id="gnb">
   <div class="gnb-inner">
-    <a href="index.html" class="gnb-logo"><img src="images/urban-fit-logo-transparent.png" alt="Urban Fit Tauranga"></a>
+    <a href="index.html" class="gnb-logo"><span class="gl-urban">URBAN</span><span class="gl-fit">FIT</span><span class="gl-taur">TAURANGA</span></a>
     <ul class="gnb-links">
       <li><a href="about.html">About</a></li>
       <li><a href="facilities.html">Facilities</a></li>

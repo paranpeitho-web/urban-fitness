@@ -45,7 +45,7 @@
     #gnb.scrolled::after{transform:scaleX(1)}
     #gnb.scrolled{background:rgba(30,58,95,0.97);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(200,240,0,0.2),0 4px 20px rgba(0,0,0,0.4)}
     .gnb-inner{width:100%;max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px}
-    .gnb-logo{display:flex;align-items:center;flex-shrink:0}.gnb-logo img{height:44px;width:auto;display:block}
+    .gnb-logo{display:flex;align-items:center;gap:0;flex-shrink:0;text-decoration:none}.gnb-logo .gl-urban{font-family:var(--f-display);font-size:22px;font-weight:900;font-style:normal;letter-spacing:1px;text-transform:uppercase;color:var(--c-white);line-height:1}.gnb-logo .gl-fit{font-family:var(--f-display);font-size:22px;font-weight:900;font-style:italic;letter-spacing:1px;text-transform:uppercase;color:var(--c-lime);line-height:1;margin:0 6px}.gnb-logo .gl-taur{font-family:var(--f-display);font-size:22px;font-weight:900;font-style:normal;letter-spacing:1px;text-transform:uppercase;color:var(--c-gray-4);line-height:1}
     .gnb-logo .u{color:var(--c-white)}
     .gnb-logo .f{color:var(--c-logo-blue)}
     .gnb-links{display:flex;align-items:center;gap:2px;list-style:none}
@@ -79,7 +79,7 @@
     .h-content{position:absolute;bottom:100px;left:0;right:0;z-index:2}
     .h-ey{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(244,241,235,.5);margin-bottom:20px}
     .h-ey::before{content:'';width:6px;height:6px;background:#6B9FE8;border-radius:50%}
-    .h-title{font-family:var(--f-display);font-size:clamp(72px,12vw,148px);font-weight:900;line-height:.86;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px}
+    .h-title{font-family:var(--f-display);font-size:clamp(72px,12vw,148px);font-weight:900;line-height:.86;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px}.h-logo-big{margin-bottom:28px}.h-logo-big img{height:clamp(120px,18vw,220px);width:auto;display:block;filter:drop-shadow(0 4px 40px rgba(200,240,0,0.18))}
     .h-title em{color:var(--c-logo-blue);font-style:normal;display:block}
     .h-sub{font-size:16px;line-height:1.7;color:rgba(244,241,235,.65);max-width:480px;margin-bottom:36px}
     .h-btns{display:flex;gap:14px;flex-wrap:wrap}
@@ -276,7 +276,7 @@
 <div class="cursor-ring" id="cRing"></div>
 <nav id="gnb">
   <div class="gnb-inner">
-    <a href="index.html" class="gnb-logo"><img src="images/urban-fit-logo-transparent.png" alt="Urban Fit Tauranga"></a>
+    <a href="index.html" class="gnb-logo"><span class="gl-urban">URBAN</span><span class="gl-fit">FIT</span><span class="gl-taur">TAURANGA</span></a>
     <ul class="gnb-links">
       <li><a href="about.html">About</a></li>
       <li><a href="facilities.html">Facilities</a></li>
@@ -317,7 +317,7 @@
   <div class="h-slide" style="background-image:url('https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1600&q=80')"></div>
   <div class="h-content"><div class="container">
     <div class="h-ey">156 Chadwick Rd, Greerton, Tauranga</div>
-    <h1 class="h-title">URBAN<br/><em>FIT</em></h1>
+    <div class="h-logo-big"><img src="images/urban-fit-logo-transparent.png" alt="Urban Fit Tauranga"></div>
     <p class="h-sub">More than just a gym — a space built to help you move better, get stronger, and achieve real, lasting results.</p>
     <div class="h-btns">
       <a href="#" class="btn btn-lime" id="hero-join">Join Today →</a>
