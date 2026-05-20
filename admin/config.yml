@@ -1,6 +1,8 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: paranpeitho-web/urban-fitness
   branch: main
+  client_id: Ov23liy428aRmmxif02w
 
 media_folder: "images"
 public_folder: "/images"
