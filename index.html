@@ -311,10 +311,10 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="h-slide active" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80')"></div>
-  <div class="h-slide" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1600&q=80')"></div>
-  <div class="h-slide" style="background-image:url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=1600&q=80')"></div>
-  <div class="h-slide" style="background-image:url('https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1600&q=80')"></div>
+  <div class="h-slide active" data-cms-img="hero_slide_1" style="background-image:url('/images/87.webp')"></div>
+  <div class="h-slide" data-cms-img="hero_slide_2" style="background-image:url('/images/22.webp')"></div>
+  <div class="h-slide" data-cms-img="hero_slide_3" style="background-image:url('/images/10.webp')"></div>
+  <div class="h-slide" data-cms-img="hero_slide_4" style="background-image:url('/images/70.webp')"></div>
   <div class="h-content"><div class="container">
     <div class="h-ey">156 Chadwick Rd, Greerton, Tauranga</div>
     <div class="h-logo-big"><img src="images/urban-fit-logo-transparent.png" alt="Urban Fit Tauranga"></div>
@@ -350,7 +350,7 @@
 <!-- FEATURES -->
 <div class="feat-grid">
   <div class="feat reveal">
-    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80" alt="Gym Floor"/>
+    <img src="/images/70.webp" data-cms-img="index_feat_gym" alt="Gym Floor"/>
     <div class="feat-bar"></div><div class="feat-ov"></div>
     <div class="feat-c">
       <div class="feat-tag">Equipment</div>
@@ -360,7 +360,7 @@
     </div>
   </div>
   <div class="feat reveal d1">
-    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80" alt="Classes"/>
+    <img src="/images/25.webp" data-cms-img="index_feat_classes" alt="Classes"/>
     <div class="feat-bar"></div><div class="feat-ov"></div>
     <div class="feat-c">
       <div class="feat-tag">Classes</div>
@@ -370,7 +370,7 @@
     </div>
   </div>
   <div class="feat reveal d2">
-    <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=800&q=80" alt="Personal Training"/>
+    <img src="/images/43.webp" data-cms-img="index_feat_pt" alt="Personal Training"/>
     <div class="feat-bar"></div><div class="feat-ov"></div>
     <div class="feat-c">
       <div class="feat-tag">Training</div>
@@ -796,6 +796,19 @@ async function applyMemberships() {
 }
 
 // ── 회원 후기 적용 ──
+async function applyImages() {
+  const data = await fetchYML('images.yml');
+  if (!data) return;
+  document.querySelectorAll('[data-cms-img]').forEach(el => {
+    const key = el.dataset.cmsImg;
+    if (!key) return;
+    const val = data[key];
+    if (!val) return;
+    if (el.tagName === 'IMG') { el.src = val; }
+    else { el.style.backgroundImage = `url('${val}')`; }
+  });
+}
+
 async function applyReviews() {
   const data = await fetchYML('reviews.yml');
   if (!data || !Array.isArray(data)) return;
@@ -841,6 +854,7 @@ async function initCMS() {
 
   // 모든 페이지 공통
   await applySettings();
+  await applyImages();
 
   // 페이지별 선택 적용
   if (page === 'index' || page === '') {

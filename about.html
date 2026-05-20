@@ -223,7 +223,7 @@
 </div>
 
 <div class="page-hero">
-  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80')"></div>
+  <div class="page-hero-bg" data-cms-img="about_hero" style="background-image:url('/images/71.webp')"></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content"><div class="container">
     <div class="ph-eyebrow">Urban Fit Tauranga</div>
@@ -235,9 +235,9 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-imgs reveal">
-        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=700&q=80" alt="Gym interior"/>
-        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=400&q=80" alt="Equipment"/>
-        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=400&q=80" alt="Training"/>
+        <img src="/images/66.webp" data-cms-img="about_imgs_1" alt="Gym interior"/>
+        <img src="/images/43.webp" data-cms-img="about_imgs_2" alt="Equipment"/>
+        <img src="/images/57.webp" data-cms-img="about_imgs_3" alt="Training"/>
       </div>
       <div class="about-text">
         <div class="eyebrow reveal">Our Story</div>
@@ -292,11 +292,11 @@
   </div>
   <div style="margin-top:48px" class="reveal">
     <div class="gallery-grid">
-      <div class="g-item"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&q=80" alt=""/></div>
-      <div class="g-item"><img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=500&q=80" alt=""/></div>
-      <div class="g-item"><img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=500&q=80" alt=""/></div>
-      <div class="g-item"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80" alt=""/></div>
-      <div class="g-item"><img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=500&q=80" alt=""/></div>
+      <div class="g-item"><img src="/images/86.webp" data-cms-img="about_gallery_1" alt=""/></div>
+      <div class="g-item"><img src="/images/22.webp" data-cms-img="about_gallery_2" alt=""/></div>
+      <div class="g-item"><img src="/images/99.webp" data-cms-img="about_gallery_3" alt=""/></div>
+      <div class="g-item"><img src="/images/10.webp" data-cms-img="about_gallery_4" alt=""/></div>
+      <div class="g-item"><img src="/images/57.webp" data-cms-img="about_gallery_5" alt=""/></div>
     </div>
   </div>
 </section>
@@ -586,12 +586,32 @@ async function applyAbout() {
   if (data.paragraph3) document.querySelectorAll('[data-cms="about-p3"]').forEach(el => { el.textContent = data.paragraph3; });
 }
 
+
+async function applyImages() {
+  const data = await fetchYML('images.yml');
+  if (!data) return;
+  document.querySelectorAll('[data-cms-img]').forEach(el => {
+    const key = el.dataset.cmsImg;
+    if (!key) return;
+    let val = data;
+    const parts = key.split('.');
+    for (const part of parts) {
+      if (val === undefined || val === null) break;
+      val = isNaN(part) ? val[part] : val[Number(part)];
+    }
+    if (!val) return;
+    if (el.tagName === 'IMG') { el.src = val; }
+    else { el.style.backgroundImage = `url('${val}')`; }
+  });
+}
+
 // ── 초기화 ──
 async function initCMS() {
   const page = document.body.dataset.page || '';
 
   // 모든 페이지 공통
   await applySettings();
+  await applyImages();
 
   // 페이지별 선택 적용
   if (page === 'index' || page === '') {

@@ -51,7 +51,40 @@ collections:
               - { label: "TikTok URL", name: "tiktok", widget: "string", required: false }
               - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
 
-  # ── 메인 롤링 배너 / Hero Banner Slides ──
+  # ── 이미지 관리 / Image Management ──
+  - name: "images"
+    label: "🖼️ 이미지 관리 / Image Management"
+    files:
+      - name: "all_images"
+        label: "전체 이미지 / All Images"
+        file: "_data/images.yml"
+        fields:
+          - label: "히어로 롤링 배너 / Hero Banner Slides (4장)"
+            name: "hero_slides"
+            widget: "list"
+            hint: "권장 사이즈 1920x1080px / WebP 또는 JPG / 300KB 이하"
+            field: { label: "배너 이미지", name: "image", widget: "image" }
+          - { label: "메인 Gym Floor 사진", name: "index_feat_gym", widget: "image", hint: "index 피처카드 — 짐 플로어" }
+          - { label: "메인 Classes 사진", name: "index_feat_classes", widget: "image", hint: "index 피처카드 — 클래스" }
+          - { label: "메인 PT 사진", name: "index_feat_pt", widget: "image", hint: "index 피처카드 — 퍼스널트레이닝" }
+          - { label: "About 히어로 배경", name: "about_hero", widget: "image" }
+          - label: "About 갤러리 (5장)"
+            name: "about_gallery"
+            widget: "list"
+            hint: "갤러리 사진 5장"
+            field: { label: "갤러리 사진", name: "image", widget: "image" }
+          - { label: "Facilities 히어로 배경", name: "facilities_hero", widget: "image" }
+          - { label: "Group Classes 사진", name: "facilities_group_classes", widget: "image" }
+          - { label: "24/7 Access 사진", name: "facilities_247_access", widget: "image" }
+          - { label: "Cardio Zone 사진", name: "facilities_cardio", widget: "image" }
+          - { label: "Boxing & Functional 사진", name: "facilities_boxing", widget: "image" }
+          - { label: "Personal Training 사진", name: "facilities_pt", widget: "image" }
+          - { label: "Kids Zone 사진", name: "facilities_kids", widget: "image", required: false }
+          - { label: "Evolt 360 사진", name: "facilities_evolt", widget: "image", required: false }
+          - { label: "Strength Zone 사진", name: "facilities_strength", widget: "image" }
+          - { label: "Trainer 히어로 배경", name: "trainer_hero", widget: "image" }
+
+
   - name: "hero_slides"
     label: "🖼️ 메인 롤링 배너 / Hero Banner Slides"
     folder: "_data/slides"

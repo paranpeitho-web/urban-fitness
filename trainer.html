@@ -178,7 +178,7 @@
 </div>
 
 <div class="page-hero">
-  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=1600&q=80')"></div>
+  <div class="page-hero-bg" data-cms-img="trainer_hero" style="background-image:url('/images/47.webp')"></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content"><div class="container">
     <div class="ph-eyebrow">Urban Fit Tauranga</div>
@@ -318,7 +318,54 @@
   </div></div>
 </footer>
 <script>
-const CMS={join:'https://urbanfitnessnz.gymmasteronline.com/portal/signup',login:'https://urbanfitnessnz.gymmasteronline.com/portal/login'};
+const GITHUB_RAW_TR = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data';
+function parseYMLTR(text) {
+  const result = {}; const lines = text.split('\n');
+  let currentKey = null, currentList = null, currentObj = null, inList = false;
+  for (let line of lines) {
+    if (!line.trim() || line.trim().startsWith('#')) continue;
+    if (line.match(/^- /)) {
+      if (!currentList) currentList = [];
+      const val = line.replace(/^- /, '').trim();
+      if (val && !val.includes(':')) { currentList.push(val.replace(/^"|"$/g, '')); }
+      else { currentObj = {}; currentList.push(currentObj); if (val.includes(':')) { const [k, ...v] = val.split(':'); if (currentObj) currentObj[k.trim()] = v.join(':').trim().replace(/^"|"$/g, ''); } }
+      inList = true; continue;
+    }
+    if (inList && line.match(/^  [a-z]/)) { const [k, ...v] = line.trim().split(':'); const val = v.join(':').trim().replace(/^"|"$/g, ''); if (currentObj) currentObj[k.trim()] = val; continue; }
+    if (line.match(/^[a-z_]/)) {
+      inList = false; currentObj = null;
+      if (currentList && currentKey) { result[currentKey] = currentList; currentList = null; }
+      const colonIdx = line.indexOf(':'); if (colonIdx === -1) continue;
+      const k = line.substring(0, colonIdx).trim(); const v = line.substring(colonIdx + 1).trim().replace(/^"|"$/g, '');
+      if (v) { result[k] = v; } else { currentKey = k; result[k] = {}; } continue;
+    }
+    if (line.match(/^  [a-z]/)) { const [k, ...v] = line.trim().split(':'); const val = v.join(':').trim().replace(/^"|"$/g, ''); if (currentKey && typeof result[currentKey] === 'object' && !Array.isArray(result[currentKey])) { result[currentKey][k.trim()] = val; } }
+  }
+  if (currentList && currentKey) result[currentKey] = currentList;
+  return result;
+}
+async function applyImagesTR() {
+  try {
+    const res = await fetch(`${GITHUB_RAW_TR}/images.yml?t=${Date.now()}`);
+    if (!res.ok) return;
+    const data = parseYMLTR(await res.text());
+    if (!data) return;
+  document.querySelectorAll('[data-cms-img]').forEach(el => {
+    const key = el.dataset.cmsImg;
+    if (!key) return;
+    let val = data;
+    const parts = key.split('.');
+    for (const part of parts) {
+      if (val === undefined || val === null) break;
+      val = isNaN(part) ? val[part] : val[Number(part)];
+    }
+    if (!val) return;
+    if (el.tagName === 'IMG') { el.src = val; }
+    else { el.style.backgroundImage = `url('${val}')`; }
+  });
+}
+applyImagesTR();
+
 ['btn-join','mob-join'].forEach(id=>{const e=document.getElementById(id);if(e){e.href=CMS.join;e.target='_blank';e.rel='noopener';}});
 ['btn-login','mob-login','ft-login'].forEach(id=>{const e=document.getElementById(id);if(e){e.href=CMS.login;e.target='_blank';e.rel='noopener';}});
 const gnb=document.getElementById('gnb');

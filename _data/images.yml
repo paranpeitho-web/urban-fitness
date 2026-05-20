@@ -1,0 +1,35 @@
+# 히어로 롤링 배너 (index.html)
+hero_slide_1: /images/87.webp
+hero_slide_2: /images/22.webp
+hero_slide_3: /images/10.webp
+hero_slide_4: /images/70.webp
+
+# index 피처 카드
+index_feat_gym: /images/70.webp
+index_feat_classes: /images/25.webp
+index_feat_pt: /images/43.webp
+
+# about 페이지
+about_hero: /images/71.webp
+about_imgs_1: /images/66.webp
+about_imgs_2: /images/43.webp
+about_imgs_3: /images/57.webp
+about_gallery_1: /images/86.webp
+about_gallery_2: /images/22.webp
+about_gallery_3: /images/99.webp
+about_gallery_4: /images/10.webp
+about_gallery_5: /images/57.webp
+
+# facilities 페이지
+facilities_hero: /images/70.webp
+facilities_group_classes: /images/25.webp
+facilities_247_access: /images/71.webp
+facilities_cardio: /images/139.webp
+facilities_boxing: /images/9.webp
+facilities_pt: /images/66.webp
+facilities_kids: ""
+facilities_evolt: ""
+facilities_strength: /images/86.webp
+
+# trainer 페이지
+trainer_hero: /images/47.webp
