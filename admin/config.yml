@@ -256,5 +256,4 @@ collections:
           - label: "갤러리 사진 / Gallery Photos"
             name: "gallery"
             widget: "list"
-            hint: "✅ 권장 사이즈 Recommended — 800 x 600px | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB each | 압축 권장 Compress at tinypng.com"
-            field: { label: "사진 / Photo", name: "image", widget: "image" }
+            hint: "✅ 권장 사이즈 Recommended — 800 x 600px | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB each 
