@@ -90,6 +90,8 @@ collections:
     folder: "_data/slides"
     create: true
     slug: "{{slug}}"
+    extension: yml
+    format: yaml
     fields:
       - { label: "순서 / Order", name: "order", widget: "number", hint: "1부터 시작 / Start from 1" }
       - label: "배너 이미지 / Banner Image"
@@ -106,6 +108,8 @@ collections:
     folder: "_data/facilities"
     create: true
     slug: "{{slug}}"
+    extension: yml
+    format: yaml
     fields:
       - { label: "시설명 / Facility Name (English)", name: "name", widget: "string" }
       - { label: "순서 / Display Order", name: "order", widget: "number" }
@@ -208,6 +212,8 @@ collections:
     folder: "_data/reviews"
     create: true
     slug: "{{slug}}"
+    extension: yml
+    format: yaml
     fields:
       - { label: "후기 내용 / Review Text (English)", name: "text", widget: "text" }
       - { label: "작성자 이름 / Member Name", name: "author", widget: "string", hint: "예 e.g. Sarah M." }
@@ -250,5 +256,4 @@ collections:
           - label: "갤러리 사진 / Gallery Photos"
             name: "gallery"
             widget: "list"
-            hint: "✅ 권장 사이즈 Recommended — 800 x 600px | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB each | 압축 권장 Compress at tinypng.com"
-            field: { label: "사진 / Photo", name: "image", widget: "image" }
+            hint: "✅ 권장 사이즈 Recommended — 800 x 600px | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB each 
