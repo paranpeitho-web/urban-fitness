@@ -759,21 +759,54 @@ async function applyMemberships() {
 
 // ── 회원 후기 적용 ──
 async function applyImages() {
+  // images.yml — 히어로 배너 제외 나머지 이미지
   const data = await fetchYML('images.yml');
-  if (!data) return;
-  document.querySelectorAll('[data-cms-img]').forEach(el => {
-    const key = el.dataset.cmsImg;
-    if (!key) return;
-    const val = data[key];
-    if (!val) return;
-    if (el.tagName === 'IMG') { el.src = val; }
-    else { el.style.backgroundImage = `url('${val}')`; }
-  });
+  if (data) {
+    document.querySelectorAll('[data-cms-img]').forEach(el => {
+      const key = el.dataset.cmsImg;
+      if (!key || key.startsWith('hero_slide')) return;
+      const val = data[key];
+      if (!val) return;
+      if (el.tagName === 'IMG') { el.src = val; }
+      else { el.style.backgroundImage = `url('${val}')`; }
+    });
+  }
+
+  // _data/slides/*.yml — 히어로 롤링 배너
+  const SLIDES_RAW = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/slides';
+  const SLIDE_FILES = ['slide-1.yml','slide-2.yml','slide-3.yml','slide-4.yml'];
+  try {
+    const slideData = (await Promise.all(
+      SLIDE_FILES.map(f => fetch(`${SLIDES_RAW}/${f}?t=${Date.now()}`).then(r => r.ok ? r.text() : null).catch(() => null))
+    ))
+    .map(t => t ? jsyaml.load(t) : null)
+    .filter(d => d && d.active !== false)
+    .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+    if (slideData.length) {
+      const slideEls = document.querySelectorAll('.h-slide');
+      slideEls.forEach((el, i) => {
+        if (slideData[i] && slideData[i].image) {
+          el.style.backgroundImage = `url('${slideData[i].image}')`;
+        }
+      });
+    }
+  } catch(e) { console.warn('slides load error', e); }
 }
 
 async function applyReviews() {
-  const data = await fetchYML('reviews.yml');
-  if (!data || !Array.isArray(data)) return;
+  // _data/reviews/ 폴더에서 개별 yml 파일 읽기
+  const REVIEWS_RAW = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/reviews';
+  const REVIEW_FILES = ['addison-h.yml','shikahn-t.yml','neil-f.yml','wayne-r.yml','kylie-m.yml'];
+  let data;
+  try {
+    data = (await Promise.all(
+      REVIEW_FILES.map(f => fetch(`${REVIEWS_RAW}/${f}?t=${Date.now()}`).then(r => r.ok ? r.text() : null).catch(() => null))
+    ))
+    .map(t => t ? jsyaml.load(t) : null)
+    .filter(Boolean);
+  } catch(e) { return; }
+  if (!data || !Array.isArray(data) || !data.length) return;
 
   const active = data.filter(r => r.active !== false).sort((a, b) => (a.order || 0) - (b.order || 0));
   if (!active.length) return;
