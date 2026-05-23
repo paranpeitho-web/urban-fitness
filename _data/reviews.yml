@@ -1,19 +1,24 @@
-- text: "Urban Fit is the best gym I have ever been a member of. The atmosphere, the equipment, the classes and the staff are all top notch."
-  author: "Google Review"
+- text: "Awesome staff team, really friendly and encouraging. Free fitness classes that are fun. Amazing people in the gym who are kind and supportive, overall a really amazing environment nobody's judging you."
+  author: "Addison H."
   order: 1
   active: true
 
-- text: "Amazing gym! Great range of equipment and classes. The staff are super friendly and welcoming. Highly recommend to anyone looking for a gym in Tauranga."
-  author: "Google Review"
+- text: "Urban Fit is an amazing gym loving the new gear the quality of the equipment is next level, the classes are mean synergy, pump, grit and combat just to name my faves. The staff are really welcoming and lovely to chat to. I recommend Urban Fit Tauranga."
+  author: "Shikahn T."
   order: 2
   active: true
 
-- text: "Love this gym! Great facilities, awesome instructors and a really supportive community. I look forward to every session."
-  author: "Google Review"
+- text: "Highly Recommended! Worth It. Urban Fit is an awesome gym with a great atmosphere and everything you need to train properly. The equipment is well maintained, the space is clean, and it never feels intimidating — whether you're a beginner or someone who trains seriously."
+  author: "Neil F."
   order: 3
   active: true
 
-- text: "Best gym in Tauranga! The facilities are fantastic and the classes are so much fun. The team really make you feel welcome from day one."
-  author: "Google Review"
+- text: "New addition to the main shopping area of Greerton. Recently opened and extremely well kitted out. Friendly, well trained onsite staff. Key fob access. If you are considering starting a fitness program, this gym is well worth a visit."
+  author: "Wayne R."
   order: 4
+  active: true
+
+- text: "The best gym I have been to (and have been to a few over the years). The staff are super friendly which makes a huge difference especially at the start. Only been back since January but because of the people feels like forever. Awesome classes and great equipment too."
+  author: "Kylie M."
+  order: 5
   active: true

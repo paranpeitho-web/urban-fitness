@@ -177,6 +177,7 @@
     @media(max-width:768px){.classes-intro{grid-template-columns:1fr;gap:40px}.cls-types{grid-template-columns:1fr}}
   </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 </head>
 <body data-page="classes">
 <div class="cursor-dot" id="cDot"></div>
@@ -446,7 +447,7 @@ async function fetchYML(filename) {
     const res = await fetch(`${GITHUB_RAW}/${filename}?t=${Date.now()}`);
     if (!res.ok) return null;
     const text = await res.text();
-    return parseYML(text);
+    return jsyaml.load(text);
   } catch (e) {
     console.warn(`CMS: ${filename} 로드 실패`, e);
     return null;

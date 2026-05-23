@@ -82,6 +82,7 @@
     .crew-card:hover{transform:translateY(-4px)}
     .crew-img{position:relative;height:360px;overflow:hidden}
     #management-grid .crew-img{height:440px}
+    #management-grid{grid-template-columns:repeat(2,1fr)}
     .crew-img img{width:100%;height:100%;object-fit:cover;object-position:center 15%;filter:grayscale(15%) brightness(.9);transition:transform .6s,filter .4s}
     .crew-card:hover .crew-img img{transform:scale(1.04);filter:grayscale(0%) brightness(1)}
     .crew-bar{position:absolute;top:0;left:0;right:0;height:3px;background:var(--c-logo-blue);transform:scaleX(0);transform-origin:left;transition:transform .5s}
@@ -135,10 +136,11 @@
     .ft-leg a:hover{color:#6B9FE8}
     @media(max-width:1200px){.crew-grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:1024px){.ft-grid{grid-template-columns:1fr 1fr;gap:40px}.crew-intro{grid-template-columns:1fr;gap:40px}}
-    @media(max-width:768px){:root{--nav-h:60px}.container{padding:0 20px}.section{padding:72px 0}.gnb-links,.gnb-cta{display:none}.hbg{display:flex}.mob-menu{display:block}.page-hero{height:44vh}.page-hero-content{padding:0 20px 48px}.ph-title{font-size:clamp(44px,10vw,72px)}.crew-grid{grid-template-columns:repeat(2,1fr)}.crew-img{height:260px}.ft-grid{grid-template-columns:1fr}.cta-inner{flex-direction:column;align-items:flex-start}.cursor-dot,.cursor-ring{display:none}body,a,button{cursor:auto}}
+    @media(max-width:768px){:root{--nav-h:60px}.container{padding:0 20px}.section{padding:72px 0}.gnb-links,.gnb-cta{display:none}.hbg{display:flex}.mob-menu{display:block}.page-hero{height:44vh}.page-hero-content{padding:0 20px 48px}.ph-title{font-size:clamp(44px,10vw,72px)}.crew-grid{grid-template-columns:repeat(2,1fr)}#management-grid{grid-template-columns:1fr}.crew-img{height:260px}#management-grid .crew-img{height:260px}.ft-grid{grid-template-columns:1fr}.cta-inner{flex-direction:column;align-items:flex-start}.cursor-dot,.cursor-ring{display:none}body,a,button{cursor:auto}}
     @media(max-width:480px){.crew-grid{grid-template-columns:1fr}}
   </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 </head>
 <body data-page="crew">
 <div class="cursor-dot" id="cDot"></div>
@@ -206,124 +208,12 @@
 
     <div class="eyebrow reveal">Management</div>
     <h2 class="sec-title reveal d1" style="font-size:clamp(32px,4vw,52px);margin-bottom:32px">OWNERSHIP &amp;<br/><em>MANAGEMENT.</em></h2>
-    <div class="crew-grid" style="grid-template-columns:repeat(2,1fr);margin-bottom:2px" id="management-grid">
-      <div class="crew-card highlight reveal">
-        <div class="crew-img">
-          <img src="images/1.png" alt="Martin Choi" onerror="this.src='https://images.unsplash.com/photo-1567013127542-490d757e6349?w=500&q=80'"/>
-          <div class="crew-bar"></div>
-          <div class="crew-role-badge">Owner</div>
-        </div>
-        <div class="crew-info">
-          <div class="crew-name">Martin Choi</div>
-          <div class="crew-role">Owner / Manager</div>
-        </div>
-      </div>
-      <div class="crew-card reveal d1">
-        <div class="crew-img">
-          <img src="images/2.png" alt="Nicole Wecki" onerror="this.src='https://images.unsplash.com/photo-1594381898411-846e7d193883?w=500&q=80'"/>
-          <div class="crew-bar"></div>
-          <div class="crew-role-badge">Manager</div>
-        </div>
-        <div class="crew-info">
-          <div class="crew-name">Nicole Wecki</div>
-          <div class="crew-role">Manager</div>
-        </div>
-      </div>
-    </div>
+    <div class="crew-grid" style="margin-bottom:2px" id="management-grid"></div>
 
     <div style="margin-top:80px">
       <div class="eyebrow reveal">Instructors & Customer Service</div>
       <h2 class="sec-title reveal d1" style="font-size:clamp(32px,4vw,52px);margin-bottom:32px">OUR <em>INSTRUCTORS.</em></h2>
-      <div class="crew-grid">
-        <div class="crew-card reveal">
-          <div class="crew-img">
-            <img src="images/4.png" alt="Maddy Harvie" onerror="this.src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80'"/>
-            <div class="crew-bar"></div>
-            <div class="crew-role-badge">Customer Service</div>
-          </div>
-          <div class="crew-info">
-            <div class="crew-name">Maddy Harvie</div>
-            <div class="crew-role">Customer Service</div>
-          </div>
-        </div>
-        <div class="crew-card reveal d1">
-          <div class="crew-img">
-            <img src="images/7.png" alt="Kiri Hall" onerror="this.src='https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=500&q=80'"/>
-            <div class="crew-bar"></div>
-            <div class="crew-role-badge">Instructor</div>
-          </div>
-          <div class="crew-info">
-            <div class="crew-name">Kiri Hall</div>
-            <div class="crew-role">Instructor</div>
-          </div>
-        </div>
-        <div class="crew-card reveal d2">
-          <div class="crew-img">
-            <img src="images/8.png" alt="Shelley Timbers" onerror="this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=80'"/>
-            <div class="crew-bar"></div>
-            <div class="crew-role-badge">Instructor</div>
-          </div>
-          <div class="crew-info">
-            <div class="crew-name">Shelley Timbers</div>
-            <div class="crew-role">Instructor</div>
-          </div>
-        </div>
-        <div class="crew-card reveal d3">
-          <div class="crew-img">
-            <img src="images/9.png" alt="Sharleen Abraham" onerror="this.src='https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=500&q=80'"/>
-            <div class="crew-bar"></div>
-            <div class="crew-role-badge">Instructor</div>
-          </div>
-          <div class="crew-info">
-            <div class="crew-name">Sharleen Abraham</div>
-            <div class="crew-role">Instructor</div>
-          </div>
-        </div>
-        <div class="crew-card reveal">
-          <div class="crew-img">
-            <img src="images/10.png" alt="Matt Genefaas" onerror="this.src='https://images.unsplash.com/photo-1576678927484-cc907957088c?w=500&q=80'"/>
-            <div class="crew-bar"></div>
-            <div class="crew-role-badge">Instructor</div>
-          </div>
-          <div class="crew-info">
-            <div class="crew-name">Matt Genefaas</div>
-            <div class="crew-role">Instructor</div>
-          </div>
-        </div>
-        <div class="crew-card reveal d1">
-          <div class="crew-img">
-            <img src="images/11.png" alt="Tania Hanna" onerror="this.src='https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=500&q=80'"/>
-            <div class="crew-bar"></div>
-            <div class="crew-role-badge">Instructor</div>
-          </div>
-          <div class="crew-info">
-            <div class="crew-name">Tania Hanna</div>
-            <div class="crew-role">Instructor</div>
-          </div>
-        </div>
-        <div class="crew-card reveal d2">
-          <div class="crew-img">
-            <img src="images/12.png" alt="Jenagh Jenner" onerror="this.src='https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=500&q=80'"/>
-            <div class="crew-bar"></div>
-            <div class="crew-role-badge">Instructor</div>
-          </div>
-          <div class="crew-info">
-            <div class="crew-name">Jenagh Jenner</div>
-            <div class="crew-role">Instructor</div>
-          </div>
-        </div>
-        <div class="crew-card reveal d3">
-          <div class="crew-img">
-            <img src="images/13.png" alt="Tamia Dinsdale" onerror="this.src='https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=500&q=80'"/>
-            <div class="crew-bar"></div>
-            <div class="crew-role-badge">Instructor</div>
-          </div>
-          <div class="crew-info">
-            <div class="crew-name">Tamia Dinsdale</div>
-            <div class="crew-role">Instructor</div>
-          </div>
-        </div>
-      </div>
+      <div class="crew-grid" id="instructors-grid"></div>
     </div>
   </div>
 </section>
@@ -386,12 +276,96 @@ const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');
 let open=false;
 hbg.addEventListener('click',()=>{open=!open;hbg.classList.toggle('open',open);mob.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';});
 mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{open=false;hbg.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';}));
+document.addEventListener('click',e=>{if(open&&!mob.contains(e.target)&&!hbg.contains(e.target)){open=false;hbg.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';}});
 const io=new IntersectionObserver(entries=>entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*70);io.unobserve(e.target);}}),{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 document.getElementById('yr').textContent=new Date().getFullYear();
 const cDot=document.getElementById('cDot'),cRing=document.getElementById('cRing');
 let mx=0,my=0,rx=0,ry=0;
 if(cDot){document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cDot.style.left=mx+'px';cDot.style.top=my+'px';},{passive:true});(function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cRing.style.left=rx+'px';cRing.style.top=ry+'px';requestAnimationFrame(a);})();document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cur-hov'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cur-hov'));});}
+
+// ── Crew 동적 렌더링 ──
+const GITHUB_RAW_CREW = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/crew';
+const CREW_FILES = [
+  'martin-choi.yml','nicole-wecki.yml','maddy-harvie.yml','kiri-hall.yml',
+  'shelley-timbers.yml','sharleen-abraham.yml','matt-genefaas.yml',
+  'tania-hanna.yml','jenagh-jenner.yml','tamia-dinsdale.yml'
+];
+
+function crewCardHTML(c, idx) {
+  const delay = ['','d1','d2','d3'][idx % 4];
+  const highlight = c.highlight ? ' highlight' : '';
+  return `<div class="crew-card${highlight} reveal ${delay}">
+    <div class="crew-img">
+      <img src="${c.image}" alt="${c.name}" onerror="this.style.background='#1E3A5F'"/>
+      <div class="crew-bar"></div>
+      <div class="crew-role-badge">${c.badge || c.role}</div>
+    </div>
+    <div class="crew-info">
+      <div class="crew-name">${c.name}</div>
+      <div class="crew-role">${c.role}</div>
+    </div>
+  </div>`;
+}
+
+async function loadCrew() {
+  try {
+    const results = await Promise.all(
+      CREW_FILES.map(f => fetch(`${GITHUB_RAW_CREW}/${f}?t=${Date.now()}`)
+        .then(r => r.ok ? r.text() : null)
+        .then(t => t ? jsyaml.load(t) : null)
+        .catch(() => null))
+    );
+    const crew = results.filter(c => c && c.active !== false)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+    const management = crew.filter(c => c.order <= 2);
+    const instructors = crew.filter(c => c.order > 2);
+
+    const mgGrid = document.getElementById('management-grid');
+    const inGrid = document.getElementById('instructors-grid');
+
+    if (mgGrid) mgGrid.innerHTML = management.map((c, i) => crewCardHTML(c, i)).join('');
+    if (inGrid) inGrid.innerHTML = instructors.map((c, i) => crewCardHTML(c, i)).join('');
+
+    // IntersectionObserver 재적용
+    document.querySelectorAll('.crew-card.reveal').forEach(el => io.observe(el));
+  } catch(e) { console.warn('Crew load failed', e); }
+}
+
+// settings 로드 (footer 운영시간 등)
+async function loadSettings() {
+  try {
+    const res = await fetch(`https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/settings.yml?t=${Date.now()}`);
+    if (!res.ok) return;
+    const data = jsyaml.load(await res.text());
+    if (!data) return;
+    if (data.hours) {
+      document.querySelectorAll('[data-cms="hours-mon-thu"]').forEach(el => el.textContent = data.hours.mon_thu || '');
+      document.querySelectorAll('[data-cms="hours-fri"]').forEach(el => el.textContent = data.hours.friday || '');
+      document.querySelectorAll('[data-cms="hours-sat"]').forEach(el => el.textContent = data.hours.saturday || '');
+      document.querySelectorAll('[data-cms="hours-sun"]').forEach(el => el.textContent = data.hours.sunday || '');
+    }
+    if (data.contact) {
+      document.querySelectorAll('[data-cms="email"]').forEach(el => el.textContent = data.contact.email || '');
+    }
+    const join = data.url_join || CMS.join;
+    const login = data.url_login || CMS.login;
+    ['btn-join','mob-join'].forEach(id => { const e = document.getElementById(id); if(e){e.href=join;e.target='_blank';e.rel='noopener';} });
+    ['btn-login','mob-login','ft-login'].forEach(id => { const e = document.getElementById(id); if(e){e.href=login;e.target='_blank';e.rel='noopener';} });
+    const sns = data.sns || {};
+    const snsMap = {instagram:'ft-sns-instagram',facebook:'ft-sns-facebook',tiktok:'ft-sns-tiktok',youtube:'ft-sns-youtube'};
+    Object.entries(snsMap).forEach(([key, id]) => {
+      const url = sns[key]; const el = document.getElementById(id);
+      if (el) { if (url) { el.href = url; el.style.display = ''; } else { el.style.display = 'none'; } }
+    });
+  } catch(e) {}
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadSettings();
+  loadCrew();
+});
 </script>
 </body>
 </html>

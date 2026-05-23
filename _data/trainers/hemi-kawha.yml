@@ -1,0 +1,12 @@
+name: "Hemi Kawha"
+role: "Personal Trainer / Customer Service / Group Fitness Instructor"
+image: "/images/Hemi.png"
+bio: ""
+specialties:
+  - "Hypertrophy"
+  - "Weight Loss"
+  - "General Fitness"
+  - "Boxing & Kickboxing"
+certifications: ""
+order: 3
+active: true

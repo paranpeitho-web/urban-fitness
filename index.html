@@ -190,7 +190,7 @@
     .h-rws{margin-top:6px}
     .h-rw{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:14px}
     .h-rw .day{color:var(--c-gray-4)}
-    .loc-map{background:var(--c-gray-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--c-lime);opacity:.4;font-size:11px;letter-spacing:3px;text-transform:uppercase;min-height:400px}
+    .loc-map{background:var(--c-gray-2);overflow:hidden;min-height:400px}
     .loc-map svg{width:32px;height:32px;stroke:currentColor;fill:none;stroke-width:1.5}
 
     /* FOOTER */
@@ -269,6 +269,7 @@
     }
   </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 </head>
 <body data-page="index">
 <!-- GNB -->
@@ -440,26 +441,7 @@
   <!-- CREW -->
   <div class="eyebrow reveal">The People Behind Urban Fit</div>
   <h2 class="sec-title reveal d1">MEET THE <em>CREW.</em></h2>
-  <div class="tr-grid" style="margin-bottom:16px">
-    <div class="tr-card reveal">
-      <div class="tr-img"><div class="tr-bar"></div>
-        <img src="images/1.png" alt="Martin Choi" onerror="this.src='https://images.unsplash.com/photo-1567013127542-490d757e6349?w=600&q=80'"/>
-      </div>
-      <div class="tr-info"><div class="tr-nm">Martin Choi</div><div class="tr-role">Owner / Manager</div></div>
-    </div>
-    <div class="tr-card reveal d1">
-      <div class="tr-img"><div class="tr-bar"></div>
-        <img src="images/2.png" alt="Nicole Wecki" onerror="this.src='https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&q=80'"/>
-      </div>
-      <div class="tr-info"><div class="tr-nm">Nicole Wecki</div><div class="tr-role">Manager</div></div>
-    </div>
-    <div class="tr-card reveal d2">
-      <div class="tr-img"><div class="tr-bar"></div>
-        <img src="images/7.png" alt="Kiri Hall" onerror="this.src='https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80'"/>
-      </div>
-      <div class="tr-info"><div class="tr-nm">Kiri Hall</div><div class="tr-role">Instructor</div></div>
-    </div>
-  </div>
+  <div class="tr-grid" style="margin-bottom:16px" id="index-crew-grid"></div>
   <div style="text-align:center;margin-top:32px">
     <a href="crew.html" class="btn btn-outline reveal">Meet The Full Crew →</a>
   </div>
@@ -468,26 +450,7 @@
   <div style="margin-top:80px">
     <div class="eyebrow reveal">Expert Coaching</div>
     <h2 class="sec-title reveal d1">PERSONAL <em>TRAINERS.</em></h2>
-    <div class="tr-grid">
-      <div class="tr-card reveal">
-        <div class="tr-img"><div class="tr-bar"></div>
-          <img src="images/Casey.png" alt="Casey Hennesy" onerror="this.src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80'"/>
-        </div>
-        <div class="tr-info"><div class="tr-nm">Casey Hennesy</div><div class="tr-role">Personal Trainer</div></div>
-      </div>
-      <div class="tr-card reveal d1">
-        <div class="tr-img"><div class="tr-bar"></div>
-          <img src="images/Jaimee.png" alt="Jaimee Strevens" onerror="this.src='https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&q=80'"/>
-        </div>
-        <div class="tr-info"><div class="tr-nm">Jaimee Strevens</div><div class="tr-role">Personal Trainer</div></div>
-      </div>
-      <div class="tr-card reveal d2">
-        <div class="tr-img"><div class="tr-bar"></div>
-          <img src="images/Hemi.png" alt="Hemi Kawha" onerror="this.src='https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=600&q=80'"/>
-        </div>
-        <div class="tr-info"><div class="tr-nm">Hemi Kawha</div><div class="tr-role">Personal Trainer</div></div>
-      </div>
-    </div>
+    <div class="tr-grid" id="index-trainer-grid"></div>
     <div style="text-align:center;margin-top:32px">
       <a href="trainer.html" class="btn btn-outline reveal">Meet All Trainers →</a>
     </div>
@@ -508,8 +471,7 @@
     <div style="margin-top:32px"><a href="location.html" class="btn btn-outline">Get Directions →</a></div>
   </div>
   <div class="loc-map reveal d1">
-    <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-    Google Maps Embed
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3155.6601655647755!2d176.13235897564272!3d-37.72765392912113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d6dda61d0868cb7%3A0xa01a5c102bcc0378!2s156%20Chadwick%20Road%2C%20Greerton%2C%20Tauranga%203112!5e0!3m2!1sko!2snz!4v1777195421231!5m2!1sko!2snz" width="100%" height="100%" style="border:0;display:block;min-height:400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </section>
 
@@ -701,7 +663,7 @@ async function fetchYML(filename) {
     const res = await fetch(`${GITHUB_RAW}/${filename}?t=${Date.now()}`);
     if (!res.ok) return null;
     const text = await res.text();
-    return parseYML(text);
+    return jsyaml.load(text);
   } catch (e) {
     console.warn(`CMS: ${filename} 로드 실패`, e);
     return null;
@@ -849,12 +811,56 @@ async function applyAbout() {
 }
 
 // ── 초기화 ──
+async function applyIndexCrewTrainer() {
+  const CREW_RAW = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/crew';
+  const TR_RAW = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/trainers';
+  const CREW_FILES = ['martin-choi.yml','nicole-wecki.yml','maddy-harvie.yml','kiri-hall.yml','shelley-timbers.yml','sharleen-abraham.yml','matt-genefaas.yml','tania-hanna.yml','jenagh-jenner.yml','tamia-dinsdale.yml'];
+  const TR_FILES = ['casey-hennesy.yml','jaimee-strevens.yml','hemi-kawha.yml'];
+
+  const delays = ['','d1','d2'];
+
+  function previewCard(name, role, image, idx) {
+    return `<div class="tr-card reveal ${delays[idx]||''}">
+      <div class="tr-img"><div class="tr-bar"></div>
+        <img src="${image}" alt="${name}" onerror="this.style.background='#1E3A5F'"/>
+      </div>
+      <div class="tr-info"><div class="tr-nm">${name}</div><div class="tr-role">${role}</div></div>
+    </div>`;
+  }
+
+  try {
+    const crewResults = await Promise.all(
+      CREW_FILES.map(f => fetch(`${CREW_RAW}/${f}?t=${Date.now()}`)
+        .then(r => r.ok ? r.text() : null).then(t => t ? jsyaml.load(t) : null).catch(() => null))
+    );
+    const crew = crewResults.filter(c => c && c.active !== false).sort((a,b) => (a.order||0)-(b.order||0)).slice(0,3);
+    const crewGrid = document.getElementById('index-crew-grid');
+    if (crewGrid) crewGrid.innerHTML = crew.map((c,i) => previewCard(c.name, c.role, c.image, i)).join('');
+  } catch(e) {}
+
+  try {
+    const trResults = await Promise.all(
+      TR_FILES.map(f => fetch(`${TR_RAW}/${f}?t=${Date.now()}`)
+        .then(r => r.ok ? r.text() : null).then(t => t ? jsyaml.load(t) : null).catch(() => null))
+    );
+    const trainers = trResults.filter(t => t && t.active !== false).sort((a,b) => (a.order||0)-(b.order||0)).slice(0,3);
+    const trGrid = document.getElementById('index-trainer-grid');
+    if (trGrid) trGrid.innerHTML = trainers.map((t,i) => previewCard(t.name, t.role, t.image, i)).join('');
+  } catch(e) {}
+
+  document.querySelectorAll('#index-crew-grid .reveal, #index-trainer-grid .reveal').forEach(el => {
+    const io2 = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');io2.unobserve(e.target);} }), {threshold:.08});
+    io2.observe(el);
+  });
+}
+
 async function initCMS() {
   const page = document.body.dataset.page || '';
 
   // 모든 페이지 공통
   await applySettings();
   await applyImages();
+  await applyIndexCrewTrainer();
 
   // 페이지별 선택 적용
   if (page === 'index' || page === '') {

@@ -1,0 +1,13 @@
+name: "Casey Hennesy"
+role: "Personal Trainer"
+image: "/images/Casey.png"
+bio: ""
+specialties:
+  - "Strength Training"
+  - "Hypertrophy"
+  - "Weight Loss"
+  - "Technique Breakdown"
+  - "Online Coaching & Programming"
+certifications: ""
+order: 1
+active: true

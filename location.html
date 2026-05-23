@@ -183,6 +183,7 @@
     @media(max-width:768px){.loc-layout{grid-template-columns:1fr}.loc-details{padding:48px 24px}.contact-layout{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.f-group.full{grid-column:span 1}.loc-map-area{min-height:300px}}
   </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 </head>
 <body data-page="location">
 <div class="cursor-dot" id="cDot"></div>
@@ -451,7 +452,7 @@ async function fetchYML(filename) {
     const res = await fetch(`${GITHUB_RAW}/${filename}?t=${Date.now()}`);
     if (!res.ok) return null;
     const text = await res.text();
-    return parseYML(text);
+    return jsyaml.load(text);
   } catch (e) {
     console.warn(`CMS: ${filename} 로드 실패`, e);
     return null;

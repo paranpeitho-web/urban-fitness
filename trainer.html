@@ -138,6 +138,7 @@
     @media(max-width:768px){:root{--nav-h:60px}.container{padding:0 20px}.section{padding:72px 0}.gnb-links,.gnb-cta{display:none}.hbg{display:flex}.mob-menu{display:block}.page-hero{height:44vh}.page-hero-content{padding:0 20px 48px}.ph-title{font-size:clamp(44px,10vw,72px)}.tr-grid{grid-template-columns:1fr}.tr-img{height:360px}.ft-grid{grid-template-columns:1fr}.cta-inner{flex-direction:column;align-items:flex-start}.cursor-dot,.cursor-ring{display:none}body,a,button{cursor:auto}}
   </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 </head>
 <body data-page="trainer">
 <div class="cursor-dot" id="cDot"></div>
@@ -193,79 +194,7 @@
     <p class="sec-body reveal d2" style="max-width:680px">Our personal trainers are certified experts, each specialising in different areas of fitness. Whether you're after strength, fat loss, mobility, or athletic performance — we have the right trainer for your goals.</p>
     <p class="sec-body reveal d3" style="max-width:680px;margin-top:16px">Book a session today and start your personalised training journey at Urban Fit Tauranga.</p>
 
-    <div class="tr-grid" style="margin-top:64px">
-
-      <!-- Casey -->
-      <div class="tr-card reveal">
-        <div class="tr-img">
-          <img src="images/Casey.png" alt="Casey Hennesy" onerror="this.src='https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&q=80'"/>
-          <div class="tr-lime-bar"></div>
-          <div class="tr-badge">Personal Trainer</div>
-        </div>
-        <div class="tr-body">
-          <div class="tr-name">Casey<br/>Hennesy</div>
-          <div class="tr-role">Personal Trainer</div>
-          <div class="tr-divider"></div>
-          <div class="tr-specs">
-            <div class="tr-spec">Strength Training</div>
-            <div class="tr-spec">Hypertrophy</div>
-            <div class="tr-spec">Weight Loss</div>
-            <div class="tr-spec">Technique Breakdown</div>
-            <div class="tr-spec">Online Coaching & Programming</div>
-          </div>
-          <a href="mailto:support@urbanfitnessnz.com" class="tr-contact">Enquire →</a>
-        </div>
-      </div>
-
-      <!-- Jaimee -->
-      <div class="tr-card reveal d1">
-        <div class="tr-img">
-          <img src="images/Jaimee.png" alt="Jaimee Strevens" onerror="this.src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80'"/>
-          <div class="tr-lime-bar"></div>
-          <div class="tr-badge">Personal Trainer</div>
-        </div>
-        <div class="tr-body">
-          <div class="tr-name">Jaimee<br/>Strevens</div>
-          <div class="tr-role">Personal Trainer</div>
-          <div class="tr-divider"></div>
-          <div class="tr-specs">
-            <div class="tr-spec">Strength & Hypertrophy Training</div>
-            <div class="tr-spec">Pilates — Core Strength, Stability & Mobility</div>
-            <div class="tr-spec">Online Nutrition & Lifestyle Coaching</div>
-            <div class="tr-spec">App Based Custom Training Programmes</div>
-            <div class="tr-spec">Accountability & Support</div>
-          </div>
-          <a href="mailto:support@urbanfitnessnz.com" class="tr-contact">Enquire →</a>
-        </div>
-      </div>
-
-      <!-- Hemi -->
-      <div class="tr-card reveal d2">
-        <div class="tr-img">
-          <img src="images/Hemi.png" alt="Hemi Kawha" onerror="this.src='https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80'"/>
-          <div class="tr-lime-bar"></div>
-          <div class="tr-badge">Personal Trainer</div>
-        </div>
-        <div class="tr-body">
-          <div class="tr-name">Hemi<br/>Kawha</div>
-          <div class="tr-role">Personal Trainer</div>
-          <div class="tr-dual-badge">
-            <span class="tr-dual-tag">PT</span>
-            <span class="tr-dual-tag">Customer Service</span>
-            <span class="tr-dual-tag">Group Fitness</span>
-          </div>
-          <div class="tr-divider"></div>
-          <div class="tr-specs">
-            <div class="tr-spec">Hypertrophy</div>
-            <div class="tr-spec">Weight Loss</div>
-            <div class="tr-spec">General Fitness & Health</div>
-            <div class="tr-spec">Boxing / Kickboxing</div>
-          </div>
-          <a href="mailto:support@urbanfitnessnz.com" class="tr-contact">Enquire →</a>
-        </div>
-      </div>
-
-    </div>
+    <div class="tr-grid" style="margin-top:64px" id="trainer-grid"></div>
   </div>
 </section>
 
@@ -364,9 +293,51 @@ async function applyImagesTR() {
     else { el.style.backgroundImage = `url('${val}')`; }
   });
 }
-applyImagesTR();
 
-['btn-join','mob-join'].forEach(id=>{const e=document.getElementById(id);if(e){e.href=CMS.join;e.target='_blank';e.rel='noopener';}});
+const GITHUB_RAW_TR2 = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/trainers';
+const TRAINER_FILES = ['casey-hennesy.yml','jaimee-strevens.yml','hemi-kawha.yml'];
+
+function trainerCardHTML(t, idx) {
+  const delays = ['','d1','d2'];
+  const nameParts = t.name.split(' ');
+  const nameHTML = nameParts.length >= 2 ? `${nameParts.slice(0,-1).join(' ')}<br/>${nameParts[nameParts.length-1]}` : t.name;
+  const specs = Array.isArray(t.specialties) ? t.specialties.map(s => `<div class="tr-spec">${s}</div>`).join('') : '';
+  return `<div class="tr-card reveal ${delays[idx] || ''}">
+    <div class="tr-img">
+      <img src="${t.image}" alt="${t.name}" onerror="this.style.background='#1E3A5F'"/>
+      <div class="tr-lime-bar"></div>
+      <div class="tr-badge">Personal Trainer</div>
+    </div>
+    <div class="tr-body">
+      <div class="tr-name">${nameHTML}</div>
+      <div class="tr-role">${t.role}</div>
+      <div class="tr-divider"></div>
+      <div class="tr-specs">${specs}</div>
+      <a href="mailto:support@urbanfitnessnz.com" class="tr-contact">Enquire →</a>
+    </div>
+  </div>`;
+}
+
+async function loadTrainers() {
+  try {
+    const results = await Promise.all(
+      TRAINER_FILES.map(f => fetch(`${GITHUB_RAW_TR2}/${f}?t=${Date.now()}`)
+        .then(r => r.ok ? r.text() : null)
+        .then(t => t ? jsyaml.load(t) : null)
+        .catch(() => null))
+    );
+    const trainers = results.filter(t => t && t.active !== false)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+    const grid = document.getElementById('trainer-grid');
+    if (grid) grid.innerHTML = trainers.map((t, i) => trainerCardHTML(t, i)).join('');
+    document.querySelectorAll('.tr-card.reveal').forEach(el => io.observe(el));
+  } catch(e) { console.warn('Trainer load failed', e); }
+}
+
+applyImagesTR();
+loadTrainers();
+
+const CMS={join:'https://urbanfitnessnz.gymmasteronline.com/portal/signup',login:'https://urbanfitnessnz.gymmasteronline.com/portal/login'};
 ['btn-login','mob-login','ft-login'].forEach(id=>{const e=document.getElementById(id);if(e){e.href=CMS.login;e.target='_blank';e.rel='noopener';}});
 const gnb=document.getElementById('gnb');
 window.addEventListener('scroll',()=>gnb.classList.toggle('scrolled',scrollY>60),{passive:true});

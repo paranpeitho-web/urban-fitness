@@ -1,0 +1,7 @@
+name: "Kiri Hall"
+role: "Instructor"
+image: "/images/7.png"
+badge: "Instructor"
+highlight: false
+order: 4
+active: true
