@@ -125,6 +125,8 @@ collections:
     folder: "_data/crew"
     create: true
     slug: "{{slug}}"
+    extension: yml
+    format: yaml
     fields:
       - { label: "이름 / Full Name", name: "name", widget: "string" }
       - { label: "직책 / Role", name: "role", widget: "string", hint: "예 e.g. Manager / Instructor / Customer Service" }
@@ -143,6 +145,8 @@ collections:
     folder: "_data/trainers"
     create: true
     slug: "{{slug}}"
+    extension: yml
+    format: yaml
     fields:
       - { label: "이름 / Full Name", name: "name", widget: "string" }
       - { label: "직책 / Role", name: "role", widget: "string", default: "Personal Trainer", hint: "예 e.g. Personal Trainer" }
