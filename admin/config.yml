@@ -132,6 +132,8 @@ collections:
         name: "image"
         widget: "image"
         hint: "✅ 권장 사이즈 Recommended — 500 x 600px (세로형 Portrait) | 파일 형식 Format — JPG 또는 or PNG | 최대 용량 Max — 2MB | 정면 얼굴 사진 권장 Front-facing photo recommended | 압축 권장 Compress at tinypng.com"
+      - { label: "배지 / Badge", name: "badge", widget: "string", required: false, hint: "예 e.g. Owner / Manager / Instructor / Customer Service" }
+      - { label: "오너 하이라이트 / Owner Highlight", name: "highlight", widget: "boolean", default: false, hint: "ON 하면 라임 컬러 하이라이트 적용 (오너 카드 전용) / Turn ON for lime highlight — Owner card only" }
       - { label: "순서 / Display Order", name: "order", widget: "number", hint: "숫자가 낮을수록 먼저 표시됩니다 / Lower number = displayed first" }
       - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true, hint: "OFF 하면 크루 페이지에서 숨겨집니다 / Turn OFF to hide from Crew page" }
 
