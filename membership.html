@@ -265,7 +265,7 @@
           <div class="mem-opt"><span class="mem-opt-period">18 Months</span><div class="mem-opt-price"><span data-cms="mem-standard-18m">$18.90</span><span>/wk</span></div></div>
           <div class="mem-opt"><span class="mem-opt-period">12 Months</span><div class="mem-opt-price"><span data-cms="mem-standard-12m">$19.90</span><span>/wk</span></div></div>
           <div class="mem-opt"><span class="mem-opt-period">6 Months</span><div class="mem-opt-price"><span data-cms="mem-standard-6m">$21.90</span><span>/wk</span></div></div>
-          <div class="mem-opt"><span class="mem-opt-period">Open (No Contract)</span><div class="mem-opt-price">$23.90<span>/wk</span></div></div>
+          <div class="mem-opt"><span class="mem-opt-period">Open (No Contract)</span><div class="mem-opt-price"><span data-cms="mem-standard-open">$23.90</span><span>/wk</span></div></div>
         </div>
         <div class="mem-desc">Full access to all facilities, 60+ weekly classes, and 24/7 entry. Everything you need to train your way.</div>
         <a href="#" class="mem-link" id="mem-std">Join Now →</a>
@@ -278,7 +278,7 @@
           <div class="mem-opt"><span class="mem-opt-period">18 Months</span><div class="mem-opt-price"><span data-cms="mem-student-18m">$15.90</span><span>/wk</span></div></div>
           <div class="mem-opt"><span class="mem-opt-period">12 Months</span><div class="mem-opt-price"><span data-cms="mem-student-12m">$16.90</span><span>/wk</span></div></div>
           <div class="mem-opt"><span class="mem-opt-period">6 Months</span><div class="mem-opt-price"><span data-cms="mem-student-6m">$18.90</span><span>/wk</span></div></div>
-          <div class="mem-opt"><span class="mem-opt-period">Open (No Contract)</span><div class="mem-opt-price">$20.90<span>/wk</span></div></div>
+          <div class="mem-opt"><span class="mem-opt-period">Open (No Contract)</span><div class="mem-opt-price"><span data-cms="mem-student-open">$20.90</span><span>/wk</span></div></div>
         </div>
         <div class="mem-desc">All the same access as Standard, at a price that makes building healthy habits easy from a young age.</div>
         <a href="#" class="mem-link" id="mem-stu">Join Now →</a>
@@ -337,13 +337,7 @@
   <div class="container">
     <div class="eyebrow reveal">Got Questions?</div>
     <h2 class="sec-title reveal d1">FREQUENTLY ASKED <em>QUESTIONS.</em></h2>
-    <div class="faq-list reveal d2">
-      <div class="faq-item"><div class="faq-q">Is there a sign-up or joining fee?<span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">No — there is no sign-up fee or joining fee for any of our memberships. You only pay the weekly membership rate.</div></div></div>
-      <div class="faq-item"><div class="faq-q">Can I cancel my membership?<span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">Open memberships (no contract) can be cancelled with 2 weeks notice. Contract memberships have a minimum term — please check your agreement for details.</div></div></div>
-      <div class="faq-item"><div class="faq-q">What's included in the membership?<span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">All memberships include full 24/7 access to all gym facilities, group classes, and the Kids Zone. Personal training is available as an add-on with our trainers.</div></div></div>
-      <div class="faq-item"><div class="faq-q">Can I put my membership on hold?<span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">Yes, membership holds are available for medical reasons or extended travel. Please contact us directly to arrange.</div></div></div>
-      <div class="faq-item"><div class="faq-q">How does 24/7 access work?<span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">Once you're a member, you'll receive a key fob or access card that lets you enter the facility at any time of day or night. The gym is monitored by 24/7 surveillance cameras.</div></div></div>
-    </div>
+    <div class="faq-list reveal d2" id="faq-list"></div>
   </div>
 </section>
 
@@ -381,7 +375,7 @@
       <div class="ft-hr"><span class="day">Sunday</span><span data-cms="hours-sun">8:00am – 11:00am</span></div>
     </div></div>
     <div><div class="ft-ttl">Get In Touch</div><div class="ft-con">
-      <div class="ft-ci"><div class="ft-ico">📍</div><div><div class="ft-cl">Address</div><div class="ft-cv">156 Chadwick Road, Greerton<br/>Tauranga, NZ 3112</div></div></div>
+      <div class="ft-ci"><div class="ft-ico">📍</div><div><div class="ft-cl">Address</div><div class="ft-cv" data-cms="address">156 Chadwick Road, Greerton<br/>Tauranga, NZ 3112</div></div></div>
       <div class="ft-ci"><div class="ft-ico">✉️</div><div><div class="ft-cl">Email</div><div class="ft-cv" data-cms="email">support@urbanfitnessnz.com</div></div></div>
       <div class="ft-ci"><div class="ft-ico">🔑</div><div><div class="ft-cl">Member Login</div><div class="ft-cv"><a href="#" id="ft-login" style="color:#6B9FE8;font-size:13px">Login →</a></div></div></div>
     </div></div>
@@ -414,7 +408,32 @@ const mems={std:'https://urbanfitnessnz.gymmasteronline.com/portal/signup/9',stu
 const sl2=(id,url)=>{const e=document.getElementById(id);if(e){e.href=url;e.target='_blank';e.rel='noopener';}};
 sl2('mem-std',mems.std);sl2('mem-stu',mems.stu);sl2('mem-sen',mems.sen);
 sl2('mem-cta',CMS.join);
-document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{const item=q.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');});});
+// ── FAQ 동적 로딩 ──
+(async function loadFAQ() {
+  const FAQ_RAW = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/faq';
+  const FAQ_FILES = ['01-membership-options.yml','02-247-access.yml','03-classes.yml','04-facilities.yml','05-personal-training.yml','06-joining.yml','07-kids-zone.yml','08-evolt.yml'];
+  try {
+    const items = (await Promise.all(
+      FAQ_FILES.map(f => fetch(FAQ_RAW + '/' + f + '?t=' + Date.now()).then(r => r.ok ? r.text() : null).catch(() => null))
+    )).map(t => t ? jsyaml.load(t) : null)
+      .filter(d => d && d.active !== false)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+    const list = document.getElementById('faq-list');
+    if (list && items.length) {
+      list.innerHTML = items.map(item =>
+        '<div class="faq-item"><div class="faq-q">' + item.question + '<span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">' + item.answer + '</div></div></div>'
+      ).join('');
+      list.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+          const it = q.parentElement;
+          const wasOpen = it.classList.contains('open');
+          list.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+          if (!wasOpen) it.classList.add('open');
+        });
+      });
+    }
+  } catch(e) { console.warn('FAQ load failed', e); }
+})();
 </script>
 <script>
 /**

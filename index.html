@@ -412,7 +412,7 @@
 <section id="rev"><div class="container">
   <div class="stars">★★★★★</div>
   <div class="rev-q" id="rT">Urban Fit is the best gym I have ever been a member of. The atmosphere, the equipment, the classes and the staff are all top notch.</div>
-  <div class="rev-a" id="rA">— Google Review</div>
+  <div class="rev-a" id="rA"></div>
   <div class="rev-dots">
     <button class="rev-dot active" data-r="0"></button>
     <button class="rev-dot" data-r="1"></button>
@@ -504,7 +504,7 @@
       <div class="ft-hr"><span class="day">Sunday</span><span data-cms="hours-sun">8:00am – 11:00am</span></div>
     </div></div>
     <div><div class="ft-ttl">Get In Touch</div><div class="ft-con">
-      <div class="ft-ci"><div class="ft-ico">📍</div><div><div class="ft-cl">Address</div><div class="ft-cv">156 Chadwick Road, Greerton<br/>Tauranga, NZ 3112</div></div></div>
+      <div class="ft-ci"><div class="ft-ico">📍</div><div><div class="ft-cl">Address</div><div class="ft-cv" data-cms="address">156 Chadwick Road, Greerton<br/>Tauranga, NZ 3112</div></div></div>
       <div class="ft-ci"><div class="ft-ico">✉️</div><div><div class="ft-cl">Email</div><div class="ft-cv" data-cms="email">support@urbanfitnessnz.com</div></div></div>
       <div class="ft-ci"><div class="ft-ico">🔑</div><div><div class="ft-cl">Member Login</div><div class="ft-cv"><a href="#" id="ft-login" style="color:#6B9FE8;font-size:13px">Login →</a></div></div></div>
     </div></div>
@@ -540,12 +540,7 @@ document.getElementById('hero').addEventListener('touchend',e=>{const dx=e.chang
 ht=setInterval(()=>goS(cur+1),5000);
 
 // Reviews
-const reviews=[
-  {t:'Urban Fit is the best gym I have ever been a member of. The atmosphere, the equipment, the classes and the staff are all top notch.',a:'— Google Review'},
-  {t:'Amazing gym! Great range of equipment and classes. The staff are super friendly and welcoming. Highly recommend to anyone looking for a gym in Tauranga.',a:'— Google Review'},
-  {t:'Love this gym! Great facilities, awesome instructors and a really supportive community. I look forward to every session.',a:'— Google Review'},
-  {t:'Best gym in Tauranga! The facilities are fantastic and the classes are so much fun. The team really make you feel welcome from day one.',a:'— Google Review'},
-];
+const reviews=[];
 const rT=document.getElementById('rT'),rA=document.getElementById('rA'),rdots=document.querySelectorAll('.rev-dot');
 let ri=0,rt;
 rT.style.transition='opacity .35s ease';
@@ -811,26 +806,28 @@ async function applyReviews() {
   const active = data.filter(r => r.active !== false).sort((a, b) => (a.order || 0) - (b.order || 0));
   if (!active.length) return;
 
-  // 전역 reviews 배열 교체
-  if (window._reviewData !== undefined) {
-    window._reviewData = active;
-  }
+  // reviews 배열 교체 + 슬라이더 전체 초기화
+  reviews.length = 0;
+  active.forEach(r => reviews.push({ t: r.text, a: `— ${r.author}` }));
 
-  // 직접 DOM 업데이트 (메인 페이지)
   const rT = document.getElementById('rT');
   const rA = document.getElementById('rA');
-  if (rT && active[0]) {
-    rT.textContent = active[0].text;
-    if (rA) rA.textContent = `— ${active[0].author}`;
+  if (rT && reviews[0]) {
+    rT.textContent = reviews[0].t;
+    if (rA) rA.textContent = reviews[0].a;
   }
 
-  // review dots 개수 맞추기
+  // dots 개수 맞추기 + 이벤트 재연결
   const dotsContainer = document.querySelector('.rev-dots');
-  if (dotsContainer && active.length > 1) {
-    dotsContainer.innerHTML = active.map((_, i) =>
+  if (dotsContainer) {
+    dotsContainer.innerHTML = reviews.map((_, i) =>
       `<button class="rev-dot${i === 0 ? ' active' : ''}" data-r="${i}"></button>`
     ).join('');
+    dotsContainer.querySelectorAll('.rev-dot').forEach(d => {
+      d.addEventListener('click', () => { clearInterval(rt); goR(+d.dataset.r); rt = setInterval(() => goR(ri + 1), 5000); });
+    });
   }
+  ri = 0;
 }
 
 // ── About 텍스트 적용 ──
