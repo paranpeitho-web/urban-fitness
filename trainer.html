@@ -302,7 +302,7 @@ function trainerCardHTML(t, idx) {
   const delays = ['','d1','d2'];
   const nameParts = t.name.split(' ');
   const nameHTML = nameParts.length >= 2 ? `${nameParts.slice(0,-1).join(' ')}<br/>${nameParts[nameParts.length-1]}` : t.name;
-  const specs = Array.isArray(t.specialties) ? t.specialties.map(s => `<div class="tr-spec">${s}</div>`).join('') : '';
+  const specs = Array.isArray(t.specialties) ? t.specialties.map(s => `<div class="tr-spec">${typeof s === 'object' && s !== null ? (s.item || '') : s}</div>`).join('') : '';
   return `<div class="tr-card reveal ${delays[idx] || ''}">
     <div class="tr-img">
       <img src="${t.image}" alt="${t.name}" onerror="this.style.background='#1E3A5F'"/>
