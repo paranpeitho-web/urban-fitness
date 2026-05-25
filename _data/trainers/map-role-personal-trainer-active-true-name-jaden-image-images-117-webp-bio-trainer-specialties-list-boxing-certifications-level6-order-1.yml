@@ -1,9 +1,0 @@
-name: jaden
-role: Personal Trainer
-image: /images/117.webp
-bio: Trainer
-specialties:
-  - Boxing
-certifications: level6
-order: 1
-active: true
