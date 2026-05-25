@@ -328,7 +328,7 @@
   <div class="h-slide" data-cms-img="hero_slide_3" style="background-image:url('/images/10.webp')"></div>
   <div class="h-slide" data-cms-img="hero_slide_4" style="background-image:url('/images/70.webp')"></div>
   <div class="h-content"><div class="container">
-    <div class="h-ey">156 Chadwick Rd, Greerton, Tauranga</div>
+    <div class="h-ey" data-cms="address-short">156 Chadwick Rd, Greerton, Tauranga</div>
     <div class="h-logo-big"><img src="images/urban-fit-logo-transparent.png" alt="Urban Fit Tauranga"></div>
     <p class="h-sub">More than just a gym — a space built to help you move better, get stronger, and achieve real, lasting results.</p>
     <div class="h-btns">
@@ -438,10 +438,10 @@
   <h2 class="sec-title reveal d1">MEMBERSHIPS <em>FOR EVERYONE.</em></h2>
   <p class="sec-body reveal d2">Flexible options designed around your goals, lifestyle, and schedule. No sign-up fee.</p>
   <div class="mem-grid">
-    <div class="mem feat2 reveal"><div class="mem-tag">Most Popular</div><div class="mem-nm">STANDARD</div><div class="mem-pr">From $18.90<span>/wk</span></div><div class="mem-d">Full gym access and all facilities to train on your schedule, anytime.</div><a href="https://urbanfitnessnz.gymmasteronline.com/portal/signup/9" class="mem-lnk" target="_blank" rel="noopener">Join Now →</a></div>
-    <div class="mem reveal d1"><div class="mem-tag">Under 20</div><div class="mem-nm">STUDENT</div><div class="mem-pr">From $15.90<span>/wk</span></div><div class="mem-d">Affordable access for students to build healthy habits early.</div><a href="#" class="mem-lnk" id="mem-stu">Join Now →</a></div>
-    <div class="mem reveal d2"><div class="mem-tag">65+</div><div class="mem-nm">SENIOR</div><div class="mem-pr">$16.90<span>/wk</span></div><div class="mem-d">Special rates for seniors to stay active, strong, and healthy.</div><a href="#" class="mem-lnk" id="mem-sen">Join Now →</a></div>
-    <div class="mem reveal d3"><div class="mem-tag">Companies</div><div class="mem-nm">CORPORATE</div><div class="mem-pr">Enquire</div><div class="mem-d">Tailored solutions to support employee health and well-being.</div><a href="mailto:support@urbanfitnessnz.com" class="mem-lnk">Email Us →</a></div>
+    <div class="mem feat2 reveal"><div class="mem-tag">Most Popular</div><div class="mem-nm">STANDARD</div><div class="mem-pr">From <span data-cms="mem-standard-18m">$18.90</span><span>/wk</span></div><div class="mem-d" data-cms="mem-standard-desc">Full gym access and all facilities to train on your schedule, anytime.</div><a href="https://urbanfitnessnz.gymmasteronline.com/portal/signup/9" class="mem-lnk" target="_blank" rel="noopener">Join Now →</a></div>
+    <div class="mem reveal d1"><div class="mem-tag">Under 20</div><div class="mem-nm">STUDENT</div><div class="mem-pr">From <span data-cms="mem-student-18m">$15.90</span><span>/wk</span></div><div class="mem-d" data-cms="mem-student-desc">Affordable access for students to build healthy habits early.</div><a href="#" class="mem-lnk" id="mem-stu">Join Now →</a></div>
+    <div class="mem reveal d2"><div class="mem-tag">65+</div><div class="mem-nm">SENIOR</div><div class="mem-pr"><span data-cms="mem-senior-open">$16.90</span><span>/wk</span></div><div class="mem-d" data-cms="mem-senior-desc">Special rates for seniors to stay active, strong, and healthy.</div><a href="#" class="mem-lnk" id="mem-sen">Join Now →</a></div>
+    <div class="mem reveal d3"><div class="mem-tag">Companies</div><div class="mem-nm">CORPORATE</div><div class="mem-pr">Enquire</div><div class="mem-d" data-cms="mem-corporate-desc">Tailored solutions to support employee health and well-being.</div><a href="mailto:support@urbanfitnessnz.com" class="mem-lnk">Email Us →</a></div>
   </div>
   <div style="text-align:center;margin-top:48px"><a href="membership.html" class="btn btn-outline reveal">See All Plans →</a></div>
 </div></section>
@@ -475,7 +475,7 @@
     <div class="eyebrow">Find Us</div>
     <h2 class="sec-title">OUR <em>LOCATION.</em></h2>
     <div class="loc-its">
-      <div class="loc-it"><div class="loc-ic">📍</div><div><div class="loc-lb">Address</div><div class="loc-vl">156 Chadwick Road, Greerton<br/>Tauranga, NZ 3112</div></div></div>
+      <div class="loc-it"><div class="loc-ic">📍</div><div><div class="loc-lb">Address</div><div class="loc-vl" data-cms="address">156 Chadwick Road, Greerton<br/>Tauranga, NZ 3112</div></div></div>
       <div class="loc-it"><div class="loc-ic">⏰</div><div><div class="loc-lb">Staffed Hours</div><div class="h-rws"><div class="h-rw"><span class="day">Mon – Thu</span><span data-cms="hours-mon-thu">7:00am – 7:30pm</span></div><div class="h-rw"><span class="day">Friday</span><span data-cms="hours-fri">8:00am – 3:30pm</span></div><div class="h-rw"><span class="day">Sat &amp; Sun</span><span data-cms="hours-sat" data-cms="hours-sun">8:00am – 11:00am</span></div></div></div></div>
       <div class="loc-it"><div class="loc-ic">✉️</div><div><div class="loc-lb">Email</div><div class="loc-vl" data-cms="email">support@urbanfitnessnz.com</div></div></div>
     </div>
@@ -732,6 +732,9 @@ async function applySettings() {
   }
   if (contact.address) {
     document.querySelectorAll('[data-cms="address"]').forEach(el => { el.innerHTML = contact.address.replace(', ', ',<br/>'); });
+    // 짧은 주소 (도로명만)
+    const shortAddr = contact.address.split(',')[0].trim();
+    document.querySelectorAll('[data-cms="address-short"]').forEach(el => { el.textContent = shortAddr; });
   }
   if (contact.phone) {
     document.querySelectorAll('[data-cms="phone"]').forEach(el => { el.textContent = contact.phone; });
@@ -819,11 +822,15 @@ async function applyImages() {
 async function applyReviews() {
   // _data/reviews/ 폴더에서 개별 yml 파일 읽기
   const REVIEWS_RAW = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/reviews';
-  const REVIEW_FILES = ['addison-h.yml','shikahn-t.yml','neil-f.yml','wayne-r.yml','kylie-m.yml'];
+  let reviewFileList;
+  try {
+    const res = await fetch('https://api.github.com/repos/paranpeitho-web/urban-fitness/contents/_data/reviews?t=' + Date.now());
+    reviewFileList = res.ok ? (await res.json()).filter(f => f.name.endsWith('.yml')).map(f => f.name) : [];
+  } catch(e) { reviewFileList = []; }
   let data;
   try {
     data = (await Promise.all(
-      REVIEW_FILES.map(f => fetch(`${REVIEWS_RAW}/${f}?t=${Date.now()}`).then(r => r.ok ? r.text() : null).catch(() => null))
+      reviewFileList.map(f => fetch(`${REVIEWS_RAW}/${f}?t=${Date.now()}`).then(r => r.ok ? r.text() : null).catch(() => null))
     ))
     .map(t => t ? jsyaml.load(t) : null)
     .filter(Boolean);

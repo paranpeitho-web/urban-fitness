@@ -361,16 +361,19 @@ async function loadSettings() {
     }
     if (data.contact) {
       document.querySelectorAll('[data-cms="email"]').forEach(el => el.textContent = data.contact.email || '');
+      document.querySelectorAll('[data-cms="address"]').forEach(el => { el.innerHTML = (data.contact.address || '').replace(', ', ',<br/>'); });
+      const shortAddr = (data.contact.address || '').split(',')[0].trim();
+      document.querySelectorAll('[data-cms="address-short"]').forEach(el => { el.textContent = shortAddr; });
     }
     const join = data.url_join || CMS.join;
     const login = data.url_login || CMS.login;
     ['btn-join','mob-join'].forEach(id => { const e = document.getElementById(id); if(e){e.href=join;e.target='_blank';e.rel='noopener';} });
     ['btn-login','mob-login','ft-login'].forEach(id => { const e = document.getElementById(id); if(e){e.href=login;e.target='_blank';e.rel='noopener';} });
     const sns = data.sns || {};
-    const snsMap = {instagram:'ft-sns-instagram',facebook:'ft-sns-facebook',tiktok:'ft-sns-tiktok',youtube:'ft-sns-youtube'};
-    Object.entries(snsMap).forEach(([key, id]) => {
-      const url = sns[key]; const el = document.getElementById(id);
-      if (el) { if (url) { el.href = url; el.style.display = ''; } else { el.style.display = 'none'; } }
+    const snsMap = {instagram:'[data-cms="sns-instagram"]',facebook:'[data-cms="sns-facebook"]',tiktok:'[data-cms="sns-tiktok"]',youtube:'[data-cms="sns-youtube"]'};
+    Object.entries(snsMap).forEach(([key, sel]) => {
+      const url = sns[key];
+      document.querySelectorAll(sel).forEach(el => { if(url){el.href=url;el.style.display='';}else{el.style.display='none';} });
     });
   } catch(e) {}
 }

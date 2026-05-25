@@ -277,7 +277,7 @@
           <div class="mem-opt"><span class="mem-opt-period">6 Months</span><div class="mem-opt-price"><span data-cms="mem-standard-6m">$21.90</span><span>/wk</span></div></div>
           <div class="mem-opt"><span class="mem-opt-period">Open (No Contract)</span><div class="mem-opt-price"><span data-cms="mem-standard-open">$23.90</span><span>/wk</span></div></div>
         </div>
-        <div class="mem-desc">Full access to all facilities, 60+ weekly classes, and 24/7 entry. Everything you need to train your way.</div>
+        <div class="mem-desc" data-cms="mem-standard-desc">Full access to all facilities, 60+ weekly classes, and 24/7 entry. Everything you need to train your way.</div>
         <a href="#" class="mem-link" id="mem-std">Join Now →</a>
       </div>
       <div class="mem-card reveal d1">
@@ -290,7 +290,7 @@
           <div class="mem-opt"><span class="mem-opt-period">6 Months</span><div class="mem-opt-price"><span data-cms="mem-student-6m">$18.90</span><span>/wk</span></div></div>
           <div class="mem-opt"><span class="mem-opt-period">Open (No Contract)</span><div class="mem-opt-price"><span data-cms="mem-student-open">$20.90</span><span>/wk</span></div></div>
         </div>
-        <div class="mem-desc">All the same access as Standard, at a price that makes building healthy habits easy from a young age.</div>
+        <div class="mem-desc" data-cms="mem-student-desc">All the same access as Standard, at a price that makes building healthy habits easy from a young age.</div>
         <a href="#" class="mem-link" id="mem-stu">Join Now →</a>
       </div>
       <div class="mem-card reveal">
@@ -300,7 +300,7 @@
         <div class="mem-options">
           <div class="mem-opt"><span class="mem-opt-period">Open (No Contract)</span><div class="mem-opt-price"><span data-cms="mem-senior-open">$16.90</span><span>/wk</span></div></div>
         </div>
-        <div class="mem-desc" style="margin-top:16px">Stay active, strong, and social with full gym access at a special rate designed for seniors.</div>
+        <div class="mem-desc" data-cms="mem-senior-desc" style="margin-top:16px">Stay active, strong, and social with full gym access at a special rate designed for seniors.</div>
         <a href="#" class="mem-link" id="mem-sen">Join Now →</a>
       </div>
       <div class="mem-card reveal d1">
@@ -311,8 +311,8 @@
           <div style="font-family:var(--f-display);font-size:32px;font-weight:800;text-transform:uppercase;color:var(--c-lime);margin-bottom:8px">GET A QUOTE</div>
           <div style="font-size:13px;color:var(--c-gray-4);line-height:1.6">Custom pricing based on team size and requirements. Support your team's health and wellbeing with group membership.</div>
         </div>
-        <div class="mem-desc">Boost employee morale, reduce sick days, and invest in your team's wellbeing with a tailored corporate membership.</div>
-        <a href="mailto:support@urbanfitnessnz.com" class="mem-link">Email Us →</a>
+        <div class="mem-desc" data-cms="mem-corporate-desc">Boost employee morale, reduce sick days, and invest in your team's wellbeing with a tailored corporate membership.</div>
+        <a href="mailto:support@urbanfitnessnz.com" class="mem-link mem-corporate-email">Email Us →</a>
       </div>
     </div>
     <div class="mem-no-fee reveal"><strong>✓ No Sign-Up Fee</strong> &nbsp;·&nbsp; <strong>✓ No Joining Fee</strong> &nbsp;·&nbsp; Prices are weekly by billing &nbsp;·&nbsp; All memberships include 24/7 facility access</div>
@@ -421,10 +421,14 @@ sl2('mem-cta',CMS.join);
 // ── FAQ 동적 로딩 ──
 (async function loadFAQ() {
   const FAQ_RAW = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/faq';
-  const FAQ_FILES = ['01-membership-options.yml','02-247-access.yml','03-classes.yml','04-facilities.yml','05-personal-training.yml','06-joining.yml','07-kids-zone.yml','08-evolt.yml'];
+  let faqFileList;
+  try {
+    const res = await fetch('https://api.github.com/repos/paranpeitho-web/urban-fitness/contents/_data/faq?t=' + Date.now());
+    faqFileList = res.ok ? (await res.json()).filter(f => f.name.endsWith('.yml')).map(f => f.name) : [];
+  } catch(e) { faqFileList = []; }
   try {
     const items = (await Promise.all(
-      FAQ_FILES.map(f => fetch(FAQ_RAW + '/' + f + '?t=' + Date.now()).then(r => r.ok ? r.text() : null).catch(() => null))
+      faqFileList.map(f => fetch(FAQ_RAW + '/' + f + '?t=' + Date.now()).then(r => r.ok ? r.text() : null).catch(() => null))
     )).map(t => t ? jsyaml.load(t) : null)
       .filter(d => d && d.active !== false)
       .sort((a, b) => (a.order || 0) - (b.order || 0));
@@ -575,9 +579,13 @@ async function applySettings() {
   // 연락처
   if (contact.email) {
     document.querySelectorAll('[data-cms="email"]').forEach(el => { el.textContent = contact.email; });
+    document.querySelectorAll('.mem-corporate-email').forEach(el => { el.href = 'mailto:' + contact.email; });
   }
   if (contact.address) {
     document.querySelectorAll('[data-cms="address"]').forEach(el => { el.innerHTML = contact.address.replace(', ', ',<br/>'); });
+    // 짧은 주소 (도로명만)
+    const shortAddr = contact.address.split(',')[0].trim();
+    document.querySelectorAll('[data-cms="address-short"]').forEach(el => { el.textContent = shortAddr; });
   }
   if (contact.phone) {
     document.querySelectorAll('[data-cms="phone"]').forEach(el => { el.textContent = contact.phone; });

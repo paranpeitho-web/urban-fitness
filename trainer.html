@@ -214,7 +214,7 @@
       <div class="cta-heading">START YOUR<br/><em>PT JOURNEY.</em></div>
       <div class="cta-sub">Contact us to get matched with the right trainer</div>
     </div>
-    <a href="mailto:support@urbanfitnessnz.com" class="btn btn-lime reveal d1">Enquire Now →</a>
+    <a href="mailto:support@urbanfitnessnz.com" class="btn btn-lime reveal d1" id="tr-enquire-hero">Enquire Now →</a>
   </div></div>
 </section>
 
@@ -331,7 +331,7 @@ function trainerCardHTML(t, idx) {
       <div class="tr-role">${t.role}</div>
       <div class="tr-divider"></div>
       <div class="tr-specs">${specs}</div>
-      <a href="mailto:support@urbanfitnessnz.com" class="tr-contact">Enquire →</a>
+      <a href="mailto:support@urbanfitnessnz.com" class="tr-contact tr-enquire">Enquire →</a>
     </div>
   </div>`;
 }
@@ -354,6 +354,41 @@ async function loadTrainers() {
 
 applyImagesTR();
 loadTrainers();
+
+// Settings 로드 (푸터 운영시간, 주소, 이메일, SNS, URL)
+(async function loadSettings() {
+  try {
+    const res = await fetch('https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/settings.yml?t=' + Date.now());
+    if (!res.ok) return;
+    const data = jsyaml.load(await res.text());
+    if (!data) return;
+    const hours = data.hours || {};
+    const contact = data.contact || {};
+    const sns = data.sns || {};
+    if (hours.mon_thu) document.querySelectorAll('[data-cms="hours-mon-thu"]').forEach(el => el.textContent = hours.mon_thu);
+    if (hours.friday) document.querySelectorAll('[data-cms="hours-fri"]').forEach(el => el.textContent = hours.friday);
+    if (hours.saturday) document.querySelectorAll('[data-cms="hours-sat"]').forEach(el => el.textContent = hours.saturday);
+    if (hours.sunday) document.querySelectorAll('[data-cms="hours-sun"]').forEach(el => el.textContent = hours.sunday);
+    if (contact.email) {
+      document.querySelectorAll('[data-cms="email"]').forEach(el => el.textContent = contact.email);
+      document.querySelectorAll('.tr-enquire, #tr-enquire-hero').forEach(el => { el.href = 'mailto:' + contact.email; });
+    }
+    if (contact.address) {
+      document.querySelectorAll('[data-cms="address"]').forEach(el => { el.innerHTML = contact.address.replace(', ', ',<br/>'); });
+      const shortAddr = contact.address.split(',')[0].trim();
+      document.querySelectorAll('[data-cms="address-short"]').forEach(el => { el.textContent = shortAddr; });
+    }
+    const joinUrl = data.url_join || '#';
+    const loginUrl = data.url_login || '#';
+    ['btn-join','mob-join','tr-join'].forEach(id => { const e = document.getElementById(id); if(e){e.href=joinUrl;e.target='_blank';e.rel='noopener';} });
+    ['btn-login','mob-login','ft-login'].forEach(id => { const e = document.getElementById(id); if(e){e.href=loginUrl;e.target='_blank';e.rel='noopener';} });
+    const snsMap = {instagram:'[data-cms="sns-instagram"]',facebook:'[data-cms="sns-facebook"]',tiktok:'[data-cms="sns-tiktok"]',youtube:'[data-cms="sns-youtube"]'};
+    Object.entries(snsMap).forEach(([key, sel]) => {
+      const url = sns[key];
+      document.querySelectorAll(sel).forEach(el => { if(url){el.href=url;el.style.display='';}else{el.style.display='none';} });
+    });
+  } catch(e) {}
+})();
 
 const CMS={join:'https://urbanfitnessnz.gymmasteronline.com/portal/signup',login:'https://urbanfitnessnz.gymmasteronline.com/portal/login'};
 ['btn-login','mob-login','ft-login'].forEach(id=>{const e=document.getElementById(id);if(e){e.href=CMS.login;e.target='_blank';e.rel='noopener';}});

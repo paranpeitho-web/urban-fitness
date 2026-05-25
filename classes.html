@@ -508,6 +508,9 @@ async function applySettings() {
   }
   if (contact.address) {
     document.querySelectorAll('[data-cms="address"]').forEach(el => { el.innerHTML = contact.address.replace(', ', ',<br/>'); });
+    // 짧은 주소 (도로명만)
+    const shortAddr = contact.address.split(',')[0].trim();
+    document.querySelectorAll('[data-cms="address-short"]').forEach(el => { el.textContent = shortAddr; });
   }
   if (contact.phone) {
     document.querySelectorAll('[data-cms="phone"]').forEach(el => { el.textContent = contact.phone; });

@@ -215,6 +215,8 @@ collections:
     fields:
       - { label: "질문 / Question (English)", name: "question", widget: "string" }
       - { label: "답변 / Answer (English)", name: "answer", widget: "text" }
+      - { label: "순서 / Display Order", name: "order", widget: "number", hint: "1부터 시작 / Start from 1" }
+      - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true }
       - { label: "순서 / Display Order", name: "order", widget: "number" }
       - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true }
 
