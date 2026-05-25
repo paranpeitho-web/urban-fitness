@@ -779,7 +779,7 @@ async function applyImages() {
 
   // _data/slides/*.yml — 히어로 롤링 배너
   const SLIDES_RAW = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/slides';
-  const SLIDE_FILES = ['slide-1.yml','slide-2.yml','slide-3.yml','slide-4.yml'];
+  const SLIDE_FILES = await fetch('https://api.github.com/repos/paranpeitho-web/urban-fitness/contents/_data/slides?t=' + Date.now()).then(r => r.ok ? r.json() : []).then(files => Array.isArray(files) ? files.filter(f => f.name.endsWith('.yml')).map(f => f.name) : []).catch(() => []);
   try {
     const slideData = (await Promise.all(
       SLIDE_FILES.map(f => fetch(`${SLIDES_RAW}/${f}?t=${Date.now()}`).then(r => r.ok ? r.text() : null).catch(() => null))
