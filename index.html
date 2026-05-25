@@ -86,19 +86,20 @@
     .h-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease}
     .h-slide.active{opacity:1}
     .h-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,8,8,.82) 0%,rgba(8,8,8,.45) 55%,rgba(8,8,8,.15) 100%);pointer-events:none}
-    .h-content{position:absolute;bottom:100px;left:0;right:0;z-index:2}
+    .h-content{position:absolute;bottom:100px;left:0;right:0;z-index:2;pointer-events:none}
     .h-ey{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(244,241,235,.5);margin-bottom:20px}
     .h-ey::before{content:'';width:6px;height:6px;background:#6B9FE8;border-radius:50%}
     .h-title{font-family:var(--f-display);font-size:clamp(72px,12vw,148px);font-weight:900;line-height:.86;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px}.h-logo-big{margin-bottom:28px}.h-logo-big img{height:clamp(120px,18vw,220px);width:auto;display:block;filter:drop-shadow(0 4px 40px rgba(200,240,0,0.18))}
     .h-title em{color:var(--c-logo-blue);font-style:normal;display:block}
     .h-sub{font-size:16px;line-height:1.7;color:rgba(244,241,235,.65);max-width:480px;margin-bottom:36px}
     .h-btns{display:flex;gap:14px;flex-wrap:wrap}
-    .h-dots{position:absolute;bottom:40px;left:0;right:0;z-index:2;display:flex;justify-content:center;gap:10px}
-    .h-dot{width:28px;height:2px;background:rgba(244,241,235,.25);border:none;cursor:pointer;transition:background var(--t-base),width var(--t-base)}
+    .h-content a,.h-content button{pointer-events:auto}
+    .h-dots{position:absolute;bottom:40px;left:0;right:0;z-index:2;display:flex;justify-content:center;gap:10px;pointer-events:none}
+    .h-dot{width:28px;height:2px;background:rgba(244,241,235,.25);border:none;cursor:pointer;pointer-events:auto;transition:background var(--t-base),width var(--t-base)}
     .h-dot.active{background:var(--c-logo-blue);width:44px}
-    .h-addr{position:absolute;bottom:100px;right:80px;z-index:2;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(244,241,235,.3);writing-mode:vertical-rl}
+    .h-addr{position:absolute;bottom:100px;right:80px;z-index:2;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(244,241,235,.3);writing-mode:vertical-rl;pointer-events:none}
 
-    .h-scroll{position:absolute;bottom:32px;right:44px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(244,241,235,.3)}
+    .h-scroll{position:absolute;bottom:32px;right:44px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(244,241,235,.3);pointer-events:none}
     .h-scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,#6B9FE8,transparent);animation:scrollAnim 1.8s ease infinite}
     @keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top;opacity:1}50%{transform:scaleY(1);transform-origin:top;opacity:1}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom;opacity:0}}
 
@@ -549,6 +550,18 @@ document.getElementById('hero').addEventListener('touchstart',e=>{tx=e.touches[0
 document.getElementById('hero').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){clearInterval(ht);goS(dx<0?cur+1:cur-1);ht=setInterval(()=>goS(cur+1),5000);}},{passive:true});
 ht=setInterval(()=>goS(cur+1),5000);
 
+// 히어로 배너 클릭 이동
+document.getElementById('hero').addEventListener('click', e => {
+  if (e.target.closest('.h-dot, .btn, a, button')) return;
+  const activeSlide = document.querySelector('.h-slide.active');
+  const url = activeSlide && activeSlide.dataset.slideUrl;
+  if (url) {
+    const newTab = activeSlide.dataset.slideNewTab === 'true';
+    if (newTab) { window.open(url, '_blank'); }
+    else { window.location.href = url; }
+  }
+});
+
 // Reviews
 const reviews=[];
 const rT=document.getElementById('rT'),rA=document.getElementById('rA'),rdots=document.querySelectorAll('.rev-dot');
@@ -794,18 +807,10 @@ async function applyImages() {
         if (slideData[i] && slideData[i].image) {
           el.style.backgroundImage = `url('${slideData[i].image}')`;
         }
-        // URL 클릭 이동
+        // URL 저장 (클릭은 #hero에서 처리)
         const url = slideData[i] && slideData[i].url;
-        if (url && url !== '#') {
-          el.style.cursor = 'pointer';
-          el.onclick = () => {
-            if (slideData[i].new_tab) { window.open(url, '_blank'); }
-            else { window.location.href = url; }
-          };
-        } else {
-          el.style.cursor = 'default';
-          el.onclick = null;
-        }
+        el.dataset.slideUrl = (url && url !== '#') ? url : '';
+        el.dataset.slideNewTab = slideData[i] && slideData[i].new_tab ? 'true' : 'false';
       });
     }
   } catch(e) { console.warn('slides load error', e); }
