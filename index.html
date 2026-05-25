@@ -794,6 +794,18 @@ async function applyImages() {
         if (slideData[i] && slideData[i].image) {
           el.style.backgroundImage = `url('${slideData[i].image}')`;
         }
+        // URL 클릭 이동
+        const url = slideData[i] && slideData[i].url;
+        if (url && url !== '#') {
+          el.style.cursor = 'pointer';
+          el.onclick = () => {
+            if (slideData[i].new_tab) { window.open(url, '_blank'); }
+            else { window.location.href = url; }
+          };
+        } else {
+          el.style.cursor = 'default';
+          el.onclick = null;
+        }
       });
     }
   } catch(e) { console.warn('slides load error', e); }
@@ -854,8 +866,8 @@ async function applyAbout() {
 async function applyIndexCrewTrainer() {
   const CREW_RAW = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/crew';
   const TR_RAW = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/trainers';
-  const CREW_FILES = ['martin-choi.yml','nicole-wecki.yml','maddy-harvie.yml','kiri-hall.yml','shelley-timbers.yml','sharleen-abraham.yml','matt-genefaas.yml','tania-hanna.yml','jenagh-jenner.yml','tamia-dinsdale.yml'];
-  const TR_FILES = ['casey-hennesy.yml','jaimee-strevens.yml','hemi-kawha.yml'];
+  const crewFileList = await fetch('https://api.github.com/repos/paranpeitho-web/urban-fitness/contents/_data/crew?t=' + Date.now()).then(r => r.ok ? r.json() : []).then(files => Array.isArray(files) ? files.filter(f => f.name.endsWith('.yml')).map(f => f.name) : []).catch(() => []);
+  const TR_FILES = await fetch('https://api.github.com/repos/paranpeitho-web/urban-fitness/contents/_data/trainers?t=' + Date.now()).then(r => r.ok ? r.json() : []).then(files => Array.isArray(files) ? files.filter(f => f.name.endsWith('.yml')).map(f => f.name) : []).catch(() => []);
 
   const delays = ['','d1','d2'];
 
@@ -870,7 +882,7 @@ async function applyIndexCrewTrainer() {
 
   try {
     const crewResults = await Promise.all(
-      CREW_FILES.map(f => fetch(`${CREW_RAW}/${f}?t=${Date.now()}`)
+      crewFileList.map(f => fetch(`${CREW_RAW}/${f}?t=${Date.now()}`)
         .then(r => r.ok ? r.text() : null).then(t => t ? jsyaml.load(t) : null).catch(() => null))
     );
     const crew = crewResults.filter(c => c && c.active !== false).sort((a,b) => (a.order||0)-(b.order||0)).slice(0,3);

@@ -306,7 +306,14 @@ async function applyImagesTR() {
 }
 
 const GITHUB_RAW_TR2 = 'https://raw.githubusercontent.com/paranpeitho-web/urban-fitness/main/_data/trainers';
-const TRAINER_FILES = ['casey-hennesy.yml','jaimee-strevens.yml','hemi-kawha.yml'];
+async function getTrainerFiles() {
+  try {
+    const res = await fetch('https://api.github.com/repos/paranpeitho-web/urban-fitness/contents/_data/trainers?t=' + Date.now());
+    if (!res.ok) return null;
+    const files = await res.json();
+    return files.filter(f => f.name.endsWith('.yml')).map(f => f.name);
+  } catch(e) { return null; }
+}
 
 function trainerCardHTML(t, idx) {
   const delays = ['','d1','d2'];
@@ -332,7 +339,7 @@ function trainerCardHTML(t, idx) {
 async function loadTrainers() {
   try {
     const results = await Promise.all(
-      TRAINER_FILES.map(f => fetch(`${GITHUB_RAW_TR2}/${f}?t=${Date.now()}`)
+      (await getTrainerFiles() || []).map(f => fetch(`${GITHUB_RAW_TR2}/${f}?t=${Date.now()}`)
         .then(r => r.ok ? r.text() : null)
         .then(t => t ? jsyaml.load(t) : null)
         .catch(() => null))

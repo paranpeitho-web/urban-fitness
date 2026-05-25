@@ -79,7 +79,8 @@ collections:
     label: "🖼️ 메인 롤링 배너 / Hero Banner Slides"
     folder: "_data/slides"
     create: true
-    slug: "{{slug}}"
+    identifier_field: "order"
+    slug: "slide-{{order}}"
     extension: yml
     format: yaml
     fields:
@@ -97,7 +98,8 @@ collections:
     label: "👥 크루 관리 / Crew"
     folder: "_data/crew"
     create: true
-    slug: "{{slug}}"
+    identifier_field: "name"
+    slug: "{{name}}"
     extension: yml
     format: yaml
     fields:
@@ -117,7 +119,8 @@ collections:
     label: "👤 퍼스널 트레이너 / Personal Trainers"
     folder: "_data/trainers"
     create: true
-    slug: "{{slug}}"
+    identifier_field: "name"
+    slug: "{{name}}"
     extension: yml
     format: yaml
     fields:
@@ -180,7 +183,8 @@ collections:
     label: "⭐ 회원 후기 / Member Reviews"
     folder: "_data/reviews"
     create: true
-    slug: "{{slug}}"
+    identifier_field: "author"
+    slug: "{{author}}"
     extension: yml
     format: yaml
     fields:
@@ -204,7 +208,8 @@ collections:
     label: "❓ FAQ 관리 / FAQ"
     folder: "_data/faq"
     create: true
-    slug: "{{slug}}"
+    identifier_field: "order"
+    slug: "faq-{{order}}"
     extension: yml
     format: yaml
     fields:
