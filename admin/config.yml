@@ -217,8 +217,6 @@ collections:
       - { label: "답변 / Answer (English)", name: "answer", widget: "text" }
       - { label: "순서 / Display Order", name: "order", widget: "number", hint: "1부터 시작 / Start from 1" }
       - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true }
-      - { label: "순서 / Display Order", name: "order", widget: "number" }
-      - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true }
 
   # ── 페이지 텍스트 / Page Text ──
   - name: "pages"
