@@ -1,15 +1,17 @@
-name: Casey Hennesy
-role: Personal Trainer
-image: /images/Casey.png
-bio: |-
-  phone : (027) 579 9412
-  email : caseyhennessyfitness@gmail.com
-specialties:
-  - Strength Training
-  - Hypertrophy
-  - Weight Loss
-  - Technique Breakdown
-  - Online Coaching & Programming
-certifications: ""
-order: 1
 active: true
+bio: Passionate about helping people achieve their fitness goals through personalised
+  strength and conditioning programs. With years of experience in personal training,
+  Casey specialises in weight loss, hypertrophy, and technique breakdown.
+certifications: ''
+email: caseyhennessyfitness@gmail.com
+image: /images/Casey.png
+name: Casey Hennesy
+order: 1
+phone: (027) 579 9412
+role: Personal Trainer
+specialties:
+- Strength Training
+- Hypertrophy
+- Weight Loss
+- Technique Breakdown
+- Online Coaching & Programming

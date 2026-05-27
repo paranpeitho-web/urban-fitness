@@ -102,6 +102,12 @@
     .tr-specs{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
     .tr-spec{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(244,241,235,.75);line-height:1.4}
     .tr-spec::before{content:'→';color:var(--c-lime);font-size:12px;flex-shrink:0;margin-top:1px}
+    .tr-bio{font-size:13px;line-height:1.7;color:rgba(244,241,235,.65);margin:12px 0 8px;}
+    .tr-contact-info{display:flex;flex-direction:column;gap:6px;margin:8px 0 4px;}
+    .tr-contact-item{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(244,241,235,.7);}
+    .tr-contact-item a{color:rgba(244,241,235,.7);text-decoration:none;transition:color .2s;}
+    .tr-contact-item a:hover{color:var(--c-lime);}
+    .tr-contact-icon{font-size:13px;width:18px;flex-shrink:0;}
     .tr-contact{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-display);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--c-logo-blue);border-bottom:1px solid var(--c-logo-blue);padding-bottom:2px;transition:color var(--t-base),border-color var(--t-base)}
     .tr-contact:hover{color:var(--c-lime);border-color:var(--c-lime)}
     /* Hemi - dual role 표시 */
@@ -320,6 +326,11 @@ function trainerCardHTML(t, idx) {
   const nameParts = t.name.split(' ');
   const nameHTML = nameParts.length >= 2 ? `${nameParts.slice(0,-1).join(' ')}<br/>${nameParts[nameParts.length-1]}` : t.name;
   const specs = Array.isArray(t.specialties) ? t.specialties.map(s => `<div class="tr-spec">${typeof s === 'object' && s !== null ? (s.item || '') : s}</div>`).join('') : '';
+  const bioHTML = t.bio ? `<div class="tr-bio">${t.bio}</div>` : '';
+  const phoneHTML = t.phone ? `<div class="tr-contact-item"><span class="tr-contact-icon">📞</span><a href="tel:${t.phone.replace(/\s/g,'')}">${t.phone}</a></div>` : '';
+  const emailHTML = t.email ? `<div class="tr-contact-item"><span class="tr-contact-icon">✉️</span><span>${t.email}</span></div>` : '';
+  const websiteHTML = t.website ? `<div class="tr-contact-item"><span class="tr-contact-icon">🌐</span><a href="${t.website}" target="_blank" rel="noopener">${t.website.replace(/https?:\/\//,'')}</a></div>` : '';
+  const enquireEmail = t.email ? t.email : 'support@urbanfitnessnz.com';
   return `<div class="tr-card reveal ${delays[idx] || ''}">
     <div class="tr-img">
       <img src="${t.image}" alt="${t.name}" onerror="this.style.background='#1E3A5F'"/>
@@ -331,7 +342,13 @@ function trainerCardHTML(t, idx) {
       <div class="tr-role">${t.role}</div>
       <div class="tr-divider"></div>
       <div class="tr-specs">${specs}</div>
-      <a href="mailto:support@urbanfitnessnz.com" class="tr-contact tr-enquire">Enquire →</a>
+      ${bioHTML}
+      <div class="tr-contact-info">
+        ${phoneHTML}
+        ${emailHTML}
+        ${websiteHTML}
+      </div>
+      <a href="mailto:${enquireEmail}" class="tr-contact tr-enquire">Enquire →</a>
     </div>
   </div>`;
 }

@@ -137,6 +137,9 @@ collections:
         hint: "전문 분야를 하나씩 추가하세요 / Add each specialty one by one  예 e.g. Strength Training / Weight Loss / Boxing"
         field: { label: "전문 분야 / Specialty", name: "item", widget: "string" }
       - { label: "자격증 / Certifications", name: "certifications", widget: "string", required: false, hint: "예 e.g. NZQA Level 4 Personal Training" }
+      - { label: "전화번호 / Phone", name: "phone", widget: "string", required: false, hint: "예 e.g. (027) 579 9412" }
+      - { label: "이메일 / Email", name: "email", widget: "string", required: false, hint: "개인 이메일 / Personal email" }
+      - { label: "웹사이트 / Website", name: "website", widget: "string", required: false, hint: "예 e.g. https://yoursite.com" }
       - { label: "순서 / Display Order", name: "order", widget: "number", hint: "숫자가 낮을수록 먼저 표시됩니다 / Lower number = displayed first" }
       - { label: "활성화 / Active (ON/OFF)", name: "active", widget: "boolean", default: true, hint: "OFF 하면 트레이너 페이지에서 숨겨집니다 / Turn OFF to hide from Trainer page" }
 

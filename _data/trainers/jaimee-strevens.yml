@@ -1,14 +1,14 @@
-name: Jaimee Strevens
-role: Personal Trainer
-image: /images/Jaimee.png
-bio: |-
-  phone : (021) 333 078
-  email :  Jaimee@forgeandflowcoaching.co.nz
-specialties:
-  - Strength & Hypertrophy
-  - Pilates
-  - Nutrition Coaching
-  - App Programming
-certifications: ""
-order: 2
 active: true
+bio: ''
+certifications: ''
+email: Jaimee@forgeandflowcoaching.co.nz
+image: /images/Jaimee.png
+name: Jaimee Strevens
+order: 2
+phone: (021) 333 078
+role: Personal Trainer
+specialties:
+- Strength & Hypertrophy
+- Pilates
+- Nutrition Coaching
+- App Programming
