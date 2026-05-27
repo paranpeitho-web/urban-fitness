@@ -1,13 +1,15 @@
-name: "Casey Hennesy"
-role: "Personal Trainer"
-image: "/images/Casey.png"
-bio: ""
+name: Casey Hennesy
+role: Personal Trainer
+image: /images/Casey.png
+bio: |-
+  phone : (027) 579 9412
+  email : caseyhennessyfitness@gmail.com
 specialties:
-  - "Strength Training"
-  - "Hypertrophy"
-  - "Weight Loss"
-  - "Technique Breakdown"
-  - "Online Coaching & Programming"
+  - Strength Training
+  - Hypertrophy
+  - Weight Loss
+  - Technique Breakdown
+  - Online Coaching & Programming
 certifications: ""
 order: 1
 active: true
