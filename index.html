@@ -280,6 +280,7 @@
     }
   </style>
 
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 </head>
 <body data-page="index">
@@ -348,8 +349,8 @@
 
 <!-- TICKER -->
 <div class="ticker"><div class="ticker-t">
-  &nbsp;&nbsp;24/7 ACCESS &nbsp;·&nbsp; GROUP CLASSES &nbsp;·&nbsp; PERSONAL TRAINING &nbsp;·&nbsp; BOXING ZONE &nbsp;·&nbsp; STRENGTH ZONE &nbsp;·&nbsp; CARDIO ZONE &nbsp;·&nbsp; KIDS ZONE &nbsp;·&nbsp; EVOLT 360 BODY SCANNER &nbsp;·&nbsp; NO SIGN-UP FEE &nbsp;·&nbsp;
-  24/7 ACCESS &nbsp;·&nbsp; GROUP CLASSES &nbsp;·&nbsp; PERSONAL TRAINING &nbsp;·&nbsp; BOXING ZONE &nbsp;·&nbsp; STRENGTH ZONE &nbsp;·&nbsp; CARDIO ZONE &nbsp;·&nbsp; KIDS ZONE &nbsp;·&nbsp; EVOLT 360 BODY SCANNER &nbsp;·&nbsp; NO SIGN-UP FEE &nbsp;·&nbsp;
+  &nbsp;&nbsp;24/7 ACCESS &nbsp;·&nbsp; GROUP CLASSES &nbsp;·&nbsp; PERSONAL TRAINING &nbsp;·&nbsp; BOXING ZONE &nbsp;·&nbsp; STRENGTH ZONE &nbsp;·&nbsp; CARDIO ZONE &nbsp;·&nbsp; KIDS ZONE &nbsp;·&nbsp; EVOLT 360 BODY SCANNER &nbsp;·&nbsp;
+  24/7 ACCESS &nbsp;·&nbsp; GROUP CLASSES &nbsp;·&nbsp; PERSONAL TRAINING &nbsp;·&nbsp; BOXING ZONE &nbsp;·&nbsp; STRENGTH ZONE &nbsp;·&nbsp; CARDIO ZONE &nbsp;·&nbsp; KIDS ZONE &nbsp;·&nbsp; EVOLT 360 BODY SCANNER &nbsp;·&nbsp;
 </div></div>
 
 <!-- INTRO -->
@@ -945,6 +946,17 @@ if (document.readyState === 'loading') {
   initCMS();
 }
 
+</script>
+<script>
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on("init", user => {
+    if (!user) {
+      window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin/";
+      });
+    }
+  });
+}
 </script>
 </body>
 </html>
