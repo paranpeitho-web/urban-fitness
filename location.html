@@ -293,9 +293,31 @@
       </div>
       <div class="reveal d1" style="background:var(--c-gray-1);overflow:hidden">
 
+        <script>
+          if (typeof jQuery !== 'undefined') var oldJQuery = jQuery.noConflict(true);
+        </script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+          jQueryX = jQuery.noConflict(true);
+          jQuery = oldJQuery;
+        </script>
+        <script type="text/javascript" src="https://urbanfitnessnz.gymmasteronline.com/portal/static/js/hostpage.js"></script>
         <figure style="margin:0">
           <iframe class="gmiframe" src="https://urbanfitnessnz.gymmasteronline.com/portal/enquiry?logo=0" width="100%" scrolling="no" frameborder="0" allow="camera *" style="display:block;min-height:520px"></iframe>
         </figure>
+        <script>
+          // hostpage.js 로드 후 자동 스크롤 방지 — 2초간 스크롤 잠금
+          (function(){
+            var origScroll = window.scroll;
+            var origScrollTo = window.scrollTo;
+            var locked = true;
+            setTimeout(function(){ locked = false; }, 2000);
+            window.scroll = function(){ if(!locked) origScroll.apply(window, arguments); };
+            window.scrollTo = function(){ if(!locked) origScrollTo.apply(window, arguments); };
+            Element.prototype._origScrollIntoView = Element.prototype.scrollIntoView;
+            Element.prototype.scrollIntoView = function(){ if(!locked) this._origScrollIntoView.apply(this, arguments); };
+          })();
+        </script>
       </div>
     </div>
   </div>
