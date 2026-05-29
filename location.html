@@ -291,33 +291,22 @@
           <div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--c-gray-4);margin-bottom:4px">Email</div><div style="font-size:14px" data-cms="email">support@urbanfitnessnz.com</div></div>
         </div>
       </div>
-      <div class="reveal d1" style="background:var(--c-gray-1);overflow:hidden">
-
-        <script>
-          if (typeof jQuery !== 'undefined') var oldJQuery = jQuery.noConflict(true);
-        </script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>
-          jQueryX = jQuery.noConflict(true);
-          jQuery = oldJQuery;
-        </script>
-        <script type="text/javascript" src="https://urbanfitnessnz.gymmasteronline.com/portal/static/js/hostpage.js"></script>
-        <figure style="margin:0">
-          <iframe class="gmiframe" src="https://urbanfitnessnz.gymmasteronline.com/portal/enquiry?logo=0" width="100%" scrolling="no" frameborder="0" allow="camera *" style="display:block;min-height:520px"></iframe>
-        </figure>
-        <script>
-          // hostpage.js 로드 후 자동 스크롤 방지 — 2초간 스크롤 잠금
-          (function(){
-            var origScroll = window.scroll;
-            var origScrollTo = window.scrollTo;
-            var locked = true;
-            setTimeout(function(){ locked = false; }, 2000);
-            window.scroll = function(){ if(!locked) origScroll.apply(window, arguments); };
-            window.scrollTo = function(){ if(!locked) origScrollTo.apply(window, arguments); };
-            Element.prototype._origScrollIntoView = Element.prototype.scrollIntoView;
-            Element.prototype.scrollIntoView = function(){ if(!locked) this._origScrollIntoView.apply(this, arguments); };
-          })();
-        </script>
+      <div class="reveal d1" style="background:var(--c-gray-1);display:flex;align-items:center;justify-content:center;padding:64px 48px;">
+        <div style="width:100%;max-width:480px">
+          <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--c-lime);margin-bottom:16px">Send A Message</div>
+          <div style="font-family:var(--f-display);font-size:clamp(32px,4vw,52px);font-weight:800;text-transform:uppercase;line-height:.95;margin-bottom:24px">GOT A<br/><em style="color:var(--c-logo-blue);font-style:normal">QUESTION?</em></div>
+          <p style="font-size:15px;line-height:1.8;color:rgba(244,241,235,.65);margin-bottom:32px">Have a question or want to look around before committing? We'd love to hear from you — reach out and we'll get back to you shortly.</p>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="width:40px;height:40px;border:1px solid rgba(200,240,0,.25);display:flex;align-items:center;justify-content:center;color:var(--c-lime);font-size:15px;flex-shrink:0">✉️</div>
+              <div>
+                <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--c-gray-4);margin-bottom:2px">Email Us</div>
+                <div style="font-size:14px" data-cms="email">support@urbanfitnessnz.com</div>
+              </div>
+            </div>
+          </div>
+          <a href="https://urbanfitnessnz.gymmasteronline.com/portal/enquiry?logo=0" target="_blank" rel="noopener" class="btn btn-lime" style="display:inline-flex;width:100%;justify-content:center">Contact Us →</a>
+        </div>
       </div>
     </div>
   </div>
