@@ -1,12 +1,13 @@
-active: true
-bio: ''
-certifications: ''
-image: /images/Hemi.png
 name: Hemi Kawha
-order: 3
 role: Personal Trainer / Customer Service / Group Fitness Instructor
+image: /images/Hemi.png
+bio: ""
 specialties:
-- Hypertrophy
-- Weight Loss
-- General Fitness
-- Boxing & Kickboxing
+  - Hypertrophy
+  - Weight Loss
+  - General Fitness
+  - Boxing & Kickboxing
+certifications: ""
+phone: (022) 564 2579
+order: 3
+active: true
