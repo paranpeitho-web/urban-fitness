@@ -180,13 +180,7 @@
     .hours-note{font-size:11px;color:var(--c-lime);letter-spacing:2px;text-transform:uppercase;margin-top:8px}
     .contact-form-section{background:var(--c-gray-1)}
     .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .f-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
-    .f-group.full{grid-column:span 2}
     .f-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--c-gray-4)}
-    .f-input{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--c-white);padding:13px 16px;font-family:var(--f-body);font-size:14px;outline:none;transition:border-color var(--t-base);width:100%}
-    .f-input::placeholder{color:rgba(244,241,235,.25)}
-    .f-input:focus{border-color:var(--c-lime)}
-    textarea.f-input{height:130px;resize:vertical}
     select.f-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C8F000' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
     .loc-contact-info{background:var(--c-blue);padding:48px 40px;height:100%}
     .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:2px;align-items:start}
@@ -297,19 +291,19 @@
           <div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--c-gray-4);margin-bottom:4px">Email</div><div style="font-size:14px" data-cms="email">support@urbanfitnessnz.com</div></div>
         </div>
       </div>
-      <div class="reveal d1" style="padding:48px 40px;background:var(--c-gray-1)">
-        <div class="form-grid">
-          <div class="f-group"><label class="f-label">First Name</label><input class="f-input" placeholder="John"/></div>
-          <div class="f-group"><label class="f-label">Last Name</label><input class="f-input" placeholder="Smith"/></div>
-        </div>
-        <div class="f-group"><label class="f-label">Email Address</label><input class="f-input" type="email" placeholder="john@example.com"/></div>
-        <div class="f-group"><label class="f-label">Phone Number</label><input class="f-input" type="tel" placeholder="+64 21 000 000"/></div>
-        <div class="f-group">
-          <label class="f-label">How did you hear about us?</label>
-          <select class="f-input"><option value="">Select an option</option><option>Social Media</option><option>Google</option><option>Word of Mouth</option><option>Drove Past</option><option>Signage</option></select>
-        </div>
-        <div class="f-group"><label class="f-label">Message</label><textarea class="f-input" placeholder="What would you like to know?"></textarea></div>
-        <button class="btn btn-lime" style="width:100%;justify-content:center" onclick="alert('Thank you! We will be in touch shortly.')">Send Message →</button>
+      <div class="reveal d1" style="background:var(--c-gray-1);overflow:hidden">
+        <script>
+          if (typeof jQuery !== 'undefined') var oldJQuery = jQuery.noConflict(true);
+        </script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+          jQueryX = jQuery.noConflict(true);
+          jQuery = oldJQuery;
+        </script>
+        <script type="text/javascript" src="https://urbanfitnessnz.gymmasteronline.com/portal/static/js/hostpage.js"></script>
+        <figure style="margin:0">
+          <iframe class="gmiframe" src="https://urbanfitnessnz.gymmasteronline.com/portal/enquiry?logo=0" width="100%" scrolling="no" frameborder="0" allow="camera *" style="display:block;min-height:520px"></iframe>
+        </figure>
       </div>
     </div>
   </div>
