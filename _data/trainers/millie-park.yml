@@ -4,6 +4,10 @@ image: /images/millie.png
 bio: |
   Weight Loss
   General Fitness
+specialties:
+  - Weight Loss
+  - General Fitness
+certifications: ""
 phone: "02041285031"
 email: workoutwithmillie@gmail.com
 order: 4
