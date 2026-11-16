@@ -1,6 +1,9 @@
 name: Millie Park
 role: Personal Trainer
 image: /images/millie.png
+bio: |
+  Weight Loss
+  General Fitness
 phone: "02041285031"
 email: workoutwithmillie@gmail.com
 order: 4
