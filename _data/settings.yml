@@ -2,17 +2,17 @@ url_login: https://urbanfitnessnz.gymmasteronline.com/portal/login
 url_join: https://urbanfitnessnz.gymmasteronline.com/portal/signup
 url_booking: https://urbanfitnessnz.gymmasteronline.com/portal/signup
 membership_urls:
-  standard: https://urbanfitnessnz.gymmasteronline.com/portal/signup/9
-  student: https://urbanfitnessnz.gymmasteronline.com/portal/signup/10
-  senior: https://urbanfitnessnz.gymmasteronline.com/portal/signup/11
+  standard: https://urbanfitnessnz.gymmasteronline.com/portal/signup
+  student: https://urbanfitnessnz.gymmasteronline.com/portal/signup
+  senior: https://urbanfitnessnz.gymmasteronline.com/portal/signup
 contact:
   address: 156 Chadwick Road, Greerton, Tauranga NZ 3112
   email: support@urbanfitnessnz.com
   phone: ""
 hours:
   mon_thu: 7:00am – 7:30pm
-  friday: 8:00am – 3:30pm
-  saturday: 8:00am – 11:00am
+  friday: 8:00am – 12pm
+  saturday: 8:00am – 12:00am
   sunday: No Staff
 sns:
   instagram: ""
