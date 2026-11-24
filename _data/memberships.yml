@@ -3,7 +3,7 @@ standard:
   price_12m: "$19.90"
   price_6m: "$21.90"
   price_open: "$23.90"
-  description: "Full gym access and all facilities to train on your schedule, anytime."
+  description: "24/7 gym access, premium equipment and unlimited group fitness classes."
 
 student:
   price_18m: "$15.90"
@@ -11,6 +11,20 @@ student:
   price_6m: "$18.90"
   price_open: "$20.90"
   description: "Affordable access for students to build healthy habits early."
+
+urbanx_adult:
+  price_18m: "$26.90"
+  price_12m: "$28.90"
+  price_6m: "$30.90"
+  price_open: "$33.90"
+  description: "Everything in STANDARD, plus 3 instructor-led Reformer Pilates classes per week and unlimited virtual Reformer classes."
+
+urbanx_u20:
+  price_18m: "$23.90"
+  price_12m: "$24.90"
+  price_6m: "$26.90"
+  price_open: "$28.90"
+  description: "Everything in STANDARD, plus 3 instructor-led Reformer Pilates classes per week and unlimited virtual Reformer classes."
 
 senior:
   price_open: "$16.90"
