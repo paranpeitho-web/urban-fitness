@@ -161,6 +161,8 @@
     .rev-dot.active{background:var(--c-logo-blue);transform:scale(1.3)}
 
     /* MEMBERSHIP */
+    .mem-age{font-size:13px;line-height:1.6;color:var(--c-gray-4);margin-bottom:10px}
+    .mem.feat2 .mem-age{color:rgba(255,255,255,.85)}
     .mem-grid{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
     .mem{background:var(--c-gray-1);padding:40px 28px;position:relative;overflow:hidden;transition:background var(--t-base),transform var(--t-base)}
     .mem:hover{background:var(--c-gray-2);transform:translateY(-4px)}
@@ -173,6 +175,7 @@
     .mem-nm{font-family:var(--f-display);font-size:32px;font-weight:800;text-transform:uppercase;margin-bottom:8px}
     .mem-pr{font-family:var(--f-display);font-size:20px;font-weight:700;margin-bottom:12px}
     .mem-pr span{font-size:13px;font-weight:400;opacity:.6}
+    .mem-pr span[data-cms]{font-size:24px;font-weight:700;opacity:1}
     .mem-d{font-size:13px;line-height:1.6;opacity:.65;margin-bottom:24px}
     .mem-lnk{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:inherit;border-bottom:1px solid currentColor;padding-bottom:2px;transition:gap var(--t-base)}
     .mem-lnk:hover{gap:10px}
@@ -349,8 +352,8 @@
 
 <!-- TICKER -->
 <div class="ticker"><div class="ticker-t">
-  &nbsp;&nbsp;24/7 ACCESS &nbsp;·&nbsp; GROUP CLASSES &nbsp;·&nbsp; PERSONAL TRAINING &nbsp;·&nbsp; BOXING ZONE &nbsp;·&nbsp; STRENGTH ZONE &nbsp;·&nbsp; CARDIO ZONE &nbsp;·&nbsp; KIDS ZONE &nbsp;·&nbsp; EVOLT 360 BODY SCANNER &nbsp;·&nbsp;
-  24/7 ACCESS &nbsp;·&nbsp; GROUP CLASSES &nbsp;·&nbsp; PERSONAL TRAINING &nbsp;·&nbsp; BOXING ZONE &nbsp;·&nbsp; STRENGTH ZONE &nbsp;·&nbsp; CARDIO ZONE &nbsp;·&nbsp; KIDS ZONE &nbsp;·&nbsp; EVOLT 360 BODY SCANNER &nbsp;·&nbsp;
+  &nbsp;&nbsp;24/7 ACCESS &nbsp;·&nbsp; GROUP CLASSES &nbsp;·&nbsp; REFORMER PILATES &nbsp;·&nbsp; BOXING ZONE &nbsp;·&nbsp; STRENGTH ZONE &nbsp;·&nbsp; CARDIO ZONE &nbsp;·&nbsp; KIDS ZONE &nbsp;·&nbsp; EVOLT 360 BODY SCANNER &nbsp;·&nbsp;
+  24/7 ACCESS &nbsp;·&nbsp; GROUP CLASSES &nbsp;·&nbsp; REFORMER PILATES &nbsp;·&nbsp; BOXING ZONE &nbsp;·&nbsp; STRENGTH ZONE &nbsp;·&nbsp; CARDIO ZONE &nbsp;·&nbsp; KIDS ZONE &nbsp;·&nbsp; EVOLT 360 BODY SCANNER &nbsp;·&nbsp;
 </div></div>
 
 <!-- INTRO -->
@@ -383,13 +386,13 @@
     </div>
   </div>
   <div class="feat reveal d2">
-    <img src="/images/43.webp" data-cms-img="index_feat_pt" alt="Personal Training"/>
+    <img src="/images/reformer-pilates.jpg" data-cms-img="index_feat_pt" alt="Reformer Pilates"/>
     <div class="feat-bar"></div><div class="feat-ov"></div>
     <div class="feat-c">
-      <div class="feat-tag">Training</div>
-      <div class="feat-ttl">PERSONAL<br/>TRAINING</div>
-      <div class="feat-desc">Expert freelance trainers tailoring programs around your goals and lifestyle.</div>
-      <a href="trainer.html" class="feat-lnk">Meet Our Trainers →</a>
+      <div class="feat-tag">Pilates</div>
+      <div class="feat-ttl">REFORMER<br/>PILATES</div>
+      <div class="feat-desc">Build strength and improve flexibility with instructor-led and virtual Reformer Pilates classes.</div>
+      <a href="facilities.html" class="feat-lnk">Explore Pilates →</a>
     </div>
   </div>
 </div>
@@ -413,7 +416,7 @@
     <div class="fac-card reveal d2"><div class="fac-n">03</div><div class="fac-nm">Strength Zone</div><div class="fac-d">Free weights, squat racks, plate-loaded machines, cable stations, and premium Swedish-made Gymleco equipment.</div></div>
     <div class="fac-card reveal d3"><div class="fac-n">04</div><div class="fac-nm">Group Classes</div><div class="fac-d">Energetic, community-focused classes for all fitness levels, including globally recognised Les Mills programs.</div></div>
     <div class="fac-card reveal"><div class="fac-n">05</div><div class="fac-nm">Boxing &amp; Functional</div><div class="fac-d">Located upstairs — ideal for HIIT, circuits, boxing drills, and athletic training. Dedicated boxing classes available.</div></div>
-    <div class="fac-card reveal d1"><div class="fac-n">06</div><div class="fac-nm">Personal Training</div><div class="fac-d">Tailored programs, accountability, and professional guidance to help you achieve your fitness goals safely and effectively.</div></div>
+    <div class="fac-card reveal d1"><div class="fac-n">06</div><div class="fac-nm">Reformer Pilates</div><div class="fac-d">Build strength, improve flexibility and strengthen your core with instructor-led and virtual Reformer Pilates sessions.</div></div>
     <div class="fac-card reveal d2"><div class="fac-n">07</div><div class="fac-nm">Evolt 360 Scanner</div><div class="fac-d">Track your progress with detailed body composition insights — muscle mass, body fat %, metabolic data and 40+ metrics.</div></div>
     <div class="fac-card reveal d3"><div class="fac-n">08</div><div class="fac-nm">Kids Zone</div><div class="fac-d">A family-friendly environment where parents can train while children enjoy a safe and welcoming space nearby.</div></div>
   </div>
@@ -439,8 +442,8 @@
   <h2 class="sec-title reveal d1">MEMBERSHIPS <em>FOR EVERYONE.</em></h2>
   <p class="sec-body reveal d2">Flexible options designed around your goals, lifestyle, and schedule.</p>
   <div class="mem-grid">
-    <div class="mem feat2 reveal"><div class="mem-tag">Most Popular</div><div class="mem-nm">STANDARD</div><div class="mem-pr">From <span data-cms="mem-standard-18m">$18.90</span><span>/wk</span></div><div class="mem-d" data-cms="mem-standard-desc">Full gym access and all facilities to train on your schedule, anytime.</div><a href="https://urbanfitnessnz.gymmasteronline.com/portal/signup/9" class="mem-lnk" target="_blank" rel="noopener">Join Now →</a></div>
-    <div class="mem reveal d1"><div class="mem-tag">Under 20</div><div class="mem-nm">STUDENT</div><div class="mem-pr">From <span data-cms="mem-student-18m">$15.90</span><span>/wk</span></div><div class="mem-d" data-cms="mem-student-desc">Affordable access for students to build healthy habits early.</div><a href="#" class="mem-lnk" id="mem-stu">Join Now →</a></div>
+    <div class="mem feat2 reveal"><div class="mem-tag">Gym Membership</div><div class="mem-nm">STANDARD</div><div class="mem-pr">From <span data-cms="mem-standard-18m">$18.90</span><span>/wk</span></div><div class="mem-age">Adult · 18 months | U20 from <span data-cms="mem-student-18m">$15.90</span>/wk</div><div class="mem-d" data-cms="mem-standard-desc">24/7 gym access, premium equipment and unlimited group fitness classes.</div><a href="https://urbanfitnessnz.gymmasteronline.com/portal/signup/9" class="mem-lnk" target="_blank" rel="noopener">Join Now →</a></div>
+    <div class="mem reveal d1"><div class="mem-tag">Reformer Pilates Included</div><div class="mem-nm">URBAN-X</div><div class="mem-pr">From <span data-cms="mem-urbanx_adult-18m">$26.90</span><span>/wk</span></div><div class="mem-age">Adult · 18 months | U20 from <span data-cms="mem-urbanx_u20-18m">$23.90</span>/wk</div><div class="mem-d" data-cms="mem-urbanx_adult-desc">Everything in STANDARD, plus 3 instructor-led Reformer Pilates classes per week and unlimited virtual Reformer classes.</div><a href="#" class="mem-lnk" data-cms="join">Join Now →</a></div>
     <div class="mem reveal d2"><div class="mem-tag">65+</div><div class="mem-nm">SENIOR</div><div class="mem-pr"><span data-cms="mem-senior-open">$16.90</span><span>/wk</span></div><div class="mem-d" data-cms="mem-senior-desc">Special rates for seniors to stay active, strong, and healthy.</div><a href="#" class="mem-lnk" id="mem-sen">Join Now →</a></div>
     <div class="mem reveal d3"><div class="mem-tag">Companies</div><div class="mem-nm">CORPORATE</div><div class="mem-pr">Enquire</div><div class="mem-d" data-cms="mem-corporate-desc">Tailored solutions to support employee health and well-being.</div><a href="mailto:support@urbanfitnessnz.com" class="mem-lnk">Email Us →</a></div>
   </div>
@@ -763,7 +766,7 @@ async function applyMemberships() {
   const data = await fetchYML('memberships.yml');
   if (!data) return;
 
-  const plans = ['standard', 'student', 'senior', 'corporate'];
+  const plans = ['standard', 'student', 'urbanx_adult', 'urbanx_u20', 'senior', 'corporate'];
   plans.forEach(plan => {
     if (!data[plan]) return;
     const d = data[plan];
@@ -929,7 +932,7 @@ async function initCMS() {
 
   // 페이지별 선택 적용
   if (page === 'index' || page === '') {
-    await Promise.all([applyReviews()]);
+    await Promise.all([applyReviews(), applyMemberships()]);
   }
   if (page === 'membership') {
     await applyMemberships();

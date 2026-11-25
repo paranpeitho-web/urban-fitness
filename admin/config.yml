@@ -61,14 +61,14 @@ collections:
         fields:
           - { label: "메인 Gym Floor 사진", name: "index_feat_gym", widget: "image", hint: "index 피처카드 — 짐 플로어" }
           - { label: "메인 Classes 사진", name: "index_feat_classes", widget: "image", hint: "index 피처카드 — 클래스" }
-          - { label: "메인 PT 사진", name: "index_feat_pt", widget: "image", hint: "index 피처카드 — 퍼스널트레이닝" }
+          - { label: "메인 Reformer Pilates 사진", name: "index_feat_pt", widget: "image", hint: "index 피처카드 — 퍼스널트레이닝" }
           - { label: "About 히어로 배경", name: "about_hero", widget: "image" }
           - { label: "Facilities 히어로 배경", name: "facilities_hero", widget: "image" }
           - { label: "Group Classes 사진", name: "facilities_group_classes", widget: "image" }
           - { label: "24/7 Access 사진", name: "facilities_247_access", widget: "image" }
           - { label: "Cardio Zone 사진", name: "facilities_cardio", widget: "image" }
           - { label: "Boxing & Functional 사진", name: "facilities_boxing", widget: "image" }
-          - { label: "Personal Training 사진", name: "facilities_pt", widget: "image" }
+          - { label: "Reformer Pilates 사진", name: "facilities_pt", widget: "image" }
           - { label: "Kids Zone 사진", name: "facilities_kids", widget: "image", required: false }
           - { label: "Evolt 360 사진", name: "facilities_evolt", widget: "image", required: false }
           - { label: "Strength Zone 사진", name: "facilities_strength", widget: "image" }
@@ -151,7 +151,7 @@ collections:
         label: "멤버십 플랜 & 가격 / Membership Plans & Pricing"
         file: "_data/memberships.yml"
         fields:
-          - label: "Standard 멤버십 / Standard Membership"
+          - label: "STANDARD Adult / Standard Membership Adult"
             name: "standard"
             widget: "object"
             fields:
@@ -160,8 +160,26 @@ collections:
               - { label: "6개월 주간 가격 / 6-Month Weekly Price", name: "price_6m", widget: "string" }
               - { label: "오픈 주간 가격 / Open Weekly Price", name: "price_open", widget: "string" }
               - { label: "설명 / Description (English)", name: "description", widget: "text" }
-          - label: "Student 멤버십 U20 / Student Membership U20"
+          - label: "STANDARD U20 / Standard Under 20"
             name: "student"
+            widget: "object"
+            fields:
+              - { label: "18개월 주간 가격 / 18-Month Weekly Price", name: "price_18m", widget: "string" }
+              - { label: "12개월 주간 가격 / 12-Month Weekly Price", name: "price_12m", widget: "string" }
+              - { label: "6개월 주간 가격 / 6-Month Weekly Price", name: "price_6m", widget: "string" }
+              - { label: "오픈 주간 가격 / Open Weekly Price", name: "price_open", widget: "string" }
+              - { label: "설명 / Description (English)", name: "description", widget: "text" }
+          - label: "URBAN-X Adult / Reformer Pilates"
+            name: "urbanx_adult"
+            widget: "object"
+            fields:
+              - { label: "18개월 주간 가격 / 18-Month Weekly Price", name: "price_18m", widget: "string" }
+              - { label: "12개월 주간 가격 / 12-Month Weekly Price", name: "price_12m", widget: "string" }
+              - { label: "6개월 주간 가격 / 6-Month Weekly Price", name: "price_6m", widget: "string" }
+              - { label: "오픈 주간 가격 / Open Weekly Price", name: "price_open", widget: "string" }
+              - { label: "설명 / Description (English)", name: "description", widget: "text" }
+          - label: "URBAN-X U20 / Reformer Pilates"
+            name: "urbanx_u20"
             widget: "object"
             fields:
               - { label: "18개월 주간 가격 / 18-Month Weekly Price", name: "price_18m", widget: "string" }
